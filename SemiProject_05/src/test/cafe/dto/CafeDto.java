@@ -1,4 +1,4 @@
-package semi.cafe.dto;
+package test.cafe.dto;
 
 public class CafeDto {
 		private int num;

@@ -1,10 +1,10 @@
-package semi.cafe.dao;
+package test.cafe.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import semi.cafe.dto.CafeDto;
+import test.cafe.dto.CafeDto;
 import test.util.DbcpBean;
 
 public class CafeDao {

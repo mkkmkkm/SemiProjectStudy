@@ -1,5 +1,5 @@
-<%@page import="semi.cafe.dao.CafeDao"%>
-<%@page import="semi.cafe.dto.CafeDto"%>
+<%@page import="test.cafe.dao.CafeDao"%>
+<%@page import="test.cafe.dto.CafeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%   
