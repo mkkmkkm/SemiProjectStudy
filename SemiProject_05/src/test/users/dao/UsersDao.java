@@ -242,7 +242,7 @@ public class UsersDao {
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩할 내용이 있으면 여기서 바인딩
 			pstmt.setString(1, dto.getId());
-			pstmt.setString(2, dto.getId());		
+			pstmt.setString(2, dto.getPwd());		
 			//insert or update or delete 문 수행하고 변화된 row의 개수 리턴받기
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
