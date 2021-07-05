@@ -41,7 +41,7 @@
 %>
 <%if(isPopup){%>
 	<script>
-		window.open("popup.jsp","창의제목","width=400,height=400,top=100,left=200");
+		window.open("popup.jsp","창의제목","width=420,height=420,top=100,left=200");
 	</script>
 <%}%>
 </body>

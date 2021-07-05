@@ -19,7 +19,7 @@
 	<div class="container">
 		<form action="login.jsp" method="post">
 			<%-- url 값 전달 --%>
-			<input type="hidden" name="url" value=""/>
+			<input type="hidden" name="url" value="<%=url%>"/>
 			<%-- id 값 전달 --%>
 			<input type="text" name="id" id="id" />
 			<label for="id">ID</label>
