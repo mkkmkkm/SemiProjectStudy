@@ -5,10 +5,7 @@
 <jsp:setProperty property="*" name="dto"/> 
 <%
 	/*
-	<jsp:useBean id="dto" class="test.cafe.dto.CafeDto"></jsp:useBean>   
-	<jsp:setProperty property="*" name="dto"/> 
-	
-	위의 2줄은 아래의 코드를 대체 할수 있다.
+
 	
 	1. 폼 전송되는 수정할 글의 번호, 제목, 내용을 읽어온다.
 	int num=Integer.parseInt(request.getParameter("num"));
