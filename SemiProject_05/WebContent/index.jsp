@@ -7,6 +7,8 @@
 <title>/index.jsp</title>
 </head>
 <body>
-일단 한번 push
+	<ul>
+   		<li><a href="cafe/list.jsp">자유게시판</a></li>
+    </ul>
 </body>
 </html>
