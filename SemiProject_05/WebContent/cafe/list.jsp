@@ -97,6 +97,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/cafe/list.jsp</title>
+<jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
    .page-ui a{
       text-decoration: none;
@@ -124,6 +125,9 @@
 </style>
 </head>
 <body>
+<jsp:include page="../include/navbar.jsp">
+	<jsp:param value="cafe" name="thisPage"/>
+</jsp:include>
 <div class="container">
    <a href="private/uploadform.jsp">새 글 작성</a>
    <h1>자유게시판</h1>

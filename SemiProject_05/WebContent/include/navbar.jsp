@@ -34,7 +34,7 @@
 					<a class="nav-link" href="">공지사항</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="">자유게시판</a>
+					<a class="nav-link <%=thisPage.equals("cafe") ? "active" : "" %>" href="<%=request.getContextPath() %>/cafe/list.jsp">자유게시판</a>
 				</li>
 			</ul>
 			<%if(id==null){ %>
