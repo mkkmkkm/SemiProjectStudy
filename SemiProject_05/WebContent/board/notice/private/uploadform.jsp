@@ -16,7 +16,7 @@
 <div class="container">
    <h1>공지사항 작성 폼</h1>
    <form action="insert.jsp" method="post" id="insertForm">
-   	  <select name="option" class="mb-3">
+   	  <select name="noticeOption" class="mb-3">
    	  	 <option value="">선택</option>
    	  	 <option value="announcement">전체공지</option>
    	  	 <option value="RegularMeeting">정기모임</option>

@@ -123,7 +123,7 @@ public class NoticeDao {
    }
    //글하나의 정보를 리턴하는 메소드
    public NoticeDto getData(int num) {
-	   NoticeDto dto2=null;
+	   NoticeDto dto=null;
       Connection conn = null;
       PreparedStatement pstmt = null;
       ResultSet rs = null;
@@ -142,15 +142,15 @@ public class NoticeDao {
          rs = pstmt.executeQuery();
          //ResultSet 객체에 있는 내용을 추출해서 원하는 Data type 으로 포장하기
          if(rs.next()) {
-            dto2=new NoticeDto();
-            dto2.setNum(rs.getInt("num"));
-            dto2.setWriter(rs.getString("writer"));
-            dto2.setTitle(rs.getString("title"));
-            dto2.setContent(rs.getString("content"));
-            dto2.setViewCount(rs.getInt("viewCount"));
-            dto2.setRegdate(rs.getString("regdate"));
-            dto2.setPrevNum(rs.getInt("prevNum"));
-            dto2.setNextNum(rs.getInt("nextNum"));
+            dto=new NoticeDto();
+            dto.setNum(rs.getInt("num"));
+            dto.setWriter(rs.getString("writer"));
+            dto.setTitle(rs.getString("title"));
+            dto.setContent(rs.getString("content"));
+            dto.setViewCount(rs.getInt("viewCount"));
+            dto.setRegdate(rs.getString("regdate"));
+            dto.setPrevNum(rs.getInt("prevNum"));
+            dto.setNextNum(rs.getInt("nextNum"));
          }
       } catch (Exception e) {
          e.printStackTrace();
@@ -165,7 +165,7 @@ public class NoticeDao {
          } catch (Exception e) {
          }
       }
-      return dto2;
+      return dto;
    }
    
    //새글 저장하는 메소드 

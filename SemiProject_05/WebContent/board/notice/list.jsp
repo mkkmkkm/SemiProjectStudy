@@ -6,7 +6,7 @@
     pageEncoding="UTF-8"%>
 <%
 	String id=(String)session.getAttribute("id");
-	String option=request.getParameter("noticeOption");
+	String noticeOption=request.getParameter("noticeOption");
 
    //한 페이지에 몇개씩 표시할 것인지
    final int PAGE_ROW_COUNT=5;
@@ -28,15 +28,14 @@
    //보여줄 페이지의 끝 ROWNUM
    int endRowNum=pageNum*PAGE_ROW_COUNT;
    
-   //특수기호를 인코딩한 키워드를 미리 준비한다. 
-   String encodedK=URLEncoder.encode(keyword);
-   
    //NoticeDto 객체에 startRowNum 과 endRowNum 을 담는다.
    NoticeDto dto=new NoticeDto();
    dto.setStartRowNum(startRowNum);
    dto.setEndRowNum(endRowNum);
    
+   //MemberDao 객체의 참조값 얻어와서 
    NoticeDao dao=NoticeDao.getInstance();
+   //회원목록 얻어오기 
    List<NoticeDao> list=dao.getList(dto);
 
    //하단 시작 페이지 번호 
@@ -58,6 +57,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/notice/list.jsp</title>
+<jsp:include page="../../include/resource.jsp"></jsp:include>
 <style>
    .page-ui a{
       text-decoration: none;
@@ -105,10 +105,8 @@
       <%for(NoticeDto tmp:list){%>
          <tr>
             <td><%=tmp.getNum() %></td>
-            <td><%=option%></td>
-            <td>
-               <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
-            </td>
+            <td><%=noticeOption%></td>
+            <td><%=tmp.getTitle() %></td>
             <td><%=tmp.getWriter() %></td>
             <td><%=tmp.getViewCount() %></td>
             <td><%=tmp.getRegdate() %></td>
@@ -117,28 +115,30 @@
       </tbody>
    </table>
    <div class="page-ui clearfix">
-      <ul>
-         <%if(startPageNum != 1){ %>
-            <li>
-               <a href="list.jsp?pageNum=<%=startPageNum-1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">Prev</a>
-            </li>   
-         <%} %>
-         
-         <%for(int i=startPageNum; i<=endPageNum ; i++){ %>
-            <li>
+         <ul class="pagination pagination-sm">
+            <%if(startPageNum != 1){ %>
+               <li class="page-item">
+                  <a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1 %>">&laquo;</a>
+               </li>   
+            <%} %>
+            
+            <%for(int i=startPageNum; i<=endPageNum ; i++){ %>
                <%if(pageNum == i){ %>
-                  <a class="active" href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
+                  <li class="page-item active">
+                     <a class="page-link" href="list.jsp?pageNum=<%=i %>"><%=i %></a>
+                  </li>   
                <%}else{ %>
-                  <a href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
+                  <li class="page-item">
+                     <a class="page-link" href="list.jsp?pageNum=<%=i %>"><%=i %></a>
+                  </li>
                <%} %>
-            </li>   
-         <%} %>
-         <%if(endPageNum < totalPageCount){ %>
-            <li>
-               <a href="list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">Next</a>
-            </li>
-         <%} %>
-      </ul>
+            <%} %>
+            <%if(endPageNum < totalPageCount){ %>
+               <li class="page-item">
+                  <a class="page-link" href="list.jsp?pageNum=<%=endPageNum+1 %>">&raquo;</a>
+               </li>
+            <%} %>
+         </ul>
    </div>
    
    <div style="clear:both;"></div>
