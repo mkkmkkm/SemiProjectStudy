@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/free/upload.jsp</title>
+<title>/cafe/private/upload.jsp</title>
 </head>
 <body>
 
