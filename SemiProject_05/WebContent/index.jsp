@@ -19,6 +19,7 @@
 </style>
 </head>
 <body>
+
 	<jsp:include page="include/navbar.jsp"></jsp:include>
 	<img id="mainImg" src="<%=request.getContextPath()%>/images/badminton01.jpg" alt="" />
 
@@ -44,5 +45,10 @@
 		window.open("popup.jsp","창의제목","width=420,height=420,top=100,left=200");
 	</script>
 <%}%>
+
+	<ul>
+   		<li><a href="cafe/list.jsp">자유게시판</a></li>
+    </ul>
+
 </body>
 </html>
