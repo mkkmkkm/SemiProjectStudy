@@ -22,18 +22,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>free/insert.jsp</title>
+<title>cafe/insert.jsp</title>
 </head>
 <body>
 <%if(isSuccess){ %>
 	<script>
 		alert("새 글이 추가 되었습니다.");
-		location.href="${pageContext.request.contextPath}/free/list.jsp";
+		location.href="${pageContext.request.contextPath}/cafe/list.jsp";
 	</script>
 	<%}else{ %>
 	<script>
 		alert("글 저장 실패!");
-		location.href="${pageContext.request.contextPath}/free/insertform.jsp";
+		location.href="${pageContext.request.contextPath}/cafe/private/insertform.jsp";
 	</script>
 	<%} %>
 

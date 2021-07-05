@@ -22,13 +22,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>free/delete.jsp</title>
+<title>cafe/private/delete.jsp</title>
 </head>
 <body>
 	<%if(isSuccess){%>
 		<script>
 			alert("삭제 했습니다.");
-			location.href="${pageContext.request.contextPath }/free/list.jsp";
+			location.href="${pageContext.request.contextPath }/cafe/list.jsp";
 		</script>
 	<%}else{%>
 		<script>

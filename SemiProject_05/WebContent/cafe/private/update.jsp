@@ -18,7 +18,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/free/update.jsp</title>
+<title>/cafe/update.jsp</title>
 </head>
 <body>
 	<%if(isSuccess){ %>

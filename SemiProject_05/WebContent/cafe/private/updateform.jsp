@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>/cafe/private/updateform.jsp</title>
 </head>
 <div class="container">
 	<h1>글 수정 폼 입니다.</h1>
