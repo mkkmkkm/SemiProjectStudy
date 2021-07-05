@@ -21,10 +21,10 @@
       	 <label class="form-label" for="noticeOption"></label>
       	 <select name="noticeOption">
    	  	 	<option value="">선택</option>
-   	  	 	<option value="announcement" <%=noticeOption.equals("announcement")?"selected":"" %>>전체공지</option>
-   	  	 	<option value="RegularMeeting" <%=noticeOption.equals("RegularMeeting")?"selected":"" %>>정기모임</option>
-   	  	 	<option value="ImpromptuMeeting" <%=noticeOption.equals("ImpromptuMeeting")?"selected":"" %>>번개모임</option>
-   	  	 	<option value="etc" <%=noticeOption.equals("etc")?"selected":"" %>>기타</option>
+   	  	 	<option value="announcement">전체공지</option>
+   	  	 	<option value="RegularMeeting">정기모임</option>
+   	  	 	<option value="ImpromptuMeeting">번개모임</option>
+   	  	 	<option value="etc">기타</option>
       	 </select>
       </div>
       <div>

@@ -36,7 +36,7 @@
    //MemberDao 객체의 참조값 얻어와서 
    NoticeDao dao=NoticeDao.getInstance();
    //회원목록 얻어오기 
-   List<NoticeDao> list=dao.getList(dto);
+   List<NoticeDto> list=dao.getList(dto);
 
    //하단 시작 페이지 번호 
    int startPageNum = 1 + ((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
