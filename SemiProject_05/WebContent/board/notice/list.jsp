@@ -94,7 +94,6 @@
       <thead>
          <tr>
             <th>글번호</th>
-            <th style="display:none;">옵션</th>
             <th>제목</th>
             <th>작성자</th>
             <th>조회수</th>
@@ -105,7 +104,6 @@
       <%for(NoticeDto tmp:list){%>
          <tr>
             <td><%=tmp.getNum() %></td>
-            <td><%=noticeOption%></td>
             <td><%=tmp.getTitle() %></td>
             <td><%=tmp.getWriter() %></td>
             <td><%=tmp.getViewCount() %></td>
