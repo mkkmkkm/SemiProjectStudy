@@ -1,3 +1,4 @@
+<%@page import="notice.dao.NoticeDao"%>
 <%@page import="notice.dto.NoticeDto"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.List"%>
@@ -5,7 +6,7 @@
     pageEncoding="UTF-8"%>
 <%
 	String id=(String)session.getAttribute("id");
-	String option=request.getParameter("option");
+	String option=request.getParameter("noticeOption");
 
    //한 페이지에 몇개씩 표시할 것인지
    final int PAGE_ROW_COUNT=5;
@@ -27,33 +28,23 @@
    //보여줄 페이지의 끝 ROWNUM
    int endRowNum=pageNum*PAGE_ROW_COUNT;
    
-   /*
-      [ 검색 키워드에 관련된 처리 ]
-      -검색 키워드가 파라미터로 넘어올수도 있고 안넘어 올수도 있다.      
-   */
-   String keyword=request.getParameter("keyword");
-   String condition=request.getParameter("condition");
-   //만일 키워드가 넘어오지 않는다면 
-   if(keyword==null){
-      //키워드와 검색 조건에 빈 문자열을 넣어준다. 
-      //클라이언트 웹브라우저에 출력할때 "null" 을 출력되지 않게 하기 위해서  
-      keyword="";
-      condition=""; 
-   }
-
    //특수기호를 인코딩한 키워드를 미리 준비한다. 
    String encodedK=URLEncoder.encode(keyword);
-      
+   
    //NoticeDto 객체에 startRowNum 과 endRowNum 을 담는다.
    NoticeDto dto=new NoticeDto();
    dto.setStartRowNum(startRowNum);
    dto.setEndRowNum(endRowNum);
+   
+   NoticeDao dao=NoticeDao.getInstance();
+   List<NoticeDao> list=dao.getList(dto);
 
    //하단 시작 페이지 번호 
    int startPageNum = 1 + ((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
    //하단 끝 페이지 번호
    int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
    
+   int totalRow=dao.getCount();
    //전체 페이지의 갯수
    int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
    //끝 페이지 번호가 전체 페이지 갯수보다 크다면 잘못된 값이다.
@@ -66,7 +57,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cafe/list.jsp</title>
+<title>/notice/list.jsp</title>
 <style>
    .page-ui a{
       text-decoration: none;
@@ -103,7 +94,7 @@
       <thead>
          <tr>
             <th>글번호</th>
-            <th>옵션</th>
+            <th style="display:none;">옵션</th>
             <th>제목</th>
             <th>작성자</th>
             <th>조회수</th>
@@ -114,7 +105,7 @@
       <%for(NoticeDto tmp:list){%>
          <tr>
             <td><%=tmp.getNum() %></td>
-            <td><%= 여기다 옵션값을 넣자%></td>
+            <td><%=option%></td>
             <td>
                <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
             </td>
