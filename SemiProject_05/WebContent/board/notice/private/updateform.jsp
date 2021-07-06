@@ -31,7 +31,6 @@
          <textarea name="content" id="content"><%=dto.getContent() %></textarea>
       </div>
       <button type="submit" onclick="submitContents(this);">수정확인</button>
-      <button type="reset">취소</button>
    </form>
 </div>
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->

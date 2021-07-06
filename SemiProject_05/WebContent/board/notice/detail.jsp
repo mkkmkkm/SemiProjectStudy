@@ -32,7 +32,7 @@
       </tr>
       <tr>
          <th>제목</th>
-         <td><%=dto.getContent() %></td>
+         <td><%=dto.getTitle() %></td>
       </tr>
       <tr>
          <th>조회수</th>
@@ -47,7 +47,7 @@
       </tr>
    </table>
       <ul>
-      <li><a href="list.jsp">목록보기</a></li>
+      <li><a href="list.jsp">공지사항목록으로가기</a></li>
       <%if(dto.getWriter().equals(id)){ %>
          <li><a href="private/updateform.jsp?num=<%=dto.getNum()%>">수정</a></li>
          <li><a href="private/delete.jsp?num=<%=dto.getNum()%>">삭제</a></li>
