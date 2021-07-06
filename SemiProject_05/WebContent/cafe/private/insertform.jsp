@@ -18,8 +18,8 @@
 		<div class="mb-3">
 			<label for="category">분류</label>
 			<select name="category" id="category">
-			<option value="1">잡담</option>
-			<option value="2">후기</option>
+			<option value="잡담">잡담</option>
+			<option value="후기">후기</option>
 			</select>
 		</div>	
 		<div class="mb-3">	
