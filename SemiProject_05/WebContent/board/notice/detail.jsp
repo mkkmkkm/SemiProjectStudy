@@ -32,7 +32,7 @@
       </tr>
       <tr>
          <th>제목</th>
-         <td><%=dto.getContent() %></td>
+         <td><%=dto.getTitle() %></td>
       </tr>
       <tr>
          <th>조회수</th>
