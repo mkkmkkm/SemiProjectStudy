@@ -140,7 +140,7 @@
             <th>제목</th>
             <th>작성자</th>
             <th>날짜</th>
-            <th>조회 수</th>     
+            <th>조회수</th>     
          </tr>
       </thead>
       <tbody>
@@ -152,8 +152,8 @@
                <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
             </td>
             <td><%=tmp.getWriter() %></td>
-            <td><%=tmp.getViewCount() %></td>
             <td><%=tmp.getRegdate() %></td>
+            <td><%=tmp.getViewCount() %></td>
          </tr>
       <%} %>
       </tbody>

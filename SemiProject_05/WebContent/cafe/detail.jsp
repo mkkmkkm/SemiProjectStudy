@@ -207,6 +207,10 @@
          <td><%=dto.getNum() %></td>
       </tr>
       <tr>
+         <th>카테고리</th>
+         <td><%=dto.getCategory() %></td>
+      </tr>
+      <tr>
          <th>작성자</th>
          <td><%=dto.getWriter() %></td>
       </tr>
