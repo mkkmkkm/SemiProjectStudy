@@ -566,6 +566,52 @@ public class NoticeDao {
       }
       return count;
    }
+   
+  //마지막 공지글 하나의 정보를 리턴하는 메소드
+   public NoticeDto getData1() {
+	   NoticeDto dto=null;
+      Connection conn = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
+      try {
+         //Connection 객체의 참조값 얻어오기 
+         conn = new DbcpBean().getConn();
+         //실행할 sql 문 작성
+         String sql = "SELECT num,writer,title,viewCount,regdate"
+        		 	+" FROM board_notice"
+        		 	+" WHERE num IN(SELECT MAX(NUM) FROM board_notice)";
+         //PreparedStatement 객체의 참조값 얻어오기
+         pstmt = conn.prepareStatement(sql);
+         //? 에 바인딩할 내용이 있으면 여기서 바인딩
+         //select 문 수행하고 결과를 ResultSet 으로 받아오기
+         rs = pstmt.executeQuery();
+         //ResultSet 객체에 있는 내용을 추출해서 원하는 Data type 으로 포장하기
+         if(rs.next()) {
+            dto=new NoticeDto();
+            dto.setNum(rs.getInt("num"));
+            dto.setWriter(rs.getString("writer"));
+            dto.setTitle(rs.getString("title"));
+            dto.setContent(rs.getString("content"));
+            dto.setViewCount(rs.getInt("viewCount"));
+            dto.setRegdate(rs.getString("regdate"));
+         }
+      } catch (Exception e) {
+         e.printStackTrace();
+      } finally {
+         try {
+            if (rs != null)
+               rs.close();
+            if (pstmt != null)
+               pstmt.close();
+            if (conn != null)
+               conn.close();
+         } catch (Exception e) {
+         }
+      }
+      return dto;
+   }
+   
+	
 }
 
 
