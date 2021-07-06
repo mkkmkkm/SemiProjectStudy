@@ -130,7 +130,7 @@
 	<jsp:param value="cafe" name="thisPage"/>
 </jsp:include>
 <div class="container">
-   <a href="private/uploadform.jsp">새 글 작성</a>
+   <a href="private/insertform.jsp">새 글 작성</a>
    <h1>자유게시판</h1>
    <table>
       <thead>
