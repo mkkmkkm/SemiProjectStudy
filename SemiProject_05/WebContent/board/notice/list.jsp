@@ -130,7 +130,7 @@
 </head>
 <body>
 <jsp:include page="../../include/navbar.jsp">
-	<jsp:param value="Notice" name="thisPage"/>
+	<jsp:param value="notice" name="thisPage"/>
 </jsp:include>
 <div class="container">
    <h1>공지사항</h1>
