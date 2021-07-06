@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cafe/private/uploadform.jsp</title>
-<jsp:include page="../../include/resource.jsp"></jsp:include>
+<title>/board/notice/private/insertform.jsp</title>
+<jsp:include page="../../../include/resource.jsp"></jsp:include>
 <style>
    #content{
       height: 500px;
@@ -14,8 +14,18 @@
 </head>
 <body>
 <div class="container">
-   <h1>새글 작성 폼</h1>
-   <form action="upload.jsp" method="post" id="insertForm">
+   <h1>공지사항 작성 폼</h1>
+   <form action="insert.jsp" method="post" id="insertForm">
+   	  <div class="form-group"> 
+   	  	<label class="form-label" for="noticeOption"></label>
+   	  	<select class="form-select" name="noticeOption" class="mb-3">
+   	  	 	<option value="">선택</option>
+   	  	 	<option value="announcement">전체공지</option>
+   	  	 	<option value="RegularMeeting">정기모임</option>
+   	  	 	<option value="ImpromptuMeeting">번개모임</option>
+   	  	 	<option value="etc">기타</option>
+   	  	</select>
+      </div>
       <div class="mb-3">
          <label class="form-label" for="title">제목</label>
          <input class="form-control" type="text" name="title" id="title"/>
@@ -27,7 +37,20 @@
       <button class="btn btn-primary" type="submit">저장</button>
    </form>
 </div>
-
+<%--
+   [ SmartEditor 를 사용하기 위한 설정 ]
+   
+   1. WebContent 에 SmartEditor  폴더를 복사해서 붙여 넣기
+   2. WebContent 에 upload 폴더 만들어 두기
+   3. WebContent/WEB-INF/lib 폴더에 
+      commons-io.jar 파일과 commons-fileupload.jar 파일 붙여 넣기
+   4. <textarea id="content" name="content"> 
+      content 가 아래의 javascript 에서 사용 되기때문에 다른 이름으로 바꾸고 
+         싶으면 javascript 에서  content 를 찾아서 모두 다른 이름으로 바꿔주면 된다. 
+   5. textarea 의 크기가 SmartEditor  의 크기가 된다.
+   6. 폼을 제출하고 싶으면  submitContents(this) 라는 javascript 가 
+         폼 안에 있는 버튼에서 실행되면 된다.
+ --%>
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
@@ -93,3 +116,5 @@
 </script>
 </body>
 </html>
+
+

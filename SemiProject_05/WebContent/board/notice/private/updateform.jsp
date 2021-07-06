@@ -1,33 +1,48 @@
+<%@page import="notice.dao.NoticeDao"%>
+<%@page import="notice.dto.NoticeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+   int num=Integer.parseInt(request.getParameter("num"));
+   NoticeDto dto=NoticeDao.getInstance().getData(num);
+%>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cafe/private/uploadform.jsp</title>
-<jsp:include page="../../include/resource.jsp"></jsp:include>
-<style>
-   #content{
-      height: 500px;
-   }
-</style>
+<title>board/notice/private/updateform.jsp</title>
 </head>
 <body>
 <div class="container">
-   <h1>새글 작성 폼</h1>
-   <form action="upload.jsp" method="post" id="insertForm">
-      <div class="mb-3">
-         <label class="form-label" for="title">제목</label>
-         <input class="form-control" type="text" name="title" id="title"/>
+   <h1>공지 수정 폼 입니다.</h1>
+   <form action="update.jsp" method="post">
+      <input type="hidden" name="num" value="<%=num %>" />
+      <div>
+      	 <label class="form-label" for="noticeOption"></label>
+      	 <select name="noticeOption">
+   	  	 	<option value="">선택</option>
+   	  	 	<option value="announcement">전체공지</option>
+   	  	 	<option value="RegularMeeting">정기모임</option>
+   	  	 	<option value="ImpromptuMeeting">번개모임</option>
+   	  	 	<option value="etc">기타</option>
+      	 </select>
       </div>
-      <div class="mb-3">
-         <label class="form-label" for="content">내용</label>
-         <textarea class="form-control"  name="content" id="content"></textarea>
+      <div>
+         <label for="writer">작성자</label>
+         <input type="text" id="writer" value="<%=dto.getWriter() %>" disabled/>
       </div>
-      <button class="btn btn-primary" type="submit">저장</button>
+      <div>
+         <label for="title">제목</label>
+         <input type="text" name="title" id="title" value="<%=dto.getTitle()%>"/>
+      </div>
+      <div>
+         <label for="content">내용</label>
+         <textarea name="content" id="content"><%=dto.getContent() %></textarea>
+      </div>
+      <button type="submit" onclick="submitContents(this);">수정확인</button>
+      <button type="reset">취소</button>
    </form>
 </div>
-
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
@@ -65,31 +80,26 @@
       var sHTML = oEditors.getById["content"].getIR();
       alert(sHTML);
    }
-
+      
+   function submitContents(elClickedObj) {
+      oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);   // 에디터의 내용이 textarea에 적용됩니다.
+      
+      // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
+      
+      try {
+         elClickedObj.form.submit();
+      } catch(e) {}
+   }
    
    function setDefaultFont() {
       var sDefaultFont = '궁서';
       var nFontSize = 24;
       oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
    }
-   
-   //폼에 submit 이벤트가 일어났을때 실행할 함수 등록
-   document.querySelector("#insertForm")
-      .addEventListener("submit", function(e){
-         //에디터에 입력한 내용이 textarea 의 value 값이 될수 있도록 변환한다. 
-         oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-         //textarea 이외에 입력한 내용을 여기서 검증하고 
-         const title=document.querySelector("#title").value;
-         
-         //만일 폼 제출을 막고 싶으면  
-         //e.preventDefault();
-         //을 수행하게 해서 폼 제출을 막아준다.
-         if(title.length < 5){
-            alert("제목을 5글자 이상 입력하세요!");
-            e.preventDefault();
-         }
-         
-      });
 </script>
 </body>
 </html>
+
+
+
+

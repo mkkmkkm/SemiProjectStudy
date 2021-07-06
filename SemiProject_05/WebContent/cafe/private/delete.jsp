@@ -17,7 +17,7 @@
 	//3. 같으면 DB 에서 삭제하고 응답 
 	boolean isSuccess=CafeDao.getInstance().delete(num);
 	//4. 다르면 금지된요청 혹은 잘못된 요청이라고 응답해준다. 
-%>        
+%>    
 <!DOCTYPE html>
 <html>
 <head>
