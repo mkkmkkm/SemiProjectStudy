@@ -536,7 +536,7 @@ public class CafeDao {
          //Connection 객체의 참조값 얻어오기 
          conn = new DbcpBean().getConn();
          //실행할 sql 문 작성
-         String sql = "SELECT num,title,writer,content,viewCount,regdate"
+         String sql = "SELECT num,title,writer,category,content,viewCount,likeCount,regdate"
                + " FROM board_cafe"
                + " WHERE num=?";
          //PreparedStatement 객체의 참조값 얻어오기
@@ -551,8 +551,10 @@ public class CafeDao {
             dto2.setNum(rs.getInt("num"));
             dto2.setWriter(rs.getString("writer"));
             dto2.setTitle(rs.getString("title"));
+            dto2.setCategory(rs.getString("category"));
             dto2.setContent(rs.getString("content"));
             dto2.setViewCount(rs.getInt("viewCount"));
+            dto2.setLikeCount(rs.getInt("likeCount"));
             dto2.setRegdate(rs.getString("regdate"));
             dto2.setPrevNum(rs.getInt("prevNum"));
             dto2.setNextNum(rs.getInt("nextNum"));
@@ -585,7 +587,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,content,viewCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe" + 
@@ -604,8 +606,10 @@ public class CafeDao {
             dto2.setNum(rs.getInt("num"));
             dto2.setWriter(rs.getString("writer"));
             dto2.setTitle(rs.getString("title"));
+            dto2.setCategory(rs.getString("category"));
             dto2.setContent(rs.getString("content"));
             dto2.setViewCount(rs.getInt("viewCount"));
+            dto2.setLikeCount(rs.getInt("likeCount"));
             dto2.setRegdate(rs.getString("regdate"));
             dto2.setPrevNum(rs.getInt("prevNum"));
             dto2.setNextNum(rs.getInt("nextNum"));
@@ -636,7 +640,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,content,viewCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe"+ 
@@ -657,8 +661,10 @@ public class CafeDao {
             dto2.setNum(rs.getInt("num"));
             dto2.setWriter(rs.getString("writer"));
             dto2.setTitle(rs.getString("title"));
+            dto2.setCategory(rs.getString("category"));
             dto2.setContent(rs.getString("content"));
             dto2.setViewCount(rs.getInt("viewCount"));
+            dto2.setLikeCount(rs.getInt("likeCount"));
             dto2.setRegdate(rs.getString("regdate"));
             dto2.setPrevNum(rs.getInt("prevNum"));
             dto2.setNextNum(rs.getInt("nextNum"));
@@ -689,7 +695,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,content,viewCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe"+ 
@@ -710,8 +716,10 @@ public class CafeDao {
             dto2.setNum(rs.getInt("num"));
             dto2.setWriter(rs.getString("writer"));
             dto2.setTitle(rs.getString("title"));
+            dto2.setCategory(rs.getString("category"));
             dto2.setContent(rs.getString("content"));
             dto2.setViewCount(rs.getInt("viewCount"));
+            dto2.setLikeCount(rs.getInt("likeCount"));
             dto2.setRegdate(rs.getString("regdate"));
             dto2.setPrevNum(rs.getInt("prevNum"));
             dto2.setNextNum(rs.getInt("nextNum"));
@@ -742,7 +750,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,content,viewCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe"+ 
@@ -764,8 +772,10 @@ public class CafeDao {
             dto2.setNum(rs.getInt("num"));
             dto2.setWriter(rs.getString("writer"));
             dto2.setTitle(rs.getString("title"));
+            dto2.setCategory(rs.getString("category"));
             dto2.setContent(rs.getString("content"));
             dto2.setViewCount(rs.getInt("viewCount"));
+            dto2.setLikeCount(rs.getInt("likeCount"));
             dto2.setRegdate(rs.getString("regdate"));
             dto2.setPrevNum(rs.getInt("prevNum"));
             dto2.setNextNum(rs.getInt("nextNum"));
