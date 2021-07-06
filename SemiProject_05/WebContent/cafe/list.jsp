@@ -97,14 +97,8 @@
    if(endPageNum > totalPageCount){
       endPageNum=totalPageCount; //보정해 준다.
    }
-   //String topNotice=request.getParameter("topNotice"); -
-   //List<NoticeDao> list=dao.getList(dto);
-   //List<NoticeDto> list=NoticeDao.getInstance().getList();
-   //int num1=Integer.parseInt(request.getParameter("endPageNum"));
-   //int lastPageNum=
-   //int num1= lastPageNum;
+   
    NoticeDao dao1=NoticeDao.getInstance();
-   //NoticeDto dto1=NoticeDao.getInstance().getData1();
 %>        
 
 <!DOCTYPE html>
