@@ -1,5 +1,5 @@
-<%@page import="test.cafe.dao.CafeDao"%>
-<%@page import="test.cafe.dto.CafeDto"%>
+<%@page import="notice.dao.NoticeDao"%>
+<%@page import="notice.dto.NoticeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -9,30 +9,34 @@
    String title=request.getParameter("title");
    String content=request.getParameter("content");
    //2. DB 에 저장하고
-   CafeDto dto=new CafeDto();
+   NoticeDto dto=new NoticeDto();
    dto.setWriter(writer);
    dto.setTitle(title);
    dto.setContent(content);
-   boolean isSuccess=CafeDao.getInstance().insert(dto);
+   boolean isSuccess=NoticeDao.getInstance().insert(dto);
    //3. 응답하기 
 %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cafe/private/upload.jsp</title>
+<title>/board/notice/private/insert.jsp</title>
 </head>
 <body>
    <%if(isSuccess){ %>
    <script>
-      alert("새글이 추가 되었습니다.");
-      location.href="${pageContext.request.contextPath}/cafe/list.jsp";
+      alert("새 공지가 추가 되었습니다.");
+      location.href="${pageContext.request.contextPath}/board/notice/list.jsp";
    </script>
    <%}else{ %>
    <script>
-      alert("글 저장 실패!");
-      location.href="${pageContext.request.contextPath}/cafe/private/uploadform.jsp";
+      alert("새 공지 저장 실패!");
+      location.href="${pageContext.request.contextPath}/board/notice/private/insertform.jsp";
    </script>
    <%} %>
 </body>
 </html>
+
+
+
+

@@ -20,7 +20,7 @@
 	<nav class="navbar navbar-light navbar-expand-sm" style="background-color: #79E5CB;">
 		<div class="container">
 			<a class="navbar-brand" href="<%=request.getContextPath()%>/">
-				<img src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="20" height="20" />
+				<img src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="20" height="20"/>
 				High-clear!
 			</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,10 +29,7 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="">홈</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="">공지사항</a>
+					<a class="nav-link <%=thisPage.equals("notice") ? "active" : "" %>" href="<%=request.getContextPath() %>/board/notice/list.jsp">공지사항</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link <%=thisPage.equals("cafe") ? "active" : "" %>" href="<%=request.getContextPath() %>/cafe/list.jsp">자유게시판</a>
