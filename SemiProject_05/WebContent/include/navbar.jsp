@@ -34,6 +34,9 @@
 				<li class="nav-item">
 					<a class="nav-link <%=thisPage.equals("cafe") ? "active" : "" %>" href="<%=request.getContextPath() %>/cafe/list.jsp">자유게시판</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link <%=thisPage.equals("faq") ? "active" : "" %>" href="<%=request.getContextPath() %>/faq/faq.jsp">FAQ</a>
+				</li>
 			</ul>
 			<%if(id==null){ %>
 				<a class="btn btn-info btn-sm me-2" 
