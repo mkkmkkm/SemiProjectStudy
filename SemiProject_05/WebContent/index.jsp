@@ -5,24 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>/index.jsp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <jsp:include page="include/resource.jsp"></jsp:include>
 <style>
-	#mainImg {
-	  position: fixed; 
-	  top: 56px; 
-	  left: 0; 
-	  opacity: 0.5;
-	  /* Preserve aspet ratio */
-	  min-width: 100%;
-	  min-height: 100%;
-}
+	*{
+		font-family: 'Sunflower', sans-serif;
+	}
+	body{
+		height: 100vh;
+		background-image: url("images/badminton01.jpg");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+	}
 </style>
 </head>
 <body>
 
 	<jsp:include page="include/navbar.jsp"></jsp:include>
-	<img id="mainImg" src="<%=request.getContextPath()%>/images/badminton01.jpg" alt="" />
-
 	
 <%
 	//쿠키 읽어오기

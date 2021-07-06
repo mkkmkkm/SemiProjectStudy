@@ -1,5 +1,10 @@
+
+<%@page import="test.cafe.dao.CafeCommentDao"%>
+<%@page import="test.cafe.dto.CafeCommentDto"%>
+
 <%@page import="notice.dto.NoticeDto"%>
 <%@page import="notice.dao.NoticeDao"%>
+
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.List"%>
 <%@page import="test.cafe.dao.CafeDao"%>
@@ -171,6 +176,9 @@
             <td><%=tmp.getCategory() %></td>
             <td>
                <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
+               <%-- 댓글 개수 표시 --%>
+				<span><%=CafeCommentDao.getInstance().getCount(tmp.getNum())%></span>
+               <%-- 이미지가 존재할 시 아이콘  표시 --%>
 				<%
                CafeDto dto2=CafeDao.getInstance().getData(tmp.getNum());
                if(dto2.getContent().contains("img")){%>
