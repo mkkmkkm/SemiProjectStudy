@@ -23,8 +23,7 @@
 		<div class="mb-3">
 			<label for="category">분류</label>
 			<select name="category" id="category">
-			<option value="1">잡담</option>
-			<option value="2">후기</option>
+			<option value="<%=dto.getCategory() %>"/>
 			</select>
 		</div>	
 		<div>
