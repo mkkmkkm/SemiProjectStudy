@@ -85,6 +85,9 @@
 </style>
 </head>
 <body>
+<jsp:include page="../../include/navbar.jsp">
+	<jsp:param value="notice" name="thisPage"/>
+</jsp:include>
 <div class="container">
 	<%if(id == "admin"){ %>
    		<a href="notice/insertform.jsp">새글 작성</a>
