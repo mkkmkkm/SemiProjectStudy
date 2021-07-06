@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cafe/insertform.jsp</title>
+<title>/cafe/private/insertform.jsp</title>
 <style>
 	#content{
 		height: 500px;
