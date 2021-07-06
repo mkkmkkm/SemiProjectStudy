@@ -16,6 +16,7 @@
    boolean isSuccess=CafeDao.getInstance().insert(dto);
    //3. 응답하기 
 %>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,3 +37,4 @@
    <%} %>
 </body>
 </html>
+
