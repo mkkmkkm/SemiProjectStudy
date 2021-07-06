@@ -216,7 +216,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,viewCount,regdate" + 
+               "              (SELECT num,writer,title,category,viewCount,likecount,regdate" + 
                "              FROM board_cafe" + 
                "              ORDER BY num DESC) result1)" + 
                "      WHERE rnum BETWEEN ? AND ?";
@@ -232,7 +232,9 @@ public class CafeDao {
             dto2.setNum(rs.getInt("num"));
             dto2.setWriter(rs.getString("writer"));
             dto2.setTitle(rs.getString("title"));
+            dto2.setCategory(rs.getString("category"));
             dto2.setViewCount(rs.getInt("viewCount"));
+            dto2.setLikeCount(rs.getInt("likeCount"));
             dto2.setRegdate(rs.getString("regdate"));
             list.add(dto2);
          }
@@ -305,7 +307,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,viewCount,regdate" + 
+               "              (SELECT num,writer,title,category,viewCount,likeCount,regdate" + 
                "              FROM board_cafe"+ 
                "             WHERE title LIKE '%' || ? || '%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -323,7 +325,9 @@ public class CafeDao {
             dto2.setNum(rs.getInt("num"));
             dto2.setWriter(rs.getString("writer"));
             dto2.setTitle(rs.getString("title"));
+            dto2.setCategory(rs.getString("category"));
             dto2.setViewCount(rs.getInt("viewCount"));
+            dto2.setLikeCount(rs.getInt("likeCount"));
             dto2.setRegdate(rs.getString("regdate"));
             list.add(dto2);
          }
@@ -360,7 +364,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,viewCount,regdate" + 
+               "              (SELECT num,writer,category,title,viewCount,likeCount,regdate" + 
                "              FROM board_cafe"+ 
                "             WHERE writer LIKE '%' || ? || '%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -378,7 +382,9 @@ public class CafeDao {
             dto2.setNum(rs.getInt("num"));
             dto2.setWriter(rs.getString("writer"));
             dto2.setTitle(rs.getString("title"));
+            dto2.setCategory(rs.getString("category"));
             dto2.setViewCount(rs.getInt("viewCount"));
+            dto2.setLikeCount(rs.getInt("likeCount"));
             dto2.setRegdate(rs.getString("regdate"));
             list.add(dto2);
          }
@@ -415,7 +421,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,viewCount,regdate" + 
+               "              (SELECT num,writer,category,title,viewCount,likeCount,regdate" + 
                "              FROM board_cafe"+ 
                "             WHERE title LIKE '%'||?||'%' OR content LIKE '%'||?||'%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -434,7 +440,9 @@ public class CafeDao {
             dto2.setNum(rs.getInt("num"));
             dto2.setWriter(rs.getString("writer"));
             dto2.setTitle(rs.getString("title"));
+            dto2.setCategory(rs.getString("category"));
             dto2.setViewCount(rs.getInt("viewCount"));
+            dto2.setLikeCount(rs.getInt("likeCount"));
             dto2.setRegdate(rs.getString("regdate"));
             list.add(dto2);
          }
