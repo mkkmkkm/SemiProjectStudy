@@ -5,6 +5,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	request.setCharacterEncoding("utf-8");
+
 	String id=(String)session.getAttribute("id");
 	String noticeOption=request.getParameter("noticeOption");
 
@@ -49,6 +51,8 @@
    //끝 페이지 번호가 전체 페이지 갯수보다 크다면 잘못된 값이다.
    if(endPageNum > totalPageCount){
       endPageNum=totalPageCount; //보정해 준다.
+      
+      
    }
    
 %>        
@@ -90,8 +94,8 @@
 </jsp:include>
 <div class="container">
 	<%if(id == "admin"){ %>
-   		<a href="notice/insertform.jsp">새글 작성</a>
-   	<%} %>
+   		<a href="private/insertform.jsp">새글작성</a>
+	<%} %>
    <h1>공지사항</h1>
    <table>
       <thead>

@@ -28,7 +28,7 @@ public class NoticeDao {
       try {
          conn = new DbcpBean().getConn();
          //실행할 sql 문 작성
-         String sql = "UPDATE board_gallery"
+         String sql = "UPDATE board_notice"
                + " SET viewCount=viewCount+1"
                + " WHERE num=?";
          pstmt = conn.prepareStatement(sql);
@@ -61,7 +61,7 @@ public class NoticeDao {
       try {
          conn = new DbcpBean().getConn();
          //실행할 sql 문 작성
-         String sql = "UPDATE board_gallery"
+         String sql = "UPDATE board_notice"
                + " SET title=?,content=?"
                + " WHERE num=?";
          pstmt = conn.prepareStatement(sql);
@@ -97,7 +97,7 @@ public class NoticeDao {
       try {
          conn = new DbcpBean().getConn();
          //실행할 sql 문 작성
-         String sql = "DELETE FROM board_gallery"
+         String sql = "DELETE FROM board_notice"
                + " WHERE num=?";
          pstmt = conn.prepareStatement(sql);
          //? 에 바인딩할 내용이 있으면 여기서 바인딩
@@ -132,7 +132,7 @@ public class NoticeDao {
          conn = new DbcpBean().getConn();
          //실행할 sql 문 작성
          String sql = "SELECT num,title,writer,content,viewCount,regdate"
-               + " FROM board_gallery"
+               + " FROM board_notice"
                + " WHERE num=?";
          //PreparedStatement 객체의 참조값 얻어오기
          pstmt = conn.prepareStatement(sql);
@@ -176,9 +176,9 @@ public class NoticeDao {
       try {
          conn = new DbcpBean().getConn();
          //실행할 insert, update, delete 문 구성
-         String sql = "INSERT INTO board_gallery"
+         String sql = "INSERT INTO board_notice"
                + " (num,writer,title,content,viewCount,regdate)"
-               + " VALUES(board_gallery_seq.NEXTVAL,?,?,?,0,SYSDATE)";
+               + " VALUES(board_notice_seq.NEXTVAL,?,?,?,0,SYSDATE)";
          pstmt = conn.prepareStatement(sql);
          //? 에 바인딩할 내용이 있으면 바인딩한다.
          pstmt.setString(1, dto.getWriter());
@@ -218,7 +218,7 @@ public class NoticeDao {
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
                "              (SELECT num,writer,title,viewCount,regdate" + 
-               "              FROM board_gallery" + 
+               "              FROM board_notice" + 
                "              ORDER BY num DESC) result1)" + 
                "      WHERE rnum BETWEEN ? AND ?";
          pstmt = conn.prepareStatement(sql);
@@ -263,7 +263,7 @@ public class NoticeDao {
          conn = new DbcpBean().getConn();
          //select 문 작성
          String sql = "SELECT NVL(MAX(ROWNUM), 0) AS num "
-               + " FROM board_gallery";
+               + " FROM board_notice";
          pstmt = conn.prepareStatement(sql);
          // ? 에 바인딩 할게 있으면 여기서 바인딩한다.
 
