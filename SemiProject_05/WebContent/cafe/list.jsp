@@ -136,6 +136,7 @@
       <thead>
          <tr>
             <th>번호</th>
+            <th>카테고리</th>
             <th>제목</th>
             <th>작성자</th>
             <th>날짜</th>
@@ -146,10 +147,11 @@
       <%for(CafeDto tmp:list){%>
          <tr>
             <td><%=tmp.getNum() %></td>
-            <td><%=tmp.getWriter() %></td>
+            <td><%=tmp.getCategory() %></td>
             <td>
                <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
             </td>
+            <td><%=tmp.getWriter() %></td>
             <td><%=tmp.getViewCount() %></td>
             <td><%=tmp.getRegdate() %></td>
          </tr>

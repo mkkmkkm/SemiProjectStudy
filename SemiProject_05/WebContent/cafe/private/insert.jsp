@@ -2,8 +2,10 @@
 <%@page import="test.cafe.dto.CafeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%   
-//로그인된 아이디를 session 영역에서 얻어내기
+<%
+	//한글 인코딩
+	request.setCharacterEncoding("utf-8");
+	//로그인된 아이디를 session 영역에서 얻어내기
 	String writer=(String)session.getAttribute("id");
 	//1. 폼 전송되는 글제목과 내용을 읽어와서
 	String title=request.getParameter("title");
@@ -11,7 +13,7 @@
 	String content=request.getParameter("content");    
 	//2. DB 에 저장하고
 	CafeDto dto=new CafeDto();
-	//dto.setWriter(writer);
+	dto.setWriter(writer);
 	dto.setTitle(title);
 	dto.setCategory(category);
 	dto.setContent(content);
