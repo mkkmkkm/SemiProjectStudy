@@ -32,12 +32,12 @@
       <p class="alert alert-success mt-4">
           <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
          <strong><%=num %></strong> 번 공지를 삭제 했습니다.
-         <a class="alert-link" href="list.jsp">확인</a>
+         <a class="alert-link" href="../list.jsp">확인</a>
       </p>
    <%}else{ %>
       <p class="alert alert-danger">
          	공지 삭제 실패!
-         <a href="list.jsp">확인</a>
+         <a href="../list.jsp">확인</a>
       </p>
    <%} %>
 </div>
