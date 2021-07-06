@@ -13,28 +13,18 @@
 </style>
 </head>
 <body>
-<div class="container">
+<div>
    <h1>공지사항 작성 폼</h1>
    <form action="insert.jsp" method="post" id="insertForm">
-   	  <div class="form-group"> 
-   	  	<label class="form-label" for="noticeOption"></label>
-   	  	<select class="form-select" name="noticeOption" class="mb-3">
-   	  	 	<option value="">선택</option>
-   	  	 	<option value="announcement">전체공지</option>
-   	  	 	<option value="RegularMeeting">정기모임</option>
-   	  	 	<option value="ImpromptuMeeting">번개모임</option>
-   	  	 	<option value="etc">기타</option>
-   	  	</select>
+      <div>
+         <label for="title">제목</label>
+         <input type="text" name="title" id="title"/>
       </div>
-      <div class="mb-3">
-         <label class="form-label" for="title">제목</label>
-         <input class="form-control" type="text" name="title" id="title"/>
+      <div>
+         <label for="content">내용</label>
+         <textarea name="content" id="content"></textarea>
       </div>
-      <div class="mb-3">
-         <label class="form-label" for="content">내용</label>
-         <textarea class="form-control"  name="content" id="content"></textarea>
-      </div>
-      <button class="btn btn-primary" type="submit">저장</button>
+      <button type="submit">저장</button>
    </form>
 </div>
 <%--

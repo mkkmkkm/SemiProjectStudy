@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	request.setCharacterEncoding("utf-8");
    //로그인된 아이디를 session 영역에서 얻어내기
    String writer=(String)session.getAttribute("id");
    //1. 폼 전송되는 글제목과 내용을 읽어와서

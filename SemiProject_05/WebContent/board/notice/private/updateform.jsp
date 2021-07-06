@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	request.setCharacterEncoding("utf-8");
    int num=Integer.parseInt(request.getParameter("num"));
    NoticeDto dto=NoticeDao.getInstance().getData(num);
 %>    
@@ -17,16 +18,6 @@
    <h1>공지 수정 폼 입니다.</h1>
    <form action="update.jsp" method="post">
       <input type="hidden" name="num" value="<%=num %>" />
-      <div>
-      	 <label class="form-label" for="noticeOption"></label>
-      	 <select name="noticeOption">
-   	  	 	<option value="">선택</option>
-   	  	 	<option value="announcement">전체공지</option>
-   	  	 	<option value="RegularMeeting">정기모임</option>
-   	  	 	<option value="ImpromptuMeeting">번개모임</option>
-   	  	 	<option value="etc">기타</option>
-      	 </select>
-      </div>
       <div>
          <label for="writer">작성자</label>
          <input type="text" id="writer" value="<%=dto.getWriter() %>" disabled/>
