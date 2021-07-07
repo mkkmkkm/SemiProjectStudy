@@ -132,12 +132,12 @@
 <jsp:include page="../../include/navbar.jsp">
 	<jsp:param value="notice" name="thisPage"/>
 </jsp:include>
-<div class="container">
+<div class="container p-3">
    <h1>공지사항</h1>
    <%if(id!=null && id.equals("admin")){ %>
          <a href="private/insertform.jsp">새글작성</a>
    <%} %>
-   <table class="table">
+   <table class="table mt-3">
       <thead>
          <tr>
             <th>번호</th>
