@@ -17,7 +17,7 @@
 		dto=UsersDao.getInstance().getData(id);
 	}
 %>
-	<nav class="navbar navbar-light navbar-expand-sm" style="background-color: #79E5CB;">
+	<nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #198754">
 		<div class="container">
 			<a class="navbar-brand" href="<%=request.getContextPath()%>/">
 				<img src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="20" height="20"/>
@@ -42,11 +42,11 @@
 				</li>
 			</ul>
 			<%if(id==null){ %>
-				<a class="btn btn-info btn-sm me-2" 
+				<a class="btn btn-outline-light btn-sm me-2" 
 				href="<%=request.getContextPath()%>/users/signupform.jsp">
 					회원가입
 				</a>
-				<a class="btn btn-success btn-sm me-2" 
+				<a class="btn btn-outline-light btn-sm me-2" 
 				href="<%=request.getContextPath()%>/users/loginform.jsp">
 					로그인
 				</a>
@@ -65,13 +65,22 @@
 						<%=id %>
 					</a>님 로그인 중
 				</span>
-				<a class="btn btn-danger btn-sm me-2" href="${pageContext.request.contextPath}/users/logout.jsp">
+				<a class="btn btn-light btn-sm me-2" href="${pageContext.request.contextPath}/users/logout.jsp">
 					로그아웃
 				</a>
 			<%} %>
 			</div>
       </div>
    </nav>
-
-   <a href="#" id="topA" style="position: absolute; right: 0px; bottom: 0px;">맨위로이동</a>
+	<a class="topBtn" href="javascript: window.scrollTo(0,0);"
+		style="cursor:pointer;
+		position:fixed;
+		right: 2%;
+		bottom: 5px;
+		z-index: 9999;
+		color:#198754;">
+		<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+		  <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+		</svg>
+   </a>
 

@@ -18,6 +18,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/board/notice/private/detail.jsp</title>
+
 </head>
 <body>
 <div class="container">
@@ -47,7 +48,7 @@
       </tr>
    </table>
       <ul>
-      <li><a href="list.jsp">공지사항목록으로가기</a></li>
+      <li><a href="list.jsp">공지사항 목록으로 가기</a></li>
       <%if(dto.getWriter().equals(id)){ %>
          <li><a href="private/updateform.jsp?num=<%=dto.getNum()%>">수정</a></li>
          <li><a href="private/delete.jsp?num=<%=dto.getNum()%>">삭제</a></li>

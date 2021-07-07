@@ -5,14 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>/index.jsp</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <jsp:include page="include/resource.jsp"></jsp:include>
+<jsp:include page="include/font.jsp"></jsp:include>
 <style>
-	*{
-		font-family: 'Sunflower', sans-serif;
-	}
+
 	body{
 		height: 100vh;
 		background-image: url("images/badminton01.jpg");
@@ -20,6 +16,7 @@
 		background-position: center;
 		background-size: cover;
 	}
+
 </style>
 </head>
 <body>

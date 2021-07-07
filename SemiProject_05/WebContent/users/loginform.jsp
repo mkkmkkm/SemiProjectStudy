@@ -14,6 +14,8 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/loginform.jsp</title>
+<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/font.jsp"></jsp:include>
 </head>
 <body>
 	<div class="container">

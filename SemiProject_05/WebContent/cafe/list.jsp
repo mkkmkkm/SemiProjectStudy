@@ -110,6 +110,7 @@
 <meta charset="UTF-8">
 <title>/cafe/list.jsp</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
+
 <style>
    .page-ui a{
       text-decoration: none;

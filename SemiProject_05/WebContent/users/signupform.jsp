@@ -6,28 +6,46 @@
 <meta charset="UTF-8">
 <title>/users/signupform.jsp</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/font.jsp"></jsp:include>
+<link href="signin.css" rel="stylesheet">
+<style>
+	.bd-placeholder-img{
+		font-size : 1.125rem;
+		text-anchor : middle;
+		-webkit-user-select : none;
+		-moz-user-select:none;
+		user-select:none;
+	}
+	@media (min-width:768px){
+		.bd-placeholder-img-lg{
+			font-size:3.5rem;
+		}
+	}
+</style>
 </head>
-<body>
-	<div class="container">
-		<h1>회원 가입 폼</h1>
+<body class="text-center">
+	<div class="container form-signin">
+		
 		<form action="signup.jsp" method="post" id="signupForm">
-			<div>
-				<label class="control-label" for="id">아이디</label>
+		<img class="mb-4" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="100" height="100"/>
+		<h1 class="h3 mb-3 fw-normal">회원가입</h1>	
+			<div class="form-floating">
 				<input class="form-control" type="text" name="id" id="id" />
+				<label class="control-label" for="id">아이디</label>				
 				<small>아이디는 5~10자 이내의 영문 소문자여야 합니다. </small>
 				<div class="invalid-feedback">이 아이디는 사용할 수 없습니다.</div>
 			</div>
-			<div>
-				<label class="control-label" for="pwd">비밀번호</label>
+			<div class="form-floating">
 				<input class="form-control" type="password" name="pwd" id="pwd" />	
+				<label class="control-label" for="pwd">비밀번호</label>				
 				<small>비밀번호는 5~10자 이내여야 합니다. </small>	
 				<div class="invalid-feedback">이 비밀번호는 사용할 수 없습니다.</div>
 			</div>
-			<div>
-				<label class="control-label" for="pwd2">비밀번호 확인</label>
-				<input class="form-control" type="password" name="pwd2" id="pwd2" />	
+			<div class="form-floating">
+				<input class="form-control" type="password" name="pwd2" id="pwd2" />
+				<label class="control-label" for="pwd2">비밀번호 확인</label>					
 			</div>
-			<button class="btn btn-primary" type="submit">가입하기</button>	
+			<button class="mt-4 w-50 btn btn-sm btn-outline-success" type="submit">가입하기</button>	
 		</form>
 	</div>
 	<script src="<%=request.getContextPath() %>/js/gura_util.js"></script>
