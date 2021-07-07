@@ -591,7 +591,6 @@ public class NoticeDao {
             dto.setNum(rs.getInt("num"));
             dto.setWriter(rs.getString("writer"));
             dto.setTitle(rs.getString("title"));
-            dto.setContent(rs.getString("content"));
             dto.setViewCount(rs.getInt("viewCount"));
             dto.setRegdate(rs.getString("regdate"));
          }
