@@ -32,9 +32,9 @@
 		session.setAttribute("id", id);
 		session.setMaxInactiveInterval(60*30);
 	%>
-		<p><%=id %>님, 로그인 되었습니다. </p>
+		alert("<%=id %>님, 로그인 되었습니다.");
 		<%-- 원래 페이지로 넘겨주기 : url 값  --%>
-		<a href="<%=url%>">돌아가기</a>
+		location.href="<%=url%>";
 	<%}else{ %>
 		<p>아이디나 비밀번호가 일치하지 않습니다.</p>
 		<%-- 인코딩된 url값 가지고 loginform으로 돌려보내기 --%>

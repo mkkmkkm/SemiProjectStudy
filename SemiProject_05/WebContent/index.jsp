@@ -5,17 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>/index.jsp</title>
-<jsp:include page="include/resource.jsp"></jsp:include>
-<jsp:include page="include/font.jsp"></jsp:include>
+
 <style>
 
 	body{
 		height: 100vh;
-		background-image: url("images/badminton01.jpg");
+		background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("images/badminton01.jpg");
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
 	}
+	
 
 </style>
 </head>

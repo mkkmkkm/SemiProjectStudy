@@ -16,6 +16,14 @@
 	if(id!=null){ //id가 null이 아니면 db에서 가입 정보 얻어오기
 		dto=UsersDao.getInstance().getData(id);
 	}
+	
+	//로그인필터에서 넘겨주는 url 값 읽어오기
+	String url=request.getParameter("url");
+	//넘어오는 값이 없다면 index로 가도록 경로구성
+	if(url==null){
+		String cPath=request.getContextPath();
+		url=cPath+"/index.jsp";
+	}
 %>
 	<nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #198754">
 		<div class="container">
@@ -47,7 +55,7 @@
 					회원가입
 				</a>
 				<a class="btn btn-outline-light btn-sm me-2" 
-				href="<%=request.getContextPath()%>/users/loginform.jsp">
+				data-bs-toggle="modal" data-bs-target="#loginModal">
 					로그인
 				</a>
 			<%}else{ %>
@@ -83,4 +91,60 @@
 		  <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
 		</svg>
    </a>
+<jsp:include page="resource.jsp"></jsp:include>
+<jsp:include page="font.jsp"></jsp:include>
+<script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
+
+<!-- Modal -->
+<div class="text-center modal fade" id="loginModal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">로그인</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+			
+			<form id="submitForm" action="../users/login.jsp" method="post">
+				<div class="modal-body">				
+					<%-- url 값 전달 --%>
+					<input type="hidden" name="url" value="<%=url%>"/>
+					<div class="form-floating mb-3">
+						<%-- id 값 전달 --%>
+						<input class="form-control" type="text" name="id" id="id" />
+						<label class="control-label" for="id">ID</label>
+					</div>
+					<div class="form-floating mb-3">
+						<%-- pwd 값 전달 --%>
+						<input class="form-control" type="password" name="pwd" id="pwd"/>
+						<label class="control-label" for="pwd">Password</label>
+					</div>
+					<%-- login.jsp로 요청하는 버튼 --%>
+					<button id="submitBtn" type="submit" class="mt-4 w-50 btn btn-outline-success">로그인</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script>
+	document.querySelector("#submitBtn").addEventListener("click",function(e){
+		e.preventDefault();
+		let modal=new bootstrap.Modal(document.querySelector("#loginModal"));
+		ajaxFormPromise(document.querySelector("submitForm"))
+		.then(function(response){
+			return response.json();
+		})
+		.then(function(data){
+			if(data.isValid){
+				alert("로그인 되었습니다.");
+				modal.hide();
+			}else{
+				modal.hide();
+			}
+		});
+	});
+</script>
+
+
+
+
 

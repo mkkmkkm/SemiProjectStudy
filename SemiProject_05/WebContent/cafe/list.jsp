@@ -15,7 +15,7 @@
     pageEncoding="UTF-8"%>
 <%
    //한 페이지에 몇개씩 표시할 것인지
-   final int PAGE_ROW_COUNT=5;
+   final int PAGE_ROW_COUNT=10;
    //하단 페이지를 몇개씩 표시할 것인지
    final int PAGE_DISPLAY_COUNT=5;
    
@@ -109,8 +109,6 @@
 <head>
 <meta charset="UTF-8">
 <title>/cafe/list.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
-
 <style>
    .page-ui a{
       text-decoration: none;
@@ -149,21 +147,32 @@
 	<jsp:param value="cafe" name="thisPage"/>
 </jsp:include>
 <div class="container">
-   <a href="private/insertform.jsp">새 글 작성</a>
-   <h1>자유게시판</h1>
-   <table class="table">
+
+   <h1>자유게시판</h1> 
+
+	<%-- 새 글 작성 링크 --%>
+	<a href="private/insertform.jsp">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+			<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+			<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+		</svg>
+		새 글 작성
+	</a>
+	
+	<%-- 자유게시판 글 목록 --%>
+   <table class="table table-hover">
       <thead>
          <tr>
-            <th scope="col">번호</th>
-            <th scope="col">카테고리</th>
-            <th scope="col">제목</th>
-            <th scope="col">작성자</th>
-            <th scope="col">날짜</th>
-            <th scope="col">조회수</th>     
+            <th>번호</th>
+            <th>카테고리</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+            <th>조회수</th>     
          </tr>
       </thead>
       <tbody>
-      	<tr>
+      	<tr class="table-success">
       		<td></td>
       		<td>공지</td>
       		<td>
@@ -182,7 +191,7 @@
             <td>
                <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
 				<%-- 댓글 개수 출력 --%>
-				<span><%=CafeCommentDao.getInstance().getCount(tmp.getNum())%></span>
+				<span class="mx-2" style="color:#198754;"><%=CafeCommentDao.getInstance().getCount(tmp.getNum())%></span>
             	<%-- 이미지가 첨부되어 있을 시 아이콘 출력 --%>
             	<%CafeDto dto2=CafeDao.getInstance().getData(tmp.getNum());
             	if(dto2.getContent().contains("img")){ %>
@@ -238,24 +247,23 @@
       </ul>
    </div>
    
-   <div style="clear:both;"></div>
-   
+   <%-- 검색 --%>     
+   <div style="clear:both;"></div>   
    <form action="list.jsp" method="get"> 
-      <label for="condition">검색조건</label>
-      <select name="condition" id="condition">
-         <option value="title_content" <%=condition.equals("title_content") ? "selected" : ""%>>제목+내용</option>
-         <option value="title" <%=condition.equals("title") ? "selected" : ""%>>제목</option>
-         <option value="writer" <%=condition.equals("writer") ? "selected" : ""%>>작성자</option>
-      </select>
-      <input type="text" id="keyword" name="keyword" placeholder="검색어..." value="<%=keyword%>"/>
-      <button type="submit">검색</button>
-   </form>   
-   
-   <%if(!condition.equals("")){ %>
-      <p>
-         <strong><%=totalRow %></strong> 개의 글이 검색 되었습니다.
-      </p>
-   <%} %>
+		<label for="condition">검색조건</label>
+		
+		<select style="width:auto;display: inline-block;" class="form-select form-select-sm" name="condition" id="condition">
+			<option value="title_content" <%=condition.equals("title_content") ? "selected" : ""%>>제목+내용</option>
+			<option value="title" <%=condition.equals("title") ? "selected" : ""%>>제목</option>
+			<option value="writer" <%=condition.equals("writer") ? "selected" : ""%>>작성자</option>
+		</select>
+		<input type="text" id="keyword" name="keyword" placeholder="검색어..." value="<%=keyword%>"/>
+		<button class="btn btn-outline-success btn-sm" type="submit">검색</button>
+	</form>      
+	<%if(!condition.equals("")){ %>
+		<strong><%=totalRow %></strong> 개의 글이 검색 되었습니다.
+	<%} %>
+	
 </div>
 </body>
 </html>
