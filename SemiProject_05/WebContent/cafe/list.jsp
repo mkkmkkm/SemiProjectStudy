@@ -163,14 +163,14 @@
       </thead>
       <tbody>
       	<tr>
-      		<td><%=dao1.getData1().getNum() %></td>
       		<td></td>
+      		<td>공지</td>
       		<td>
       			<a href="../board/notice/detail.jsp?num=<%=dao1.getData1().getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=dao1.getData1().getTitle() %></a>
       		</td>
       		<td><%=dao1.getData1().getWriter() %></td>
-      		<td class="visually-hidden"><%=dao1.getData1().getRegdate() %></td>
-      		<td class="visually-hidden"><%=dao1.getData1().getViewCount() %></td>
+      		<td ><%=dao1.getData1().getRegdate() %></td>
+      		<td ><%=dao1.getData1().getViewCount() %></td>
       	</tr>
       </tbody>
       <tbody>
@@ -180,9 +180,19 @@
             <td><%=tmp.getCategory() %></td>
             <td>
                <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
-
+				<%-- 댓글 개수 출력 --%>
+				<span><%=CafeCommentDao.getInstance().getCount(tmp.getNum())%></span>
+            	<%-- 이미지가 첨부되어 있을 시 아이콘 출력 --%>
+            	<%CafeDto dto2=CafeDao.getInstance().getData(tmp.getNum());
+            	if(dto2.getContent().contains("img")){ %>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+						<path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+						<path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+					</svg>
+				<%} %>
             </td>
             <td>
+            <%-- 작성자 왼쪽에 프로필 사진 출력 --%>
             <%
             UsersDto usersDto = UsersDao.getInstance().getData(tmp.getWriter());
             if(usersDto.getProfile()!=null){
