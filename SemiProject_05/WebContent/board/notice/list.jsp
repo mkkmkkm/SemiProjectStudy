@@ -137,7 +137,7 @@
    <%if(id!=null && id.equals("admin")){ %>
          <a href="private/insertform.jsp">새글작성</a>
    <%} %>
-   <table>
+   <table class="table">
       <thead>
          <tr>
             <th>번호</th>
