@@ -234,6 +234,7 @@
    </table>
    <ul>
       <li><a href="list.jsp">목록보기</a></li>
+      <p>총 <strong><%=totalRow %></strong> 개의 댓글</p>
       <%if(dto.getWriter().equals(id)){ %>
          <li><a href="private/updateform.jsp?num=<%=dto.getNum()%>">수정</a></li>
          <li><a href="private/delete.jsp?num=<%=dto.getNum()%>">삭제</a></li>
