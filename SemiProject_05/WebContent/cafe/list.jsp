@@ -1,4 +1,6 @@
 
+<%@page import="test.users.dao.UsersDao"%>
+<%@page import="test.users.dto.UsersDto"%>
 <%@page import="test.cafe.dao.CafeCommentDao"%>
 <%@page import="test.cafe.dto.CafeCommentDto"%>
 
@@ -99,6 +101,7 @@
    }
    
    NoticeDao dao1=NoticeDao.getInstance();
+
 %>        
 
 <!DOCTYPE html>
@@ -131,6 +134,11 @@
       float: left;
       padding: 5px;
    }
+   .listProfile{
+   		height: 10px;
+   		width: 10px;
+   		border-radius: 50%;
+   }
 </style>
 </head>
 <body>
@@ -140,15 +148,15 @@
 <div class="container">
    <a href="private/insertform.jsp">새 글 작성</a>
    <h1>자유게시판</h1>
-   <table>
+   <table class="table">
       <thead>
          <tr>
-            <th>번호</th>
-            <th>카테고리</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>날짜</th>
-            <th>조회수</th>     
+            <th scope="col">번호</th>
+            <th scope="col">카테고리</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">날짜</th>
+            <th scope="col">조회수</th>     
          </tr>
       </thead>
       <tbody>
@@ -170,19 +178,12 @@
             <td><%=tmp.getCategory() %></td>
             <td>
                <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
-               <%-- 댓글 개수 표시 --%>
-				<span><%=CafeCommentDao.getInstance().getCount(tmp.getNum())%></span>
-               <%-- 이미지가 존재할 시 아이콘  표시 --%>
-				<%
-               CafeDto dto2=CafeDao.getInstance().getData(tmp.getNum());
-               if(dto2.getContent().contains("img")){%>
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
-					<path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-					<path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
-				</svg>
-               <%}%>
+
             </td>
-            <td><%=tmp.getWriter() %></td>
+            <td>
+
+            	<%=tmp.getWriter() %>
+            </td>
             <td><%=tmp.getRegdate() %></td>
             <td><%=tmp.getViewCount() %></td>
          </tr>
