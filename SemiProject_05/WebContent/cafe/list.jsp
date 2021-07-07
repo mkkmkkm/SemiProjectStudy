@@ -147,10 +147,10 @@
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="cafe" name="thisPage"/>
 </jsp:include>
-<div class="container">
+<div class="container p-3">
    <a href="private/insertform.jsp">새 글 작성</a>
    <h1>자유게시판</h1>
-   <table class="table">
+   <table class="table mt-3">
       <thead>
          <tr>
             <th scope="col">번호</th>
