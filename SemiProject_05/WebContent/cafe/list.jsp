@@ -162,7 +162,7 @@
          </tr>
       </thead>
       <tbody>
-      	<tr>
+      	<tr class="table-light">
       		<td></td>
       		<td>공지</td>
       		<td>
