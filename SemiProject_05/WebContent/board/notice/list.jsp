@@ -126,6 +126,9 @@
       float: left;
       padding: 5px;
    }
+   .container{
+   		border:1px dotted
+   }
 </style>
 </head>
 <body>
@@ -133,11 +136,11 @@
 	<jsp:param value="notice" name="thisPage"/>
 </jsp:include>
 <div class="container">
-   <h1>공지사항</h1>
+   <h1 class="text-center mt-3 mb-3">공지사항</h1>
    <%if(id!=null && id.equals("admin")){ %>
          <a href="private/insertform.jsp">새글작성</a>
    <%} %>
-   <table>
+   <table class="table table-hover text-center">
       <thead>
          <tr>
             <th>번호</th>
@@ -159,7 +162,7 @@
       <%} %>
       </tbody>
    </table>
-   <div class="page-ui clearfix">
+   <div class="page-ui clearfix container" >
       <ul>
          <%if(startPageNum != 1){ %>
             <li>
@@ -183,18 +186,29 @@
          <%} %>
       </ul>
    </div>
-   
-   <div style="clear:both;"></div>
-   
-   <form action="list.jsp" method="get"> 
-      <label for="condition">검색조건</label>
-      <select name="condition" id="condition">
-         <option value="title_content" <%=condition.equals("title_content") ? "selected" : ""%>>제목+내용</option>
-         <option value="title" <%=condition.equals("title") ? "selected" : ""%>>제목</option>
-      </select>
-      <input type="text" id="keyword" name="keyword" placeholder="검색어..." value="<%=keyword%>"/>
-      <button type="submit">검색</button>
-   </form>   
+
+	 <div class="row">
+	 	<div class="col-lg-5 col-md-6">
+	 	<form action="list.jsp" method="get"> 
+	 	<div class="form-group me-0" style="display: inline-block;">
+	 		<label class="input-group-text" for="condition">검색조건</label>
+	 	</div>
+	 	<div class="form-group" style="display: inline-block;">
+	 		<select class="form-select" name="condition" id="condition">
+	    		<option selected>선택</option>
+	    		<option value="title_content" <%=condition.equals("title_content") ? "selected" : ""%>>제목+내용</option>
+	    		<option value="title" <%=condition.equals("title") ? "selected" : ""%>>제목</option>
+	  		</select>
+	  	</div>
+	  	<div class="form-group" style="display: inline-block;">
+	 		<input type="text" class="form-control" id="keyword" name="keyword" placeholder="검색어..." value="<%=keyword%>">
+	 	</div>
+	 	<div class="form-group" style="display: inline-block">
+	 		<button type="submit" class="btn btn-success">검색</button>
+	 	</div>
+		</form> 
+		</div>
+	</div>
    
    <%if(!condition.equals("")){ %>
       <p>
