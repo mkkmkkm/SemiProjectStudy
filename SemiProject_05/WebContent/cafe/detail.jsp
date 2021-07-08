@@ -222,7 +222,7 @@
       </tr>
       <tr style="height:90px;">
          <td colspan="10" scope="row" >
-            <div class="content"><%=dto.getContent() %></div>
+            <textarea class="content form-control"><%=dto.getContent() %></textarea>
          </td>
       </tr>
    </table>
