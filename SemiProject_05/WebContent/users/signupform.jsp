@@ -46,6 +46,7 @@
 				<label class="control-label" for="pwd2">비밀번호 확인</label>					
 			</div>
 			<button class="mt-4 w-50 btn btn-sm btn-outline-success" type="submit">가입하기</button>	
+			<a class="mt-1 w-50 btn btn-sm btn-outline-success" href="<%=request.getContextPath()%>/">메인으로</a>	
 		</form>
 	</div>
 	<script src="<%=request.getContextPath() %>/js/gura_util.js"></script>

@@ -8,12 +8,26 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/logout.jsp</title>
+<jsp:include page="../include/font.jsp"></jsp:include>
 </head>
 <body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function swalSuccess(seq){
+	Swal.fire({
+		title: '로그아웃 성공',
+		icon: 'warning',
+		confirmButtonColor: '#198754',
+		confirmButtonText: '확인'
+	}).then((result) => {
+		if (result.value) {
+			location.href="<%=request.getContextPath()%>/index.jsp";
+	  }
+	})
+}
+</script>
 	<script>
-		alert("로그아웃 되었습니다.");
-		//redirect
-		location.href="<%=request.getContextPath()%>/index.jsp";
+		swalSuccess();
 	</script>
 </body>
 </html>

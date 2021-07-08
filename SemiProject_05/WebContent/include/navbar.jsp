@@ -25,6 +25,11 @@
 		url=cPath+"/index.jsp";
 	}
 %>
+<style>
+	#profileImage{
+		border-radius: 50%
+	}
+</style>
 	<nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #198754">
 		<div class="container">
 			<a class="navbar-brand" href="<%=request.getContextPath()%>/">
@@ -46,7 +51,7 @@
 					<a class="nav-link <%=thisPage.equals("cafe") ? "active" : "" %>" href="<%=request.getContextPath() %>/cafe/list.jsp">자유게시판</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link <%=thisPage.equals("faq") ? "active" : "" %>" href="<%=request.getContextPath() %>/faq/faq.jsp">FAQ</a>
+					<a class="nav-link <%=thisPage.equals("faq") ? "active" : "" %>" href="<%=request.getContextPath() %>/faq/faq.jsp">자주하는질문</a>
 				</li>
 			</ul>
 			<%if(id==null){ %>
@@ -73,7 +78,7 @@
 						<%=id %>
 					</a>님 로그인 중
 				</span>
-				<a class="btn btn-light btn-sm me-2" href="${pageContext.request.contextPath}/users/logout.jsp">
+				<a class="btn btn-outline-light btn-sm me-2" href="${pageContext.request.contextPath}/users/logout.jsp">
 					로그아웃
 				</a>
 			<%} %>

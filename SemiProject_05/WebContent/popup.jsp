@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="container text-center">
-	<h1 class="mt-1 mb-2 animate__animated animate__bounce">Hot Summer Event</h1>	
+	<h1 class="mt-1 mb-2 animate__animated animate__shakeX">Hot Summer Event</h1>	
 	<div class="mb-1">
 		<img src="<%=request.getContextPath() %>/images/shuttlecocks.jpg" width=400px />		
 	</div>	
