@@ -129,10 +129,7 @@
       padding: 0;
    }
    
-   .page-ui ul > li{
-      float: left;
-      padding: 5px;
-   }
+
    .listProfile{
 
    		width:15px;
@@ -222,46 +219,64 @@
       <%} %>
       </tbody>
    </table>
-   <div class="page-ui clearfix">
-      <ul>
+   <div class="page-ui">
+      <ul class="pagination justify-content-center">
          <%if(startPageNum != 1){ %>
-            <li>
-               <a href="list.jsp?pageNum=<%=startPageNum-1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">Prev</a>
+            <li class="page-item">
+               <a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&lt;</a>
+            </li>   
+         <%}else{ %>
+         	<li class="page-item disabled">
+               <a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&lt;</a>
             </li>   
          <%} %>
          
          <%for(int i=startPageNum; i<=endPageNum ; i++){ %>
-            <li>
+            <li class="page-item">
                <%if(pageNum == i){ %>
-                  <a class="active" href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
+                  <a class="page-link" href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
                <%}else{ %>
-                  <a href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
+                  <a class="page-link" href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
                <%} %>
             </li>   
          <%} %>
          <%if(endPageNum < totalPageCount){ %>
-            <li>
-               <a href="list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">Next</a>
+            <li class="page-item">
+               <a class="page-link" href="list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&gt;</a>
+            </li>
+         <%}else{ %>
+         	<li class="page-item disabled">
+               <a class="page-link" href="list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&gt;</a>
             </li>
          <%} %>
       </ul>
    </div>
    
    <%-- 검색 --%>     
-   <div style="clear:both;"></div>   
    <form action="list.jsp" method="get"> 
-		<label for="condition">검색조건</label>
-		
-		<select style="width:auto;display: inline-block;" class="form-select form-select-sm" name="condition" id="condition">
-			<option value="title_content" <%=condition.equals("title_content") ? "selected" : ""%>>제목+내용</option>
-			<option value="title" <%=condition.equals("title") ? "selected" : ""%>>제목</option>
-			<option value="writer" <%=condition.equals("writer") ? "selected" : ""%>>작성자</option>
-		</select>
-		<input type="text" id="keyword" name="keyword" placeholder="검색어..." value="<%=keyword%>"/>
-		<button class="btn btn-outline-success btn-sm" type="submit">검색</button>
+		<div class="row g-3 align-items-center">
+			<div class="col-auto">
+				<label class="form-label mb-0 fw-bold" for="condition">검색조건</label>
+			</div>
+			<div class="col-auto">	
+				<select class="form-select form-select-sm" name="condition" id="condition">
+					<option value="title_content" <%=condition.equals("title_content") ? "selected" : ""%>>제목+내용</option>
+					<option value="title" <%=condition.equals("title") ? "selected" : ""%>>제목</option>
+					<option value="writer" <%=condition.equals("writer") ? "selected" : ""%>>작성자</option>
+				</select>
+			</div>
+			<div class="col-auto">
+				<input class="form-control form-control-sm" type="text" id="keyword" name="keyword" placeholder="검색어..." value="<%=keyword%>"/>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-outline-success btn-sm" type="submit">검색</button>
+			</div>
+	</div>
 	</form>      
 	<%if(!condition.equals("")){ %>
+	<p>
 		<strong><%=totalRow %></strong> 개의 글이 검색 되었습니다.
+	</p>	
 	<%} %>
 	
 </div>

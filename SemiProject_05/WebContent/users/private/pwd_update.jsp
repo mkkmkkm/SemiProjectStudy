@@ -26,18 +26,44 @@
 <title>/users/private/pwd_update.jsp</title>
 </head>
 <body>
-	<div class="container">
-		<%if(isValid){%>
-			<p>
-				<%=id %>님, 비밀번호가 수정되었습니다. 다시 로그인 해 주십시오. 
-				<a href="<%=request.getContextPath()%>/users/loginform.jsp">로그인</a>
-			</p>
-		<%}else{ %>
-			<p>
-				기존 비밀번호가 맞지 않습니다. 
-				<a href="<%=request.getContextPath()%>/users/private/pwd_updateform.jsp">다시 시도</a>
-			</p>
-		<%} %>
-	</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function swalSuccess(seq){
+	Swal.fire({
+		title:'수정 성공',
+		text: '<%=id %>님, 로그인 되었습니다. 다시 로그인해 주세요.',
+		icon: 'success',
+		confirmButtonColor: '#198754',
+		confirmButtonText: '확인'
+	}).then((result) => {
+		if (result.value) {
+			location.href="<%=request.getContextPath()%>/users/loginform.jsp";
+	  }
+	})
+}
+function swalFail(seq){
+	Swal.fire({
+		title: '수정 실패',
+		text: '기존 비밀번호가 맞지 않습니다.',
+		icon: 'error',
+		confirmButtonColor: '#198754',
+		confirmButtonText: '재시도'
+	}).then((result) => {
+		if (result.value) {
+			location.href="<%=request.getContextPath()%>/users/private/pwd_updateform.jsp";
+	  }
+	})
+}
+</script>
+	<%if(isValid){%>
+	<script>
+		swalSuccess();
+	</script>
+	<%}else{ %>
+	<script>
+		swalFail();
+	</script>
+	<%} %>
+
 </body>
 </html>

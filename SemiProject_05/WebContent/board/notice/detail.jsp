@@ -32,7 +32,7 @@
 </head>
 <body>
 <jsp:include page="../../include/navbar.jsp"></jsp:include>
-<div class="container">
+<div class="container my-4">
 	<div class="article-head mt-4">
 		<div class="writerInfo1 d-flex mb-4">
 			<div class="profile d-inline-flex me-2">

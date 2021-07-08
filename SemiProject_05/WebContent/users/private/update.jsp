@@ -23,9 +23,25 @@
 <title>/update/private/update.jsp</title>
 </head>
 <body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function swalSuccess(seq){
+	Swal.fire({
+		title:'수정 성공',
+		text: '<%=id %>님, 회원정보가 수정되었습니다.',
+		icon: 'success',
+		confirmButtonColor: '#198754',
+		confirmButtonText: '확인'
+	}).then((result) => {
+		if (result.value) {
+			location.href="<%=request.getContextPath()%>/users/private/info.jsp";
+	  }
+	})
+}
+</script>
 	<script>
-		alert("<%=id%>님, 회원정보가 수정되었습니다.");
-		location.href="<%=request.getContextPath()%>/users/private/info.jsp";
+		swalSuccess();
 	</script>
 </body>
 </html>
+
