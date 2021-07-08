@@ -46,14 +46,14 @@
 					<img class="me-2" id="profileImage" 
 					src="<%=request.getContextPath() %><%=dto.getProfile() %>" width="50" height="50" />
 				<%} %>
-				<span class="navbar-text me-2">
+				<a class="btn btn-danger btn-sm me-2 float-end" href="${pageContext.request.contextPath}/users/logout.jsp">
+					로그아웃
+				</a>
+				<span class="navbar-text me-2 float-end">
 					<a href="${pageContext.request.contextPath}/users/private/info.jsp">
 						<%=id %>
 					</a>님 로그인 중
 				</span>
-				<a class="btn btn-danger btn-sm me-2" href="${pageContext.request.contextPath}/users/logout.jsp">
-					로그아웃
-				</a>
 			<%} %>
 		</div>
 	<nav class="navbar navbar-light navbar-expand-sm " style="background-color: #ffffff;">
