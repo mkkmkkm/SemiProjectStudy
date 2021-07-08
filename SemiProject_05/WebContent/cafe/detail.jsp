@@ -97,6 +97,7 @@
 <meta charset="UTF-8">
 <title>/cafe/detail.jsp</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
    .content{
       border: 1px dotted gray;
@@ -171,6 +172,7 @@
       text-align: center;
       /* 일단 숨겨 놓기 */
       display: none;
+      transform: scale(0.3); /* 확대 축소 비율 */
    }   
    
    .loader svg{
@@ -188,59 +190,58 @@
 </style>
 </head>
 <body>
-<div class="container">
-   <%if(dto.getPrevNum()!=0){ %>
-      <a href="detail.jsp?num=<%=dto.getPrevNum() %>&keyword=<%=encodedK %>&condition=<%=condition%>">이전글</a>
-   <%} %>
-   <%if(dto.getNextNum()!=0){ %>
-      <a href="detail.jsp?num=<%=dto.getNextNum() %>&keyword=<%=encodedK %>&condition=<%=condition%>">다음글</a>
-   <%} %>
+<div class="container pt-5">
+	<h1>자유게시판</h1>
+   
    <% if(!keyword.equals("")){ %>
       <p>   
          <strong><%=condition %></strong> 조건, 
          <strong><%=keyword %></strong> 검색어로 검색된 내용 자세히 보기 
       </p>
    <%} %>
-   <table>
-      <tr>
-         <th>글번호</th>
-         <td><%=dto.getNum() %></td>
-      </tr>
-      <tr>
-         <th>카테고리</th>
-         <td><%=dto.getCategory() %></td>
-      </tr>
-      <tr>
-         <th>작성자</th>
-         <td><%=dto.getWriter() %></td>
-      </tr>
-      <tr>
-         <th>제목</th>
+   <table class="table " >
+   	  <tr style="height:38px; line-height:38px;border-top:2px solid #7d7d7d;border-bottom:1px solid #e6e6e6;">
+         <th scope="row">제목</th>
          <td><%=dto.getTitle() %></td>
       </tr>
-      <tr>
-         <th>조회수</th>
-         <td><%=dto.getViewCount() %></td>
+      <tr style="display:none;">
+         <th scope="row" >글번호</th>
+         <td><%=dto.getNum() %></td>
       </tr>
-      <tr>
-         <th>등록일</th>
+	  <tr style="display:none;">
+         <th scope="row">카테고리</th>
+         <td><%=dto.getCategory() %></td>
+      </tr>
+	  <tr>
+         <th scope="row">작성자</th>
+         <td><%=dto.getWriter() %></td>
+         <th scope="row">조회수</th>
+         <td><%=dto.getViewCount() %></td>
+         <th scope="row">등록일</th>
          <td><%=dto.getRegdate() %></td>
       </tr>
-      <tr>
-         <td colspan="2">
+      <tr style="height:90px;">
+         <td colspan="10" scope="row" >
             <div class="content"><%=dto.getContent() %></div>
          </td>
       </tr>
    </table>
-   <ul>
-      <li><a href="list.jsp">목록보기</a></li>
+   <%if(dto.getPrevNum()!=0){ %>
+      <a href="detail.jsp?num=<%=dto.getPrevNum() %>&keyword=<%=encodedK %>&condition=<%=condition%>" style="clear:both; height:43px;">이전글</a>
+   <%} %>
+   <%if(dto.getNextNum()!=0){ %>
+      <a href="detail.jsp?num=<%=dto.getNextNum() %>&keyword=<%=encodedK %>&condition=<%=condition%>">다음글</a>
+   <%} %>
+   <div style="float:right; margin-top:10px;">
+      <a href="list.jsp">목록보기</a>
+   </div>
       <p>총 <strong><%=totalRow %></strong> 개의 댓글</p>
       <%if(dto.getWriter().equals(id)){ %>
          <li><a href="private/updateform.jsp?num=<%=dto.getNum()%>">수정</a></li>
          <li><a href="private/delete.jsp?num=<%=dto.getNum()%>">삭제</a></li>
       <%} %>
       
-   </ul>
+   
    <!-- 댓글 목록 -->
    <div class="comments">
       <ul>
