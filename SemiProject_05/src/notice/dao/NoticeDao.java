@@ -149,8 +149,7 @@ public class NoticeDao {
             dto.setContent(rs.getString("content"));
             dto.setViewCount(rs.getInt("viewCount"));
             dto.setRegdate(rs.getString("regdate"));
-            dto.setPrevNum(rs.getInt("prevNum"));
-            dto.setNextNum(rs.getInt("nextNum"));
+
          }
       } catch (Exception e) {
          e.printStackTrace();

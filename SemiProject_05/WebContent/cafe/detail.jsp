@@ -123,23 +123,18 @@
    .comments dd{
       margin-left: 50px;
    }
-   .comment-form textarea, .comment-form button{
-      float: left;
-   }
+
    .comments li{
       clear: left;
    }
-   .comments ul li{
-      border-top: 1px solid #888;
-   }
+
    .comment-form textarea{
-      width: 84%;
-      height: 100px;
+      width: 100%;
+      height: 80px;
+      border: 1px solid #b8b8b8;
+      resize: none;
    }
-   .comment-form button{
-      width: 14%;
-      height: 100px;
-   }
+
    /* 댓글에 댓글을 다는 폼과 수정폼은 일단 숨긴다. */
    .comments .comment-form{
       display: none;
@@ -158,14 +153,10 @@
      display: block;
      padding: 9.5px;
      margin: 0 0 10px;
-     font-size: 13px;
      line-height: 1.42857143;
-     color: #333333;
      word-break: break-all;
      word-wrap: break-word;
-     background-color: #f5f5f5;
-     border: 1px solid #ccc;
-     border-radius: 4px;
+     font-size: 1rem !important;
    }   
    
    .loader{
@@ -192,7 +183,7 @@
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp"></jsp:include>
-<div class="container">
+<div class="container my-4">
    <% if(!keyword.equals("")){ %>
       <p>   
          <strong><%=condition %></strong> 조건, 
@@ -226,12 +217,12 @@
 		<div class="category">
 			<%=dto.getCategory() %>
 		</div>
-		<div class="title mt-3 mb-3">
+		<div class="title my-3">
 			<h2 class="fw-bold">
 				<%=dto.getTitle() %>
 			</h2>
 		</div>
-		<div class="view mb-5">
+		<div class="view my-4">
 			<span class="mr-1 text-muted">조회수</span>
 			<span class="fw-bold"><%=dto.getViewCount() %></span>
 		</div>
@@ -240,8 +231,18 @@
 		</div>
 	</div>
 	
-	<%-- etc. --%>
-	<ul class="d-flex flex-row ps-0" style="list-style:none;">
+	<ul class="d-flex flex-row ps-0 justify-content-end" style="list-style:none;">	
+		<%if(dto.getWriter().equals(id)){ %>
+		<li>
+			<a class="link-dark text-decoration-none mx-1" href="private/updateform.jsp?num=<%=dto.getNum()%>">수정</a>
+		</li>
+		<li>
+			<a class="link-dark text-decoration-none mx-1" href="private/delete.jsp?num=<%=dto.getNum()%>">삭제</a>
+		</li>
+		<%} %>  
+	</ul>
+	
+	<ul class="mb-5 d-flex flex-row ps-0 justify-content-center" style="list-style:none;">
 	   <%if(dto.getPrevNum()!=0){ %>
 		<li>
 			<a class="link-success text-decoration-none" href="detail.jsp?num=<%=dto.getPrevNum() %>&keyword=<%=encodedK %>&condition=<%=condition%>">
@@ -258,27 +259,19 @@
 			다음글&gt	     	
 	      </a>
 		</li>	   
-	   <%} %>   
+	   <%} %>  	    
 	</ul>
 	
-	<%--댓글 개수 --%>
-		<p>총 <strong><%=totalRow %></strong> 개의 댓글</p>
-		<%if(dto.getWriter().equals(id)){ %>
-			<a href="private/updateform.jsp?num=<%=dto.getNum()%>">수정</a>
-			<a href="private/delete.jsp?num=<%=dto.getNum()%>">삭제</a>
-		<%} %>  
-		 
    <%-- 댓글 목록 --%>
+	<hr class="mb-3" style="border: solid 1px gray;">
+	<p class="fs-5 mb-3"><strong><%=totalRow %></strong> 개의 댓글</p>
+	
    <div class="comments">
       <ul>
          <%for(CafeCommentDto tmp: commentList){ %>
             <%if(tmp.getDeleted().equals("yes")){ %>
-               <li>삭제된 댓글 입니다.</li>
-            <% 
-               // continue; 아래의 코드를 수행하지 않고 for 문으로 실행순서 다시 보내기 
-               continue;
-            }%>
-         
+               <li>삭제된 댓글입니다.</li>
+            <%continue;}%>         
             <%if(tmp.getNum() == tmp.getComment_group()){ %>
             <li id="reli<%=tmp.getNum()%>">
             <%}else{ %>
@@ -290,46 +283,60 @@
                <dl>
                   <dt>
                   <%if(tmp.getProfile() == null){ %>
-                     <svg class="profile-image" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                     <svg class="profile-image me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                      </svg>
                   <%}else{ %>
-                     <img class="profile-image" src="${pageContext.request.contextPath}<%=tmp.getProfile()%>"/>
+                     <img class="profile-image me-2" src="${pageContext.request.contextPath}<%=tmp.getProfile()%>"/>
                   <%} %>
-                     <span><%=tmp.getWriter() %></span>
-                  <%if(tmp.getNum() != tmp.getComment_group()){ %>
-                     @<i><%=tmp.getTarget_id() %></i>
-                  <%} %>
-                     <span><%=tmp.getRegdate() %></span>
-                     <a data-num="<%=tmp.getNum() %>" href="javascript:" class="reply-link">답글</a>
-                  <%if(id != null && tmp.getWriter().equals(id)){ %>
-                     <a data-num="<%=tmp.getNum() %>" class="update-link" href="javascript:">수정</a>
-                     <a data-num="<%=tmp.getNum() %>" class="delete-link" href="javascript:">삭제</a>
-                  <%} %>
+					<span class="fw-bold"><%=tmp.getWriter() %></span>
+					<span class="fw-light text-muted mx-1"><%=tmp.getRegdate() %></span>
+
                   </dt>
                   <dd>
-                     <pre id="pre<%=tmp.getNum()%>"><%=tmp.getContent() %></pre>                  
+                  	<%if(tmp.getNum() != tmp.getComment_group()){ %>
+                     <span class="p-1 m-1 text-muted" style="font-size:.875rem;">
+                     	<i>@<%=tmp.getTarget_id() %></i>
+                     </span>
+                  <%} %>
+					<pre id="pre<%=tmp.getNum()%>"><%=tmp.getContent() %></pre>  
+					<a data-num="<%=tmp.getNum() %>" href="javascript:" class="reply-link text-decoration-none"
+                     style="padding-left:9.5px; color:#198754;">댓글</a>    
+					<%if(id != null && tmp.getWriter().equals(id)){ %>
+						<a data-num="<%=tmp.getNum() %>" class="update-link text-decoration-none link-dark px-2" href="javascript:">수정</a>
+						<a data-num="<%=tmp.getNum() %>" class="delete-link text-decoration-none link-dark" href="javascript:">삭제</a>
+					<%} %>            
                   </dd>
-               </dl>   
-               <form id="reForm<%=tmp.getNum() %>" class="animate__animated comment-form re-insert-form" 
-                  action="private/comment_insert.jsp" method="post">
-                  <input type="hidden" name="ref_group"
-                     value="<%=dto.getNum()%>"/>
-                  <input type="hidden" name="target_id"
-                     value="<%=tmp.getWriter()%>"/>
-                  <input type="hidden" name="comment_group"
-                     value="<%=tmp.getComment_group()%>"/>
-                  <textarea name="content"></textarea>
-                  <button type="submit">등록</button>
-               </form>   
-               <%if(tmp.getWriter().equals(id)){ %>   
-               <form id="updateForm<%=tmp.getNum() %>" class="comment-form update-form" 
-                  action="private/comment_update.jsp" method="post">
-                  <input type="hidden" name="num" value="<%=tmp.getNum() %>" />
-                  <textarea name="content"><%=tmp.getContent() %></textarea>
-                  <button type="submit">수정</button>
-               </form>
+				<dd>
+	 				<%--대댓글 폼 --%>
+					<form id="reForm<%=tmp.getNum() %>" class="animate__animated comment-form re-insert-form" 
+					action="private/comment_insert.jsp" method="post">
+						<input type="hidden" name="ref_group"
+						value="<%=dto.getNum()%>"/>
+						<input type="hidden" name="target_id"
+	 					value="<%=tmp.getWriter()%>"/>
+	 					<input type="hidden" name="comment_group"
+						value="<%=tmp.getComment_group()%>"/>
+						<textarea name="content"></textarea>
+						<div align="right">
+						<button class="btn btn-sm btn-outline-success" type="submit">등록</button>
+						</div>
+					</form>                    
+				</dd>   
+				<dd>
+					<%--대댓글 수정 폼 --%>
+	 				<%if(tmp.getWriter().equals(id)){ %>   
+					<form id="updateForm<%=tmp.getNum() %>" class="comment-form update-form" 
+					action="private/comment_update.jsp" method="post">
+						<input type="hidden" name="num" value="<%=tmp.getNum() %>" />
+		 				<textarea name="content"><%=tmp.getContent() %></textarea>
+						<div align="right">
+						<button class="btn btn-sm btn-outline-success" type="submit">수정</button>
+						</div>
+					</form>
+				</dd>         
+			</dl>   
                <%} %>                  
             </li>
          <%} %>
@@ -349,7 +356,9 @@
       <input type="hidden" name="target_id" value="<%=dto.getWriter()%>"/>
       
       <textarea name="content"><%if(!isLogin){%>댓글 작성을 위해 로그인이 필요 합니다.<%}%></textarea>
-      <button type="submit">등록</button>
+      <div align="right">
+      	<button class="btn btn-sm btn-outline-success" type="submit">등록</button>
+      </div>		
    </form>
 </div>
 <script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
@@ -501,20 +510,20 @@
             
             const form=document.querySelector("#reForm"+num);
             
-            //현재 문자열을 읽어온다 ( "답글" or "취소" )
+            //현재 문자열을 읽어온다 ( "댓글" or "취소" )
             let current = this.innerText;
             
-            if(current == "답글"){
+            if(current == "댓글"){
                //번호를 이용해서 댓글의 댓글폼을 선택해서 보이게 한다. 
                form.style.display="block";
-               form.classList.add("animate__flash");
+               form.classList.add("animate__fadeIn");
                this.innerText="취소";   
                form.addEventListener("animationend", function(){
-                  form.classList.remove("animate__flash");
+                  form.classList.remove("animate__fadeIn");
                }, {once:true});
             }else if(current == "취소"){
                form.classList.add("animate__fadeOut");
-               this.innerText="답글";
+               this.innerText="댓글";
                form.addEventListener("animationend", function(){
                   form.classList.remove("animate__fadeOut");
                   form.style.display="none";
