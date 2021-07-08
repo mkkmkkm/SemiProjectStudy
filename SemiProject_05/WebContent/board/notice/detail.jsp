@@ -1,4 +1,3 @@
-
 <%@page import="notice.dao.NoticeDao"%>
 <%@page import="notice.dto.NoticeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,6 +17,14 @@
 <head>
 <meta charset="UTF-8">
 <title>/board/notice/private/detail.jsp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+<style>
+	*{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+</style>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 </head>
 <body>

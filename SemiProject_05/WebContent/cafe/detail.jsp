@@ -97,8 +97,14 @@
 <meta charset="UTF-8">
 <title>/cafe/detail.jsp</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
+   *{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
    .content{
       border: 1px dotted gray;
    }
