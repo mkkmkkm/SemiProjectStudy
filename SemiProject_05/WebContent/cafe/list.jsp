@@ -151,11 +151,7 @@
    <h1>자유게시판</h1> 
 
 	<%-- 새 글 작성 링크 --%>
-	<a href="private/insertform.jsp">
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-			<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-			<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-		</svg>
+	<a class="link-success" href="private/insertform.jsp">
 		새 글 작성
 	</a>
 	
@@ -176,7 +172,8 @@
       		<td></td>
       		<td>공지</td>
       		<td>
-      			<a href="../board/notice/detail.jsp?num=<%=dao1.getData1().getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=dao1.getData1().getTitle() %></a>
+      			<a class="link-dark text-decoration-none fw-bold" 
+      			href="../board/notice/detail.jsp?num=<%=dao1.getData1().getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=dao1.getData1().getTitle() %></a>
       		</td>
       		<td><%=dao1.getData1().getWriter() %></td>
       		<td ><%=dao1.getData1().getRegdate() %></td>
@@ -189,7 +186,8 @@
             <td><%=tmp.getNum() %></td>
             <td><%=tmp.getCategory() %></td>
             <td>
-               <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
+               <a class="link-dark text-decoration-none fw-bold" 
+               href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
 				<%-- 댓글 개수 출력 --%>
 				<span class="mx-2" style="color:#198754;"><%=CafeCommentDao.getInstance().getCount(tmp.getNum())%></span>
             	<%-- 이미지가 첨부되어 있을 시 아이콘 출력 --%>

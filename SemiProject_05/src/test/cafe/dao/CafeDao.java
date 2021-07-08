@@ -169,7 +169,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,category,viewCount,likecount,regdate" + 
+               "              (SELECT num,writer,title,category,viewCount,likecount,to_char(regdate,'yyyy-mm-dd') as regdate" + 
                "              FROM board_cafe" + 
                "              ORDER BY num DESC) result1)" + 
                "      WHERE rnum BETWEEN ? AND ?";
@@ -260,7 +260,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,category,viewCount,likeCount,regdate" + 
+               "              (SELECT num,writer,title,category,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd') as regdate" + 
                "              FROM board_cafe"+ 
                "             WHERE title LIKE '%' || ? || '%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -317,7 +317,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,category,title,viewCount,likeCount,regdate" + 
+               "              (SELECT num,writer,category,title,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd') as regdate" + 
                "              FROM board_cafe"+ 
                "             WHERE writer LIKE '%' || ? || '%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -374,7 +374,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,category,title,viewCount,likeCount,regdate" + 
+               "              (SELECT num,writer,category,title,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd') as regdate" + 
                "              FROM board_cafe"+ 
                "             WHERE title LIKE '%'||?||'%' OR content LIKE '%'||?||'%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -536,7 +536,7 @@ public class CafeDao {
          //Connection 객체의 참조값 얻어오기 
          conn = new DbcpBean().getConn();
          //실행할 sql 문 작성
-         String sql = "SELECT num,title,writer,category,content,viewCount,likeCount,regdate"
+         String sql = "SELECT num,title,writer,category,content,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd') as regdate"
                + " FROM board_cafe"
                + " WHERE num=?";
          //PreparedStatement 객체의 참조값 얻어오기
@@ -585,7 +585,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd') as regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe" + 
@@ -638,7 +638,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd') as regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe"+ 
@@ -693,7 +693,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd') as regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe"+ 
@@ -748,7 +748,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd') as regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe"+ 
