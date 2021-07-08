@@ -14,20 +14,35 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/loginform.jsp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<style>
+	*{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+</style>
+<jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
-<body>
-	<div class="container">
+<body class="text-center position-relative">
+	<div class="position-absolute top-50 start-50 translate-middle-x">
 		<form action="login.jsp" method="post">
+		  <img class="m-5" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="60" height="60"/>
+          <h1 class="h3 mb-3 fw-normal">High-clear!</h1>
 			<%-- url 값 전달 --%>
 			<input type="hidden" name="url" value="<%=url%>"/>
 			<%-- id 값 전달 --%>
-			<input type="text" name="id" id="id" />
+			<div class="form-floating m-3">
+			<input type="text" name="id" class="form-control" id="id" />
 			<label for="id">ID</label>
+			</div>
 			<%-- pwd 값 전달 --%>
-			<input type="password" name="pwd" id="pwd"/>
+			<div class="form-floating m-3">
+			<input type="password" name="pwd" class="form-control" id="pwd" />
 			<label for="pwd">Password</label>
+			</div>
 			<%-- login.jsp로 요청하는 버튼 --%>
-			<button type="submit">Log-in</button>
+			<button type="submit" class="btn btn-outline-secondary">Login</button>
 		</form>
 	
 	</div>
