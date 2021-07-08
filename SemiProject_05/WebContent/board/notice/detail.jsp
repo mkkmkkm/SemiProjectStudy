@@ -18,36 +18,38 @@
 <head>
 <meta charset="UTF-8">
 <title>/board/notice/private/detail.jsp</title>
+<jsp:include page="../../include/resource.jsp"></jsp:include>
 </head>
 <body>
-<div class="container">
-   <table>
-      <tr>
-         <th>글번호</th>
+<div class="container pt-5">
+   <h1>공지사항</h1>
+   <table class="table">
+   	  <tr style="height:38px; line-height:38px;border-top:2px solid #7d7d7d;border-bottom:1px solid #e6e6e6;">
+         <th scope="row">제목</th>
+         <td><%=dto.getTitle() %></td>
+      </tr>
+      <tr style="display:none;">
+         <th scope="row">글번호</th>
          <td><%=dto.getNum() %></td>
       </tr>
       <tr>
-         <th>작성자</th>
+         <th scope="row">작성자</th>
          <td><%=dto.getWriter() %></td>
       </tr>
       <tr>
-         <th>제목</th>
-         <td><%=dto.getTitle() %></td>
-      </tr>
-      <tr>
-         <th>조회수</th>
+         <th scope="row">조회수</th>
          <td><%=dto.getViewCount() %></td>
       </tr>
       <tr>
-         <th>등록일</th>
+         <th scope="row">등록일</th>
          <td><%=dto.getRegdate() %></td>
       </tr>
       <tr>
-         <td colspan="2"><textarea><%=dto.getContent() %></textarea></td>
+         <td colspan="2" scope="row"><textarea class="form-control"><%=dto.getContent() %></textarea></td>
       </tr>
    </table>
+   	  <div><a href="list.jsp">목록으로 가기</a></div>
       <ul>
-      <li><a href="list.jsp">공지사항목록으로가기</a></li>
       <%if(dto.getWriter().equals(id)){ %>
          <li><a href="private/updateform.jsp?num=<%=dto.getNum()%>">수정</a></li>
          <li><a href="private/delete.jsp?num=<%=dto.getNum()%>">삭제</a></li>
