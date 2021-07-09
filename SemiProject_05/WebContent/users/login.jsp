@@ -24,9 +24,18 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/login.jsp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<style>
+	*{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+</style>
+<jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>
-	<div class="container">
+	<div class="container mt-5">
 	<%if(isValid){ 
 		//로그인 처리 : session영역에 "id" 키값으로 아이디 담기 (30분)
 		session.setAttribute("id", id);
