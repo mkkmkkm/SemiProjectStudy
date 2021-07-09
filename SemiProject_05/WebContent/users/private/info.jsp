@@ -14,6 +14,7 @@
 <title>/users/private/info.jsp</title>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <jsp:include page="../../include/font.jsp"></jsp:include>
+<link href="<%=request.getContextPath() %>/users/form.css" rel="stylesheet">
 
 <style>
 	/* 프로필 이미지 표시 */
@@ -23,10 +24,12 @@
 		border: 1px solid gray;
 		border-radius: 80%
 	}
+
+	
 </style>
 </head>
 <body class="text-center">
-	<div class="container my-4">
+	<div class="container my-4 form-signin">
 		<h1 class="fw-bold my-4">회원 정보</h1>
 		
 		<div class="profile my-3">
@@ -46,12 +49,16 @@
 		<div class="date">
 			<p class="text-muted"><%=dto.getRegdate()%></p>
 		</div>
-		<div class="configure">
-			<a class="btn btn-outline-success btn-sm" href="<%=request.getContextPath() %>/users/private/updateform.jsp">회원 정보 수정</a>
+		
+		<div>
+			<a class="btn me-2 btn-outline-success btn-sm" href="<%=request.getContextPath() %>/users/private/updateform.jsp">회원 정보 수정</a>
 			<a class="btn btn-outline-danger btn-sm" href="javascript:swalSuccess()">회원 탈퇴</a>
 		</div>
+		<div>
+			<a class="mt-2 mb-4 w-50 btn btn-sm btn-outline-success" href="<%=request.getContextPath() %>/">메인으로</a>
+		</div>
+		</div>
 
-	</div>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
 	function swalSuccess(seq){

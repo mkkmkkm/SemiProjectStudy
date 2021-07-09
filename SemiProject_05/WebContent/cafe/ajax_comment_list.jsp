@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%>
 <%
 	//테스트로 응답을 3초 지연시키기
-	Thread.sleep(3000);
+	Thread.sleep(2000);
 
    //로그인된 아이디
    String id=(String)session.getAttribute("id");
@@ -43,7 +43,7 @@
 %>        
 <%for(CafeCommentDto tmp: commentList){ %>
    <%if(tmp.getDeleted().equals("yes")){ %>
-      <li>삭제된 댓글 입니다.</li>
+      <li>삭제된 댓글입니다.</li>
    <% 
       // continue; 아래의 코드를 수행하지 않고 for 문으로 실행순서 다시 보내기 
       continue;

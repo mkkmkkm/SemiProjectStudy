@@ -7,7 +7,7 @@
 <title>/users/private/pwd_updateform.jsp</title>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <jsp:include page="../../include/font.jsp"></jsp:include>
-<link href="../signin.css" rel="stylesheet">
+<link href="<%=request.getContextPath() %>/users/form.css" rel="stylesheet">
 <style>
 	.bd-placeholder-img{
 		font-size : 1.125rem;
@@ -25,8 +25,9 @@
 </head>
 <body class="text-center">
 	<div class="container form-signin my-4">
-		<h1 class="fw-bold my-4">비밀번호 수정</h1>
 		<form action="pwd_update.jsp" method="post" id="myForm">
+		<img class="mb-4" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="100" height="100"/>
+		<h1 class="fw-bold my-4">비밀번호 수정</h1>		
 			<div class="form-floating">
 				<input class="form-control" type="password" name="pwd" id="pwd" />
 				<label class="control-label" for="pwd">기존 비밀번호</label>
@@ -41,9 +42,12 @@
 				<input class="form-control" type="password" name="newPwd2" id="newPwd2" />
 				<label class="control-label" for="newPwd2">새 비밀번호 확인</label>
 			</div>
-			<div class="my-4">
+			<div class="mt-4">
 				<button class="me-2 btn btn-outline-success btn-sm" type="submit">수정</button>
 				<button class="btn btn-outline-danger btn-sm" type="reset">내용 지우기</button>
+			</div>
+			<div>
+				<a class="mt-2 mb-4 w-50 btn btn-sm btn-outline-success" href="javascript:history.back();">뒤로가기</a>
 			</div>
 		</form>
 	</div>

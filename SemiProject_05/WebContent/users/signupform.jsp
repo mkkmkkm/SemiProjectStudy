@@ -7,7 +7,7 @@
 <title>/users/signupform.jsp</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <jsp:include page="../include/font.jsp"></jsp:include>
-<link href="signin.css" rel="stylesheet">
+<link href="<%=request.getContextPath() %>/users/form.css" rel="stylesheet">
 <style>
 	.bd-placeholder-img{
 		font-size : 1.125rem;

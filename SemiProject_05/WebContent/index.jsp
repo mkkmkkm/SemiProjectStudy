@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/index.jsp</title>
-
+<jsp:include page="include/icon.jsp"></jsp:include>
 <style>
 
 	body{

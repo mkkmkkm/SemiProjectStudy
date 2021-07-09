@@ -14,6 +14,7 @@
 <title>/users/private/updateform.jsp</title>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <jsp:include page="../../include/font.jsp"></jsp:include>
+<link href="<%=request.getContextPath() %>/users/form.css" rel="stylesheet">
 <style>
 	/* 프로필 이미지 표시 */
 	#profileImage{
@@ -75,8 +76,11 @@
 				<div class="mb-4">
 					<input class="form-control form-control-sm" type="password" id="pwd" value="<%=dto.getPwd() %>" disabled/>
 				</div>
-				<div class="mb-4">
-					<button class="btn btn-outline-success btn-sm" type="submit">적용</button>
+				<div>
+					<button class="btn w-50 btn-outline-success btn-sm" type="submit">적용</button>
+				</div>
+				<div>
+					<a class="mt-2 mb-4 w-50 btn btn-sm btn-outline-success" href="javascript:history.back();">뒤로가기</a>
 				</div>
 			</div>
 		</form>

@@ -98,7 +98,7 @@
    </a>
 <jsp:include page="resource.jsp"></jsp:include>
 <jsp:include page="font.jsp"></jsp:include>
-<script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
+
 
 
 

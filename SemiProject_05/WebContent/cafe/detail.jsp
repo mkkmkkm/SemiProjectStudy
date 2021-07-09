@@ -165,17 +165,17 @@
       /* 일단 숨겨 놓기 */
       display: none;
    }   
-   
    .loader svg{
-      animation: rotateAni 1s ease-out infinite;
+      animation: sizeAni 1s ease-out infinite;
+      color: #198754;
    }
    
-   @keyframes rotateAni{
+   @keyframes sizeAni{
       0%{
-         transform: rotate(0deg);
+         transform: scale(0);
       }
       100%{
-         transform: rotate(360deg);
+         transform: scale(1);
       }
    }
 
@@ -342,10 +342,10 @@
          <%} %>
       </ul>
    </div>
-	<div class="d-flex justify-content-center">
-		<div class="loader spinner-grow text-success" role="status">
-			<span class="visually-hidden">Loading...</span>
-		</div>
+	<div class="loader my-4">
+		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+			<circle cx="8" cy="8" r="8"/>
+		</svg>
 	</div>
    <!-- 원글에 댓글을 작성할 폼 -->
    <form class="comment-form insert-form" action="private/comment_insert.jsp" method="post">
@@ -429,8 +429,6 @@
             return response.text();
          })
          .then(function(data){
-            //data 는 html 형식의 문자열이다. 
-            console.log(data);
             // beforebegin | afterbegin | beforeend | afterend
             document.querySelector(".comments ul")
                .insertAdjacentHTML("beforeend", data);
