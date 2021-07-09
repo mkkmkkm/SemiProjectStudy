@@ -28,11 +28,11 @@
 %>
 	<div class="container2 clearfix " style="background-color: #014618;">
 		<%if(id==null){ %>
-				<a class="btn btn-outline-light btn-sm me-2 float-end" 
+				<a class="btn btn-outline-light btn-sm m-1 float-end" 
 				href="<%=request.getContextPath()%>/users/signupform.jsp">
 					회원가입
 				</a>
-				<a class="btn btn-outline-warning btn-sm me-2 float-end" 
+				<a class="btn btn-outline-warning btn-sm m-1 float-end" 
 				href="<%=request.getContextPath()%>/users/loginform.jsp">
 					로그인
 				</a>
