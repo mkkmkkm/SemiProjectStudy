@@ -8,15 +8,10 @@
 	//2. 삭제할 글의 작성자와 로그인 아이디가 같은지 비교를 해서 
 	String writer=CafeDao.getInstance().getData(num).getWriter();
 	String id=(String)session.getAttribute("id");
-	//만일 글 작성자와 로그인된 아이디가 다르면
-	if(!writer.equals(id)){
-		//금지된 요청이라고 응답하고 
-		response.sendError(HttpServletResponse.SC_FORBIDDEN, "남의 글을 지우면 혼난다~");
-		return; // 여기서 메소드 종료 
-	}
+
 	//3. 같으면 DB 에서 삭제하고 응답 
 	boolean isSuccess=CafeDao.getInstance().delete(num);
-	//4. 다르면 금지된요청 혹은 잘못된 요청이라고 응답해준다. 
+
 %>    
 <!DOCTYPE html>
 <html>
@@ -25,16 +20,45 @@
 <title>cafe/private/delete.jsp</title>
 </head>
 <body>
-	<%if(isSuccess){%>
-		<script>
-			alert("삭제 했습니다.");
-			location.href="${pageContext.request.contextPath }/cafe/list.jsp";
-		</script>
-	<%}else{%>
-		<script>
-			alert("삭제 실패!");
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function swalSuccess(seq){
+	Swal.fire({
+		title:'삭제 성공',
+		text: '글 작성에 성공하였습니다.',
+		icon: 'success',
+		confirmButtonColor: '#198754',
+		confirmButtonText: '확인'
+	}).then((result) => {
+		if (result.value) {
+			location.href="${pageContext.request.contextPath}/cafe/list.jsp";
+	  }
+	})
+}
+function swalFail(seq){
+	Swal.fire({
+		title:'삭제 실패',
+		text: '글 삭제에 실패하였습니다.',
+		icon: 'error',
+		confirmButtonColor: '#198754',
+		confirmButtonText: '재시도'
+	}).then((result) => {
+		if (result.value) {
 			location.href="detail.jsp?num=<%=num%>";
-		</script>
-	<%} %>
+	  }
+	})
+}
+</script>
+
+<%if(isSuccess){ %>
+	<script>
+		swalSuccess();
+	</script>
+<%}else{ %>
+	<script>
+		swalFail();
+	</script>
+<%} %>
+
 </body>
 </html>

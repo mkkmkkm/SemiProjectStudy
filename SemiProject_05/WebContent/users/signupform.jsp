@@ -28,7 +28,7 @@
 		
 		<form action="signup.jsp" method="post" id="signupForm">
 		<img class="mb-4" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="100" height="100"/>
-		<h1 class="h3 mb-3 fw-normal">회원가입</h1>	
+		<h1 class="fw-bold my-4">회원가입</h1>	
 			<div class="form-floating">
 				<input class="form-control" type="text" name="id" id="id" />
 				<label class="control-label" for="id">아이디</label>				

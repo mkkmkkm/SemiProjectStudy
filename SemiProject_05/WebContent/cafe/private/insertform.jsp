@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>/cafe/private/insertform.jsp</title>
+<jsp:include page="../../include/resource.jsp"></jsp:include>
+<jsp:include page="../../include/font.jsp"></jsp:include>
 <style>
 	#content{
 		height: 500px;
@@ -12,25 +14,31 @@
 </style>
 </head>
 <body>
-<div class="container">
-	<h1>새글 작성 폼</h1>
+<div class="container my-4">
+	<h1 class="fw-bold my-4">새 글 작성</h1>
 	<form action="insert.jsp" method="post" id="insertForm">
-		<div class="mb-3">
-			<label for="category">분류</label>
-			<select name="category" id="category">
-			<option value="잡담">잡담</option>
-			<option value="후기">후기</option>
-			</select>
+		<div class="d-flex d-inline-flex flex-column mb-3">
+			<div>
+				<label class="form-label" for="category">분류</label>
+			</div>
+			<div>	
+				<select class="form-select form-select-sm" name="category" id="category">
+				<option value="잡담">잡담</option>
+				<option value="후기">후기</option>
+				</select>
+			</div>
+			
+		<div class="my-2">	
+			<label class="form-label" for="title">제목</label>
+			<input class="form-control form-control-sm" type="text" name="title" id="title"/>	
+			<small class="text-muted" style="font-size:0.875rem;">제목은 5글자 이상이어야 합니다.</small>
 		</div>	
-		<div class="mb-3">	
-			<label for="title">제목</label>
-			<input type="text" name="title" id="title"/>	
-		</div>	
-		<div class="mb-3">
+		</div>
+		<div>
 			<label for="content">내용</label>
 			<textarea name="content" id="content"></textarea>
 		</div>
-		<button type="submit">저장</button>
+		<button class="btn btn-sm btn-outline-success" type="submit">작성</button>
 	</form>
 </div>
 <%--

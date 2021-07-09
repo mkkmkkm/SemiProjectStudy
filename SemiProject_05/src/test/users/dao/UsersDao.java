@@ -163,7 +163,7 @@ public class UsersDao {
 			//Connection 객체의 참조값 얻어오기
 			conn=new DbcpBean().getConn();
 			//실행할 sql문 작성
-			String sql="select pwd, profile, regdate"
+			String sql="select pwd, profile, to_char(regdate,'yyyy-mm-dd') as regdate"
 					+ " from users"
 					+ " where id=?";
 			//PreparedStatement 객체의 참조값 얻어오기

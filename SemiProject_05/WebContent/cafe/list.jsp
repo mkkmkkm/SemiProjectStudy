@@ -274,7 +274,7 @@
 	</div>
 	</form>      
 	<%if(!condition.equals("")){ %>
-	<p>
+	<p class="my-3" style="font-size:0.875rem;">
 		<strong><%=totalRow %></strong> 개의 글이 검색 되었습니다.
 	</p>	
 	<%} %>

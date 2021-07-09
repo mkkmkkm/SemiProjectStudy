@@ -147,7 +147,7 @@
       position: absolute;
       top: 1em;
       left: 1em;
-      color: red;
+      color: gray;
    }
    pre {
      display: block;
@@ -342,12 +342,11 @@
          <%} %>
       </ul>
    </div>
-   <div class="loader">
-      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-           <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-           <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-      </svg>
-   </div>
+	<div class="d-flex justify-content-center">
+		<div class="loader spinner-grow text-success" role="status">
+			<span class="visually-hidden">Loading...</span>
+		</div>
+	</div>
    <!-- 원글에 댓글을 작성할 폼 -->
    <form class="comment-form insert-form" action="private/comment_insert.jsp" method="post">
       <!-- 원글의 글번호가 댓글의 ref_group 번호가 된다. -->
@@ -355,7 +354,7 @@
       <!-- 원글의 작성자가 댓글의 대상자가 된다. -->
       <input type="hidden" name="target_id" value="<%=dto.getWriter()%>"/>
       
-      <textarea name="content"><%if(!isLogin){%>댓글 작성을 위해 로그인이 필요 합니다.<%}%></textarea>
+      <textarea name="content"><%if(!isLogin){%>댓글 작성을 위해 로그인이 필요합니다.<%}%></textarea>
       <div align="right">
       	<button class="btn btn-sm btn-outline-success" type="submit">등록</button>
       </div>		

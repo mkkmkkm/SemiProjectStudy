@@ -24,17 +24,45 @@
 <title>/cafe/private/update.jsp</title>
 </head>
 <body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function swalSuccess(seq){
+	Swal.fire({
+		title:'수정 성공',
+		text: '공지 수정에 성공하였습니다.',
+		icon: 'success',
+		confirmButtonColor: '#198754',
+		confirmButtonText: '확인'
+	}).then((result) => {
+		if (result.value) {
+		location.href="../detail.jsp?num=<%=dto.getNum()%>";
+	  }
+	})
+}
+function swalFail(seq){
+	Swal.fire({
+		title: '수정 실패',
+		text: '공지 수정에 실패하였습니다.',
+		icon: 'error',
+		confirmButtonColor: '#198754',
+		confirmButtonText: '재시도'
+	}).then((result) => {
+		if (result.value) {
+		location.href="updateform.jsp?num=<%=dto.getNum()%>";
+	  }
+	})
+}
+</script>
+
    <%if(isSuccess){ %>
-      <script>
-         alert("수정했습니다.");
-         location.href="../detail.jsp?num=<%=dto.getNum()%>";
-      </script>
+ 	<script>
+		swalSuccess();
+	</script>
    <%}else{ %>
-      <h1>알림</h1>
-      <p>
-         	글 수정 실패!
-         <a href="updateform.jsp?num=<%=dto.getNum()%>">다시 시도</a>
-      </p>
+	<script>
+		swalFail();
+	</script>
    <%} %>
+
 </body>
 </html>
