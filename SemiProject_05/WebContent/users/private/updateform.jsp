@@ -12,8 +12,15 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/private/updateform.jsp</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <style>
+   *{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
 	/* 프로필 이미지 표시 */
 	#profileImage{
 		width: 100px;
@@ -27,7 +34,7 @@
 </style>
 </head>
 <body>
-	<div class="container">
+	<div class="container pt-5">
 		<h1>회원 정보 수정 폼</h1>
 		<a id="profileLink" href="javascript:">
 			<%if(dto.getProfile()==null){ %>
@@ -44,16 +51,16 @@
 			<%-- 저장된 profile이 있으면 value 가져오기, 없으면 "empty" --%>
 			<input type="hidden" name="profile" 
 			value="<%=dto.getProfile()==null? "empty" : dto.getProfile()%>"/>
-			<div>
+			<div class="mt-3">
 				<label for="id">아이디</label>
 				<input type="text" id="id" value="<%=id %>" disabled/>
 			</div>
-			<p>
+			<p class="mt-3">
 				<a href="<%=request.getContextPath()%>/users/private/pwd_updateform.jsp">
 					비밀번호 수정
 				</a>
 			</p>
-			<button type="submit">적용</button>
+			<button type="submit" class="btn btn-secondary">적용</button>
 		</form>
 		<%-- 프로필 이미지 업로드용 폼 --%>
 		<form action="ajax_profile_upload.jsp" method="post"
