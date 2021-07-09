@@ -4,7 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/faq.jsp</title>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
+<style>
+   	h1 {
+		color: rgb(2,38,94); 
+		text-shadow:1px 1px 1px rgb(1,148,148); 
+		margin: 0; 
+		padding: 10px; 
+		font-weight: bold; 
+	}
+</style>
 <jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>

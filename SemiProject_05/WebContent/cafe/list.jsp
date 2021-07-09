@@ -108,7 +108,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cafe/list.jsp</title>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <style>
    .page-ui a{
       text-decoration: none;
@@ -137,6 +138,24 @@
    		border-radius:50%;
 
    }
+   	h1 {
+		color: rgb(2,38,94); 
+		text-shadow:1px 1px 1px rgb(1,148,148); 
+		margin: 0; 
+		padding: 10px; 
+		font-weight: bold; 
+	}
+	th{
+		color: rgb(0,136,236); 
+	}
+	td{
+		color:rgb(2,38,94);
+		font-size: 1em; 
+	}
+	a{
+		color:rgb(2,38,94);
+		text-decoration: none;
+	}
 </style>
 </head>
 <body>

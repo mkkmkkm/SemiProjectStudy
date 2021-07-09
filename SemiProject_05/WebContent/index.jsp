@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>High-clear</title>
-<jsp:include page="include/icon.jsp"></jsp:include>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <style>
 
 	body{
 		height: 100vh;
-		background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("images/badminton01.jpg");
+		background-image: url("images/badminton_illust_up.png"); /*2가지 이미 images/badmintonillust1.png*/
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;

@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/popup.jsp</title>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <style>
 	.item > ul > li{
 		list-style:none;
-		font-size: 0.8rem;
+		font-size: 0.7rem;
 	}
 	.item{
 		justify-content: center;

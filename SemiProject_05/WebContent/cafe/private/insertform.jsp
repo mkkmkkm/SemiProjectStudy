@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cafe/private/insertform.jsp</title>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <jsp:include page="../../include/font.jsp"></jsp:include>
 <style>
