@@ -5,26 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/private/pwd_updateform.jsp</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
 <jsp:include page="../../include/resource.jsp"></jsp:include>
+<style>
+	*{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+</style>
 </head>
 <body>
-	<div class="container">
+	<div class="container pt-5">
 		<h1>비밀번호 수정 폼</h1>
 				<form action="pwd_update.jsp" method="post" id="myForm">
-			<div>
-				<label for="pwd">기존 비밀번호</label>
-				<input type="password" name="pwd" id="pwd" />
+			<div >
+				<label for="pwd" class="form-label">기존 비밀번호</label>
+				<input type="password" class="form-control" name="pwd" id="pwd" />
 			</div>
 			<div>
-				<label for="newPwd">새 비밀번호</label>
-				<input type="password" name="newPwd" id="newPwd" />
+				<label for="newPwd" class="form-label">새 비밀번호</label>
+				<input type="password" class="form-control" name="newPwd" id="newPwd" />
 			</div>
 			<div>
-				<label for="newPwd2">새 비밀번호 확인</label>
-				<input type="password" name="newPwd2" id="newPwd2" />
+				<label for="newPwd2" class="form-label">새 비밀번호 확인</label>
+				<input type="password" class="form-control" name="newPwd2" id="newPwd2" />
 			</div>
-			<button type="submit">confirm</button>
-			<button type="reset">reset</button>
+			<button type="submit" class="btn btn-secondary mt-3 me-2">confirm</button>
+			<button type="reset" class="btn btn-outline-secondary mt-3 me-2">reset</button>
 		</form>
 	</div>
 	<script>
