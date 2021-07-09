@@ -100,13 +100,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/Notice/list.jsp</title>
+<title>High-clear</title>
+<jsp:include page="../../include/icon.jsp"></jsp:include>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 
 <style>
+	body{
+		background-image: url();
+		background-repeat: round;
+	}
    .page-ui a{
       text-decoration: none;
-      color: #000;
+      color: rgb(2,38,94);
    }
    
    .page-ui a:hover{
@@ -114,7 +119,7 @@
    }
    
    .page-ui a.active{
-      color: red;
+      color: rgb(2,38,94);
       font-weight: bold;
       text-decoration: underline;
    }
@@ -122,7 +127,24 @@
       list-style-type: none;
       padding: 0;
    }
-
+	h1 {
+		color: rgb(2,38,94); 
+		text-shadow:1px 1px 1px rgb(1,148,148); 
+		margin: 0; 
+		padding: 10px; 
+		font-weight: bold; 
+	}
+	th{
+		color: rgb(0,136,236); 
+	}
+	td{
+		color:rgb(2,38,94);
+		font-size: 1em; 
+	}
+	a{
+		color:rgb(2,38,94);
+		text-decoration: none;
+	}
 </style>
 </head>
 <body>

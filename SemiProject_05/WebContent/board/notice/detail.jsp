@@ -20,6 +20,8 @@
 <head>
 <meta charset="UTF-8">
 <title>/board/notice/private/detail.jsp</title>
+<jsp:include page="../../include/icon.jsp"></jsp:include>
+<jsp:include page="../../include/resource.jsp"></jsp:include>
 <style>
    .profile-image{
       width: 50px;
