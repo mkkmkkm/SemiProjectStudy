@@ -15,7 +15,7 @@
 	}
 	body{
 		height: 100vh;
-		background-image: url("images/badminton_illust.jpg");
+		background-image: url("images/badminton_illust_up.png"); /*2가지 이미 images/badmintonillust1.png*/
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
