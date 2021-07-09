@@ -218,7 +218,7 @@
          <th scope="row">카테고리</th>
          <td><%=dto.getCategory() %></td>
       </tr>
-	  <tr>
+	  <tr><!-- 배치 다시 해보기 -->
          <th scope="row">작성자</th>
          <td><%=dto.getWriter() %></td>
          <th scope="row">조회수</th>
