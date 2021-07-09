@@ -11,9 +11,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/users/private/info.jsp</title>
+<title>/users/private/info.jsp</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <style>
+	*{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
 	/* 프로필 이미지 표시 */
 	#profileImage{
 		width: 100px;
@@ -24,10 +30,10 @@
 </style>
 </head>
 <body>
-	<div class="container">
+	<div class="container pt-5">
 		<h1>회원 정보</h1>
-		<table class="table table-borderless">
-			<tr>
+		<table class="table">
+			<tr style="height:38px; line-height:38px;border-top:2px solid #7d7d7d;border-bottom:1px solid #e6e6e6;">
 				<th>아이디</th>
 				<td><%=id %></td>
 			</tr>
