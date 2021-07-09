@@ -5,29 +5,38 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/signupform.jsp</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
 <jsp:include page="../include/resource.jsp"></jsp:include>
+<style>
+   *{
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+</style>
 </head>
 <body>
-	<div class="container">
+	<div class="container p-5">
 		<h1>회원 가입 폼</h1>
 		<form action="signup.jsp" method="post" id="signupForm">
 			<div>
-				<label class="control-label" for="id">아이디</label>
+				<label class="control-label mt-3" for="id">아이디</label>
 				<input class="form-control" type="text" name="id" id="id" />
 				<small>아이디는 5~10자 이내의 영문 소문자여야 합니다. </small>
 				<div class="invalid-feedback">이 아이디는 사용할 수 없습니다.</div>
 			</div>
 			<div>
-				<label class="control-label" for="pwd">비밀번호</label>
+				<label class="control-label mt-3" for="pwd">비밀번호</label>
 				<input class="form-control" type="password" name="pwd" id="pwd" />	
 				<small>비밀번호는 5~10자 이내여야 합니다. </small>	
 				<div class="invalid-feedback">이 비밀번호는 사용할 수 없습니다.</div>
 			</div>
 			<div>
-				<label class="control-label" for="pwd2">비밀번호 확인</label>
+				<label class="control-label mt-3" for="pwd2">비밀번호 확인</label>
 				<input class="form-control" type="password" name="pwd2" id="pwd2" />	
 			</div>
-			<button class="btn btn-primary" type="submit">가입하기</button>	
+			<button class="btn btn-success mt-3" type="submit">가입하기</button>	
 		</form>
 	</div>
 	<script src="<%=request.getContextPath() %>/js/gura_util.js"></script>
