@@ -37,6 +37,15 @@
 					로그인
 				</a>
 			<%}else{ %>
+				<a class="btn btn-danger btn-sm m-2 float-end" href="${pageContext.request.contextPath}/users/logout.jsp">
+					로그아웃
+				</a>
+				<span class="navbar-text me-2 float-end" style="color:#ffffff;">
+					<a href="${pageContext.request.contextPath}/users/private/info.jsp" >
+						<%=id %>
+					</a>님 로그인 중 
+				</span>
+				<div class="float-end pt-2">
 				<%if(dto.getProfile()==null) {%>
 					<svg id="profileImage" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle me-2" viewBox="0 0 16 16">
 						<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -46,14 +55,7 @@
 					<img class="me-2" id="profileImage" 
 					src="<%=request.getContextPath() %><%=dto.getProfile() %>" width="50" height="50" />
 				<%} %>
-				<a class="btn btn-danger btn-sm m-2 float-end" href="${pageContext.request.contextPath}/users/logout.jsp">
-					로그아웃
-				</a>
-				<span class="navbar-text me-2 float-end" style="color:#ffffff;">
-					<a href="${pageContext.request.contextPath}/users/private/info.jsp" >
-						<%=id %>
-					</a>님 로그인 중 
-				</span>
+				</div>
 			<%} %>
 		</div>
 	<nav class="navbar navbar-light navbar-expand-sm " style="background-color: #ffffff;">
