@@ -8,15 +8,18 @@
 <link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <jsp:include page="../../../include/resource.jsp"></jsp:include>
 <jsp:include page="../../../include/font.jsp"></jsp:include>
+<link href="<%=request.getContextPath() %>/users/form.css" rel="stylesheet">
+
 <style>
 	#content{
 		height: 500px;
+		width: 650px;
 	}
 </style>
 </head>
 <body>
 <div class="container my-4">
-	<h1 class="fw-bold my-4">새 공지사항 작성</h1>
+	<h1 class="fw-bold my-4">새 공지 작성</h1>
 	<form action="insert.jsp" method="post" id="insertForm">
 		<div class="d-flex d-inline-flex flex-column mb-3">
 			<div>      
