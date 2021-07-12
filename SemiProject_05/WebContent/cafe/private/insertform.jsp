@@ -12,7 +12,7 @@
 
 <style>
 	#content{
-		height: 500px;
+		height: 400px;
 		width: 650px;
 	}
 </style>

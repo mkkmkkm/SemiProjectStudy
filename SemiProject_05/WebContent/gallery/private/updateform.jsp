@@ -34,8 +34,10 @@ GalleryDto dto=GalleryDao.getInstance().getData(num);
 <body>
 	<div class="container">
 		<h1 class="fw-bold my-4">글 수정</h1>
-		<form action="insert.jsp" method="post" id="insertForm">
-			<input type="hidden" name="imagePath" id="imagePath"/>
+		
+		<form action="update.jsp" method="post" id="updateForm">
+			<input type="hidden" name="num" value="<%=num %>" />
+			<input type="hidden" name="imagePath" id="imagePath" value="<%=dto.getImagePath()%>"/>
 			<div class="d-flex d-inline-flex flex-column mb-3">
 				<div>
 					<label class="form-label" for="title">제목</label>
@@ -43,13 +45,13 @@ GalleryDto dto=GalleryDao.getInstance().getData(num);
 				</div>
 			</div>	
 			
-				<div class=" mb-3">
+				<div class="mb-3">
 					<label class="form-label" for="content">내용</label>
 					<textarea class="form-control form-control-sm" name="content" id="content"><%=dto.getContent()%></textarea>
 				</div>
-			<button class="btn btn-outline-danger btn-sm" type="reset" id="resetBtn1" style="display:none;">원래대로</button>		
-				
+			<button type="reset" id="resetBtn1" style="display:none;"></button>						
 		</form>
+		
 		<form action="ajax_upload.jsp" method="post" id="ajaxForm" enctype="multipart/form-data">
 			<div class="d-flex d-inline-flex flex-column mb-3">
 				<div>
@@ -59,7 +61,7 @@ GalleryDto dto=GalleryDao.getInstance().getData(num);
 					<small class="text-muted">이미지를 선택하거나 폴더에서 끌어다 놓으세요.</small>
 					<div>
 						<input class="my-2 form-control form-control-sm" type="file" name="image" id="image" 
-						accept=".jpg, .jpeg, .png, .JPG, .JPEG" value=""/>
+						accept=".jpg, .jpeg, .png, .JPG, .JPEG" />
 					</div>
 					<div class="drag-area"></div>
 				</div>
@@ -85,29 +87,14 @@ GalleryDto dto=GalleryDao.getInstance().getData(num);
 
 	//이미지를 선택했을 때 실행할 함수 등록
 	document.querySelector("#image").addEventListener("change",function(){
-		//id가 ajaxForm인 form을 ajax전송시킨다. 
-		const form=document.querySelector("#ajaxForm");
-		//util 함수를 이용해서 ajax 전송
-		ajaxFormPromise(form)
-		.then(function(response){
-			return response.json();
-		})
-		.then(function(data){//data는 {imagePath:"업로드된 이미지 경로"}
-			//이미지 경로에 context path 추가하기
-			const path="${pageContext.request.contextPath}"+data.imagePath;
-			//img 요소에 src 속성의 값 넣어주어서 이미지 출력하기
-			 document.querySelector(".img-wrapper img")
-            .setAttribute("src", path);
-
-			//input type="hidden"인 요소에 value를 넣어준다.
-			 document.querySelector("#imagePath").value = data.imagePath;
-		});
+		 ajaxImage();
 	});	
    // dragenter 이벤트가 일어 났을때 실행할 함수 등록 
    document.querySelector(".drag-area")
       .addEventListener("dragenter", function(e){
          // drop 이벤트까지 진행될수 있도록 기본 동작을 막는다.
          e.preventDefault();
+         e.stopPropagation();
       });
    
    // dragover 이벤트가 일어 났을때 실행할 함수 등록 
@@ -133,44 +120,34 @@ GalleryDto dto=GalleryDao.getInstance().getData(num);
 	      const file = files[0];
 	      //drop 된 파일의 mime type 확인
 	      if(file.type.match(reg)){
-	         readImageFile(file);
+	         ajaxImage();
 	      }else{
 	         alert("이미지 파일만 업로드 가능합니다.");
 	      }
 	   });	   
 	   
-	   function readImageFile(file){
-	      const reader=new FileReader();
-	      //이미지 파일을 data url 형식으로 읽어들이기
-	      reader.readAsDataURL(file);
-	      //다 읽었을때 실행할 함수 등록 
-	      reader.onload=function(e){
-	         //읽은 이미지 데이터 ( img 요소의 src 속성의 value 로 지정하면 이미지가 나온다. )
-	         document.querySelector("#myImage").setAttribute("src", e.target.result);
-	         
-	       //id가 ajaxForm인 form을 ajax전송시킨다. 
-	 		const form=document.querySelector("#ajaxForm");
-	 		//util 함수를 이용해서 ajax 전송
-	 		ajaxFormPromise(form)
-	 		.then(function(response){
-	 			return response.json();
-	 		})
-	 		.then(function(data){//data는 {imagePath:"업로드된 이미지 경로"}
-	 			//이미지 경로에 context path 추가하기
-	 			const path="${pageContext.request.contextPath}"+data.imagePath;
-	 			//img 요소에 src 속성의 값 넣어주어서 이미지 출력하기
-	 			 document.querySelector(".img-wrapper img")
-	             .setAttribute("src", path);
-	 			//input type="hidden"인 요소에 value를 넣어준다.
-	 			 document.querySelector("#imagePath").value = data.imagePath;
-	 		});
-	         
-	      };
-	   }
-	
+   function ajaxImage(){
+       //id가 ajaxForm인 form을 ajax전송시킨다. 
+ 		const form=document.querySelector("#ajaxForm");
+ 		//util 함수를 이용해서 ajax 전송
+ 		ajaxFormPromise(form)
+ 		.then(function(response){
+ 			return response.json();
+ 		})
+ 		.then(function(data){//data는 {imagePath:"업로드된 이미지 경로"}
+ 			//이미지 경로에 context path 추가하기
+ 			const path="${pageContext.request.contextPath}"+data.imagePath;
+ 			//img 요소에 src 속성의 값 넣어주어서 이미지 출력하기
+ 			 document.querySelector(".img-wrapper img")
+             .setAttribute("src", path);
+ 			//input type="hidden"인 요소에 value를 넣어준다.
+ 			 document.querySelector("#imagePath").value = data.imagePath;
+ 		});	         
+      };
+
 	//등록 버튼을 눌렀을 때 첫번째 form을 강제 submit 시키기
 	document.querySelector("#submitBtn").addEventListener("click",function(){
-		document.querySelector("#insertForm").submit();
+		document.querySelector("#updateForm").submit();
 	});
 </script>
 </body>

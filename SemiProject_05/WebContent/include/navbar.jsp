@@ -80,9 +80,8 @@
 				<li class="nav-item me-5">
 					<a class="nav-link <%=thisPage.equals("") ? "active" : "" %>" href="<%=request.getContextPath() %>/">홈</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link <%=thisPage.equals("info") ? "active" : "" %>" href="<%=request.getContextPath() %>/info/aboutClub.jsp">소개</a>
-				</li>
+				<li class="nav-item me-5">
+					<a class="nav-link <%=thisPage.equals("club") ? "active" : "" %>" href="<%=request.getContextPath() %>/info/aboutClub.jsp">소개</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link me-5 <%=thisPage.equals("notice") ? "active" : "" %>" href="<%=request.getContextPath() %>/board/notice/list.jsp">공지사항</a>
@@ -113,5 +112,3 @@
    </a>
 <jsp:include page="resource.jsp"></jsp:include>
 <jsp:include page="font.jsp"></jsp:include>
-
-

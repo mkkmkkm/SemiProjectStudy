@@ -1,17 +1,22 @@
-
 <%@page import="test.gallery.dao.GalleryDao"%>
+<%@page import="test.gallery.dto.GalleryDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	//1. GET 방식 파라미터로 전달되는 삭제할 글번호를 읽어와서 
-	int num=Integer.parseInt(request.getParameter("num"));
-
-	//2. 삭제할 글의 작성자와 로그인 아이디가 같은지 비교를 해서 
-	String writer=GalleryDao.getInstance().getData(num).getWriter();
-	String id=(String)session.getAttribute("id");
-
-	//3. 같으면 DB 에서 삭제하고 응답 
-	boolean isSuccess=GalleryDao.getInstance().delete(num);
+   //폼 전송되는 imagePath 와 caption 을 추출해서 DB 에 저장하고
+   String imagePath=request.getParameter("imagePath");
+   String title=request.getParameter("title");
+   String content=request.getParameter("content");
+   //업로드 아이디
+   String id=(String)session.getAttribute("id");
+   
+   GalleryDto dto=new GalleryDto();
+   dto.setImagePath(imagePath);
+   dto.setTitle(title);
+   dto.setContent(content);
+   dto.setWriter(id);
+   
+   boolean isSuccess=GalleryDao.getInstance().insert(dto);
 
 %>    
 <!DOCTYPE html>
@@ -26,8 +31,8 @@
 <script>
 function swalSuccess(seq){
 	Swal.fire({
-		title:'삭제 성공',
-		text: '글 삭제에 성공하였습니다.',
+		title:'작성 성공',
+		text: '새 글 작성에 성공하였습니다.',
 		icon: 'success',
 		confirmButtonColor: '#198754',
 		confirmButtonText: '확인'
@@ -39,14 +44,14 @@ function swalSuccess(seq){
 }
 function swalFail(seq){
 	Swal.fire({
-		title:'삭제 실패',
-		text: '글 삭제에 실패하였습니다.',
+		title:'작성 실패',
+		text: '새 글 작성에 실패하였습니다.',
 		icon: 'error',
 		confirmButtonColor: '#198754',
 		confirmButtonText: '재시도'
 	}).then((result) => {
 		if (result.value) {
-			location.href="${pageContext.request.contextPath}/gallery/detail.jsp?num=<%=num%>";
+			location.href="${pageContext.request.contextPath}/gallery/private/ajax_form.jsp";
 	  }
 	})
 }
@@ -56,11 +61,10 @@ function swalFail(seq){
 	<script>
 		swalSuccess();
 	</script>
-<%}else{ %>
+	<%}else{ %>
 	<script>
 		swalFail();
 	</script>
-<%} %>
-
+	<%} %>
 </body>
 </html>

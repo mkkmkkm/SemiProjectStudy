@@ -20,74 +20,75 @@ public class GalleryDao {
 		return dao;
 	}
 	//글 하나의 정보를 수정하는 메소드
-		public boolean update(GalleryDto dto) {
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			int flag = 0;
+	public boolean update(GalleryDto dto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int flag = 0;
+		try {
+			conn = new DbcpBean().getConn();
+			//실행할 sql문 작성
+			String sql = "UPDATE board_gallery"
+					+ " SET title=?,imagePath=?,content=?"
+					+ " WHERE num=?";
+			pstmt = conn.prepareStatement(sql);
+			//? 에 바인딩할 내용이 있으면 여기서 바인딩
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getImagePath());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setInt(4, dto.getNum());
+			//insert or update or delete 문 수행하고 변화된 row의 개수 리턴받기
+			flag = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			try {
-				conn = new DbcpBean().getConn();
-				//실행할 sql 문 작성
-				String sql = "UPDATE board_gallery"
-						+ " SET title=?,imagePath=?,content=?"
-						+ " WHERE num=?";
-				pstmt = conn.prepareStatement(sql);
-				//? 에 바인딩할 내용이 있으면 여기서 바인딩
-				pstmt.setString(1, dto.getTitle());
-				pstmt.setString(2, dto.getImagePath());
-				pstmt.setString(3, dto.getContent());
-				pstmt.setInt(4, dto.getNum());
-				//insert or update or delete 문 수행하고 변화된 row 의 갯수 리턴 받기
-				flag = pstmt.executeUpdate();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (Exception e) {
-				}
-			}
-			if (flag > 0) {
-				return true;
-			} else {
-				return false;
 			}
 		}
+		if (flag > 0) { //변화된 row 개수가 1이상이면 성공
+			return true;
+		} else { //변화된 row 개수가 0이하면 실패
+			return false;
+		}
+	}
+	
 	//글 하나의 정보를 삭제하는 메소드
-		public boolean delete(int num) {
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			int flag = 0;
+	public boolean delete(int num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int flag = 0;
+		try {
+			conn = new DbcpBean().getConn();
+			//실행할 sql 문 작성
+			String sql = "DELETE FROM board_gallery"
+					+ " WHERE num=?";
+			pstmt = conn.prepareStatement(sql);
+			//? 에 바인딩할 내용이 있으면 여기서 바인딩
+			pstmt.setInt(1, num);
+			//insert or update or delete 문 수행하고 변화된 row 의 갯수 리턴 받기
+			flag = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			try {
-				conn = new DbcpBean().getConn();
-				//실행할 sql 문 작성
-				String sql = "DELETE FROM board_gallery"
-						+ " WHERE num=?";
-				pstmt = conn.prepareStatement(sql);
-				//? 에 바인딩할 내용이 있으면 여기서 바인딩
-				pstmt.setInt(1, num);
-				//insert or update or delete 문 수행하고 변화된 row 의 갯수 리턴 받기
-				flag = pstmt.executeUpdate();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (Exception e) {
-				}
-			}
-			if (flag > 0) {
-				return true;
-			} else {
-				return false;
 			}
 		}
-			
+		if (flag > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+		
 	//업로드된 사진글의 정보를 글번호로 가져오는 메소드
 	public GalleryDto getData(int num) {
 		GalleryDto dto=null;

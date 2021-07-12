@@ -41,7 +41,6 @@
       keyword="";
       condition=""; 
    }
-
    //특수기호를 인코딩한 키워드를 미리 준비한다. 
    String encodedK=URLEncoder.encode(keyword);
       
@@ -49,7 +48,6 @@
    NoticeDto dto=new NoticeDto();
    dto.setStartRowNum(startRowNum);
    dto.setEndRowNum(endRowNum);
-
    //ArrayList 객체의 참조값을 담을 지역변수를 미리 만든다.
    List<NoticeDto> list=null;
    //전체 row 의 갯수를 담을 지역변수를 미리 만든다.
@@ -86,7 +84,6 @@
    //하단 끝 페이지 번호
    int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
    
-
    //전체 페이지의 갯수
    int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
    //끝 페이지 번호가 전체 페이지 갯수보다 크다면 잘못된 값이다.
@@ -128,14 +125,6 @@
       list-style-type: none;
       padding: 0;
    }
-   
-   .page-ui ul > li{
-      float: left;
-      padding: 5px;
-   }
-   .container{
-   		border:1px dotted
-   }
 	h1 {
 		color: rgb(2,38,94); 
 		text-shadow:1px 1px 1px rgb(1,148,148); 
@@ -160,8 +149,6 @@
 <jsp:include page="../../include/navbar.jsp">
 	<jsp:param value="notice" name="thisPage"/>
 </jsp:include>
-<<<<<<< HEAD
-
 <div class="container my-4">
    <h1 class="fw-bold my-4">공지사항</h1>
    <%if(id!=null && id.equals("admin")){ %>
@@ -173,8 +160,7 @@
          	새 글 작성
          </a>
    <%} %>
-
-   <table class="table table-hover text-center">
+   <table class="table table-hover">
       <thead>
          <tr>
             <th>번호</th>
@@ -197,7 +183,6 @@
       <%} %>
       </tbody>
    </table>
-
    <div class="page-ui">
       <ul class="pagination justify-content-center">
          <%if(startPageNum != 1){ %>
@@ -230,28 +215,25 @@
          <%} %>
       </ul>
    </div>
-	 <div class="row">
-	 	<div class="col-lg-5 col-md-6">
-	 	<form action="list.jsp" method="get"> 
-	 	<div class="form-group me-0" style="display: inline-block;">
-	 		<label class="input-group-text" for="condition">검색조건</label>
-	 	</div>
-	 	<div class="form-group" style="display: inline-block;">
-	 		<select class="form-select" name="condition" id="condition">
-	    		<option selected>선택</option>
-	    		<option value="title_content" <%=condition.equals("title_content") ? "selected" : ""%>>제목+내용</option>
-	    		<option value="title" <%=condition.equals("title") ? "selected" : ""%>>제목</option>
-	  		</select>
-	  	</div>
-	  	<div class="form-group" style="display: inline-block;">
-	 		<input type="text" class="form-control" id="keyword" name="keyword" placeholder="검색어..." value="<%=keyword%>">
-	 	</div>
-	 	<div class="form-group" style="display: inline-block">
-	 		<button type="submit" class="btn btn-success">검색</button>
-	 	</div>
-		</form> 
-		</div>
-	</div>
+   <form action="list.jsp" method="get"> 
+	   <div class="row g-3 align-items-center">
+			<div class="col-auto">
+				<label class="form-label mb-0 fw-bold" for="condition">검색조건</label>
+			</div>
+			<div class="col-auto">
+				<select class="form-select form-select-sm" name="condition" id="condition">
+					<option value="title_content" <%=condition.equals("title_content") ? "selected" : ""%>>제목+내용</option>
+					<option value="title" <%=condition.equals("title") ? "selected" : ""%>>제목</option>
+				</select>
+			</div>
+			<div class="col-auto">
+				<input class="form-control form-control-sm" type="text" id="keyword" name="keyword" placeholder="검색어..." value="<%=keyword%>"/>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-sm btn-outline-success" type="submit">검색</button>
+			</div>
+	   </div>
+   </form>   
    
    <%if(!condition.equals("")){ %>
       <p class="my-3" style="font-size:0.875rem;">
