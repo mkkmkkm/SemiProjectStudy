@@ -4,28 +4,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/board/notice/private/insertform.jsp</title>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <jsp:include page="../../../include/resource.jsp"></jsp:include>
+<jsp:include page="../../../include/font.jsp"></jsp:include>
+<link href="<%=request.getContextPath() %>/users/form.css" rel="stylesheet">
+
 <style>
-   #content{
-      height: 500px;
-   }
+	#content{
+		height: 500px;
+		width: 650px;
+	}
 </style>
 </head>
 <body>
-<div>
-   <h1>공지사항 작성 폼</h1>
-   <form action="insert.jsp" method="post" id="insertForm">
-      <div>
-         <label for="title">제목</label>
-         <input type="text" name="title" id="title"/>
-      </div>
-      <div>
-         <label for="content">내용</label>
-         <textarea name="content" id="content"></textarea>
-      </div>
-      <button type="submit">저장</button>
-   </form>
+<div class="container my-4">
+	<h1 class="fw-bold my-4">새 공지 작성</h1>
+	<form action="insert.jsp" method="post" id="insertForm">
+		<div class="d-flex d-inline-flex flex-column mb-3">
+			<div>      
+				<label class="form-label" for="title">제목</label>
+				<input class="form-control form-control-sm" type="text" name="title" id="title"/>
+				<small class="text-muted" style="font-size:0.875rem;">제목은 5글자 이상이어야 합니다.</small>
+			</div>
+		</div>
+		<div>
+			<label for="content">내용</label>
+         	<textarea name="content" id="content"></textarea>
+		</div>
+		<button class="btn btn-sm btn-outline-success" type="submit">저장</button>
+	</form>
 </div>
 <%--
    [ SmartEditor 를 사용하기 위한 설정 ]

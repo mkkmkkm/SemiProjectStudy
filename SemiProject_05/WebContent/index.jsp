@@ -4,28 +4,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/index.jsp</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
-<jsp:include page="include/resource.jsp"></jsp:include>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <style>
-	*{
-		font-family: 'Sunflower', sans-serif;
-	}
+
 	body{
 		height: 100vh;
-		background-image: url("images/badminton01.jpg");
+		background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("images/badminton_illust_up.png"); /*2가지 이미 images/badmintonillust1.png*/
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
 	}
+	
+
 </style>
 </head>
 <body>
 
 	<jsp:include page="include/navbar.jsp"></jsp:include>
 	
+
 <%
 	//쿠키 읽어오기
 	Cookie[] cookies=request.getCookies();
@@ -44,7 +42,7 @@
 %>
 <%if(isPopup){%>
 	<script>
-		window.open("popup.jsp","창의제목","width=420,height=420,top=100,left=200");
+		window.open("popup.jsp","창의제목","width=450,height=450,top=100,left=100");
 	</script>
 <%}%>
 

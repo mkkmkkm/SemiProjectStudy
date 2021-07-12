@@ -14,12 +14,27 @@
 <title>/users/private/delete.jsp</title>
 </head>
 <body>
-	<div class="container">
-		<h1>알림</h1>
-		<p>
-			<%=id %>님, 회원 탈퇴 되었습니다. 
-			<a href="<%=request.getContextPath()%>/index.jsp">메인으로</a>
-		</p>
-	</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+function swalSuccess(seq){
+	Swal.fire({
+		title:'회원 탈퇴 성공',
+		text: '<%=id %>님, 회원 탈퇴 되었습니다.',
+		icon: 'success',
+		confirmButtonColor: '#198754',
+		confirmButtonText: '확인'
+	}).then((result) => {
+		if (result.value) {
+		<%-- 원래 페이지로 넘겨주기 : url 값  --%>
+		location.href="<%=request.getContextPath()%>/index.jsp";
+	  }
+	})
+}
+</script>
+	<%if(isDelete){ %>
+	<script>
+		swalSuccess();
+	</script>
+	<%} %>
 </body>
 </html>

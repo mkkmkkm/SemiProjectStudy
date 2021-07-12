@@ -1,21 +1,17 @@
-<%@page import="test.users.dto.UsersDto"%>
+
 <%@page import="test.users.dao.UsersDao"%>
-
+<%@page import="test.users.dto.UsersDto"%>
 <%@page import="test.cafe.dao.CafeCommentDao"%>
-<%@page import="test.cafe.dto.CafeCommentDto"%>
-
-<%@page import="notice.dto.NoticeDto"%>
 <%@page import="notice.dao.NoticeDao"%>
-
-<%@page import="java.net.URLEncoder"%>
-<%@page import="java.util.List"%>
 <%@page import="test.cafe.dao.CafeDao"%>
+<%@page import="java.util.List"%>
 <%@page import="test.cafe.dto.CafeDto"%>
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
    //한 페이지에 몇개씩 표시할 것인지
-   final int PAGE_ROW_COUNT=5;
+   final int PAGE_ROW_COUNT=6;
    //하단 페이지를 몇개씩 표시할 것인지
    final int PAGE_DISPLAY_COUNT=5;
    
@@ -108,8 +104,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cafe/list.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <style>
    .page-ui a{
       text-decoration: none;
@@ -130,10 +126,7 @@
       padding: 0;
    }
    
-   .page-ui ul > li{
-      float: left;
-      padding: 5px;
-   }
+
    .listProfile{
 
    		width:15px;
@@ -141,6 +134,24 @@
    		border-radius:50%;
 
    }
+   	h1 {
+		color: rgb(2,38,94); 
+		text-shadow:1px 1px 1px rgb(1,148,148); 
+		margin: 0; 
+		padding: 10px; 
+		font-weight: bold; 
+	}
+	th{
+		color: rgb(0,136,236); 
+	}
+	td{
+		color:rgb(2,38,94);
+		font-size: 1em; 
+	}
+	a{
+		color:rgb(2,38,94);
+		text-decoration: none;
+	}
 </style>
 </head>
 <body>
@@ -148,25 +159,36 @@
 	<jsp:param value="cafe" name="thisPage"/>
 </jsp:include>
 <div class="container">
-   <a href="private/insertform.jsp">새 글 작성</a>
-   <h1>자유게시판</h1>
-   <table class="table">
+   <h1 class="fw-bold my-4">자유게시판</h1> 
+	<%-- 새 글 작성 링크 --%>
+	<div class="mb-2" style="float:right;">
+		<a class="link-success text-decoration-none" href="private/insertform.jsp">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+				<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+			</svg>
+			새 글 작성
+		</a>
+	</div>
+	<%-- 자유게시판 글 목록 --%>
+   <table class="table table-hover">
       <thead>
          <tr>
-            <th scope="col">번호</th>
-            <th scope="col">카테고리</th>
-            <th scope="col">제목</th>
-            <th scope="col">작성자</th>
-            <th scope="col">날짜</th>
-            <th scope="col">조회수</th>     
+            <th>번호</th>
+            <th>카테고리</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+            <th>조회수</th>     
          </tr>
       </thead>
       <tbody>
-      	<tr>
+      	<tr class="table-success">
       		<td></td>
       		<td>공지</td>
       		<td>
-      			<a href="../board/notice/detail.jsp?num=<%=dao1.getData1().getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=dao1.getData1().getTitle() %></a>
+      			<a class="link-dark text-decoration-none fw-bold" 
+      			href="../board/notice/detail.jsp?num=<%=dao1.getData1().getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=dao1.getData1().getTitle() %></a>
       		</td>
       		<td><%=dao1.getData1().getWriter() %></td>
       		<td ><%=dao1.getData1().getRegdate() %></td>
@@ -179,9 +201,10 @@
             <td><%=tmp.getNum() %></td>
             <td><%=tmp.getCategory() %></td>
             <td>
-               <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
+               <a class="link-dark text-decoration-none fw-bold" 
+               href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
 				<%-- 댓글 개수 출력 --%>
-				<span><%=CafeCommentDao.getInstance().getCount(tmp.getNum())%></span>
+				<span class="mx-2" style="color:#198754;"><%=CafeCommentDao.getInstance().getCount(tmp.getNum())%></span>
             	<%-- 이미지가 첨부되어 있을 시 아이콘 출력 --%>
             	<%CafeDto dto2=CafeDao.getInstance().getData(tmp.getNum());
             	if(dto2.getContent().contains("img")){ %>
@@ -212,49 +235,66 @@
       <%} %>
       </tbody>
    </table>
-   <div class="page-ui clearfix">
-      <ul>
+   <div class="page-ui">
+      <ul class="pagination justify-content-center">
          <%if(startPageNum != 1){ %>
-            <li>
-               <a href="list.jsp?pageNum=<%=startPageNum-1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">Prev</a>
+            <li class="page-item">
+               <a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&lt;</a>
+            </li>   
+         <%}else{ %>
+         	<li class="page-item disabled">
+               <a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&lt;</a>
             </li>   
          <%} %>
          
          <%for(int i=startPageNum; i<=endPageNum ; i++){ %>
-            <li>
+            <li class="page-item">
                <%if(pageNum == i){ %>
-                  <a class="active" href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
+                  <a class="page-link" href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
                <%}else{ %>
-                  <a href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
+                  <a class="page-link" href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
                <%} %>
             </li>   
          <%} %>
          <%if(endPageNum < totalPageCount){ %>
-            <li>
-               <a href="list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">Next</a>
+            <li class="page-item">
+               <a class="page-link" href="list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&gt;</a>
+            </li>
+         <%}else{ %>
+         	<li class="page-item disabled">
+               <a class="page-link" href="list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&gt;</a>
             </li>
          <%} %>
       </ul>
    </div>
    
-   <div style="clear:both;"></div>
-   
+   <%-- 검색 --%>     
    <form action="list.jsp" method="get"> 
-      <label for="condition">검색조건</label>
-      <select name="condition" id="condition">
-         <option value="title_content" <%=condition.equals("title_content") ? "selected" : ""%>>제목+내용</option>
-         <option value="title" <%=condition.equals("title") ? "selected" : ""%>>제목</option>
-         <option value="writer" <%=condition.equals("writer") ? "selected" : ""%>>작성자</option>
-      </select>
-      <input type="text" id="keyword" name="keyword" placeholder="검색어..." value="<%=keyword%>"/>
-      <button type="submit">검색</button>
-   </form>   
-   
-   <%if(!condition.equals("")){ %>
-      <p>
-         <strong><%=totalRow %></strong> 개의 글이 검색 되었습니다.
-      </p>
-   <%} %>
+		<div class="row g-3 align-items-center">
+			<div class="col-auto">
+				<label class="form-label mb-0 fw-bold" for="condition">검색조건</label>
+			</div>
+			<div class="col-auto">	
+				<select class="form-select form-select-sm" name="condition" id="condition">
+					<option value="title_content" <%=condition.equals("title_content") ? "selected" : ""%>>제목+내용</option>
+					<option value="title" <%=condition.equals("title") ? "selected" : ""%>>제목</option>
+					<option value="writer" <%=condition.equals("writer") ? "selected" : ""%>>작성자</option>
+				</select>
+			</div>
+			<div class="col-auto">
+				<input class="form-control form-control-sm" type="text" id="keyword" name="keyword" placeholder="검색어..." value="<%=keyword%>"/>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-outline-success btn-sm" type="submit">검색</button>
+			</div>
+	</div>
+	</form>      
+	<%if(!condition.equals("")){ %>
+	<p class="my-3" style="font-size:0.875rem;">
+		<strong><%=totalRow %></strong> 개의 글이 검색 되었습니다.
+	</p>	
+	<%} %>
+	
 </div>
 </body>
 </html>

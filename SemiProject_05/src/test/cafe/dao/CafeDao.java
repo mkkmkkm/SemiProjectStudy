@@ -26,13 +26,14 @@ public class CafeDao {
 				conn = new DbcpBean().getConn();
 				//실행할 sql 문 작성
 				String sql = "UPDATE board_cafe"
-						+ " SET title=?,content=?"
+						+ " SET title=?,category=?,content=?"
 						+ " WHERE num=?";
 				pstmt = conn.prepareStatement(sql);
 				//? 에 바인딩할 내용이 있으면 여기서 바인딩
 				pstmt.setString(1, dto.getTitle());
-				pstmt.setString(2, dto.getContent());
-				pstmt.setInt(3, dto.getNum());
+				pstmt.setString(2, dto.getCategory());
+				pstmt.setString(3, dto.getContent());
+				pstmt.setInt(4, dto.getNum());
 				//insert or update or delete 문 수행하고 변화된 row 의 갯수 리턴 받기
 				flag = pstmt.executeUpdate();
 			} catch (Exception e) {
@@ -169,7 +170,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,category,viewCount,likecount,regdate" + 
+               "              (SELECT num,writer,title,category,viewCount,likecount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate" + 
                "              FROM board_cafe" + 
                "              ORDER BY num DESC) result1)" + 
                "      WHERE rnum BETWEEN ? AND ?";
@@ -260,7 +261,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,category,viewCount,likeCount,regdate" + 
+               "              (SELECT num,writer,title,category,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate" + 
                "              FROM board_cafe"+ 
                "             WHERE title LIKE '%' || ? || '%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -317,7 +318,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,category,title,viewCount,likeCount,regdate" + 
+               "              (SELECT num,writer,category,title,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate" + 
                "              FROM board_cafe"+ 
                "             WHERE writer LIKE '%' || ? || '%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -374,7 +375,7 @@ public class CafeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,category,title,viewCount,likeCount,regdate" + 
+               "              (SELECT num,writer,category,title,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate" + 
                "              FROM board_cafe"+ 
                "             WHERE title LIKE '%'||?||'%' OR content LIKE '%'||?||'%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -536,7 +537,7 @@ public class CafeDao {
          //Connection 객체의 참조값 얻어오기 
          conn = new DbcpBean().getConn();
          //실행할 sql 문 작성
-         String sql = "SELECT num,title,writer,category,content,viewCount,likeCount,regdate"
+         String sql = "SELECT num,title,writer,category,content,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate"
                + " FROM board_cafe"
                + " WHERE num=?";
          //PreparedStatement 객체의 참조값 얻어오기
@@ -585,7 +586,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe" + 
@@ -638,7 +639,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe"+ 
@@ -693,7 +694,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe"+ 
@@ -748,7 +749,7 @@ public class CafeDao {
          //실행할 sql 문 작성
          String sql = "SELECT *" + 
                " FROM" + 
-               "   (SELECT num,title,writer,category,content,viewCount,likeCount,regdate," + 
+               "   (SELECT num,title,writer,category,content,viewCount,likeCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate," + 
                "   LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum," + 
                "   LEAD(num, 1, 0) OVER(ORDER BY num DESC) nextNum" + 
                "   FROM board_cafe"+ 

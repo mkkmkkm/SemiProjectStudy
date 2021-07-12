@@ -11,8 +11,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/users/private/updateform.jsp</title>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
+
 <jsp:include page="../../include/resource.jsp"></jsp:include>
+<jsp:include page="../../include/font.jsp"></jsp:include>
+<link href="<%=request.getContextPath() %>/users/form.css" rel="stylesheet">
 <style>
 	/* 프로필 이미지 표시 */
 	#profileImage{
@@ -24,36 +28,63 @@
 	#image{
 		display: none;
 	}
+	.form-control{
+		text-align: center;
+	}
+	.profileText{
+		font-size: 0.875rem;
+	}
+
 </style>
 </head>
-<body>
-	<div class="container">
-		<h1>회원 정보 수정 폼</h1>
-		<a id="profileLink" href="javascript:">
-			<%if(dto.getProfile()==null){ %>
-				<svg id="profileImage" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-					<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-					<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-				</svg>
-			<%}else{ %>
-				<img id="profileImage" 
-				src="<%=request.getContextPath() %><%=dto.getProfile() %>" />
-			<%} %>
-		</a>
-		<form action="update.jsp" method="post">
-			<%-- 저장된 profile이 있으면 value 가져오기, 없으면 "empty" --%>
+<body class="text-center">
+	<div class="container my-4">
+		<h1 class="fw-bold my-4">회원 정보 수정</h1>
+		<div class="profile my-3">
+			<a id="profileLink" href="javascript:">
+				<%-- 저장된 profile이 있으면 value 가져오기, 없으면 "empty" --%>
+				<%if(dto.getProfile()==null){ %>
+					<svg id="profileImage" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+						<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+						<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+					</svg>
+				<%}else{ %>
+					<img id="profileImage" 
+					src="<%=request.getContextPath() %><%=dto.getProfile() %>" />
+				<%} %>
+			</a>
+			<p class="profileText text-muted my-2">프로필 사진을 누르면 변경할 수 있습니다.</p>
+		</div>
+		
+		
+		<form action="update.jsp" method="post">			
 			<input type="hidden" name="profile" 
 			value="<%=dto.getProfile()==null? "empty" : dto.getProfile()%>"/>
-			<div>
-				<label for="id">아이디</label>
-				<input type="text" id="id" value="<%=id %>" disabled/>
+			<div class="d-flex d-inline-flex flex-column justify-content-center">
+				<div>
+					<label class="form-label" for="id">아이디</label>
+				</div>
+				<div class="mb-4">
+					<input class="form-control form-control-sm" type="text" id="id" value="<%=id %>" disabled/>
+				</div>
+				<div>
+					<label class="form-label" for="pwd">비밀번호</label>
+					<a href="<%=request.getContextPath()%>/users/private/pwd_updateform.jsp">
+						<svg class="text-decoration-none" style="color:#198754" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+							<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+						</svg>
+					</a>
+				</div>
+				<div class="mb-4">
+					<input class="form-control form-control-sm" type="password" id="pwd" value="<%=dto.getPwd() %>" disabled/>
+				</div>
+				<div>
+					<button class="btn w-50 btn-outline-success btn-sm" type="submit">적용</button>
+				</div>
+				<div>
+					<a class="mt-2 mb-4 w-50 btn btn-sm btn-outline-success" href="javascript:history.back();">뒤로가기</a>
+				</div>
 			</div>
-			<p>
-				<a href="<%=request.getContextPath()%>/users/private/pwd_updateform.jsp">
-					비밀번호 수정
-				</a>
-			</p>
-			<button type="submit">적용</button>
 		</form>
 		<%-- 프로필 이미지 업로드용 폼 --%>
 		<form action="ajax_profile_upload.jsp" method="post"

@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
+
    int num=Integer.parseInt(request.getParameter("num"));
    NoticeDto dto=NoticeDao.getInstance().getData(num);
 %>    
@@ -11,27 +11,44 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>board/notice/private/updateform.jsp</title>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
+<jsp:include page="../../../include/resource.jsp"></jsp:include>
+<jsp:include page="../../../include/font.jsp"></jsp:include>
+<link href="<%=request.getContextPath() %>/users/form.css" rel="stylesheet">
+
+<style>
+	#content{
+		height: 500px;
+		width: 650px;
+	}
+</style>
 </head>
 <body>
-<div class="container">
-   <h1>공지 수정 폼 입니다.</h1>
-   <form action="update.jsp" method="post">
-      <input type="hidden" name="num" value="<%=num %>" />
-      <div>
-         <label for="writer">작성자</label>
-         <input type="text" id="writer" value="<%=dto.getWriter() %>" disabled/>
-      </div>
-      <div>
-         <label for="title">제목</label>
-         <input type="text" name="title" id="title" value="<%=dto.getTitle()%>"/>
-      </div>
-      <div>
-         <label for="content">내용</label>
-         <textarea name="content" id="content"><%=dto.getContent() %></textarea>
-      </div>
-      <button type="submit" onclick="submitContents(this);">수정확인</button>
-   </form>
+<div class="container my-4">
+	<h1 class="fw-bold my-4">공지 수정</h1>
+	<form action="update.jsp" method="post">
+		<input type="hidden" name="num" value="<%=num %>" />
+		<div class="d-flex d-inline-flex flex-column mb-3">
+			<div>
+				<label class="form-label" for="writer">작성자</label>
+			</div>
+			<div>
+				<input class="form-control form-control-sm" type="text" id="writer" value="<%=dto.getWriter() %>" disabled/>
+			</div>		
+			
+			<div class="my-2">
+				<label class="form-label" for="title">제목</label>
+				<input class="form-control form-control-sm" type="text" name="title" id="title" value="<%=dto.getTitle()%>"/>
+				<small class="text-muted" style="font-size:0.875rem;">제목은 5글자 이상이어야 합니다.</small>			
+			</div>
+		</div>
+		<div>
+			<label for="content">내용</label>
+			<textarea name="content" id="content"><%=dto.getContent() %></textarea>
+		</div>
+		<button class="btn btn-sm btn-outline-success" type="submit" onclick="submitContents(this);">수정</button>
+	</form>
 </div>
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>

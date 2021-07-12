@@ -4,15 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
-		#container { 
-			width:820px; 
-			margin:0 auto;  
-			padding:5px;		
-			border:1px dotted
-		}
 		h1 {
 			color: rgb(2,38,94); 
 			text-shadow:1px 1px 1px rgb(1,148,148); 
@@ -35,14 +30,18 @@
 		}
 		.accent {
 			color: red; 
+		}
+
 </style>
 </head>
 <body>
-	<jsp:include page="../include/navbar.jsp"></jsp:include>
+	<jsp:include page="../include/navbar.jsp">
+		<jsp:param value="club" name="thisPage"/>
+	</jsp:include>
 	<div style="width: 1000px; margin:0 auto; padding:5px;">
 	<div class="row">
-		<div class="col">
-			<img class="img-fluid" src="imges/Badminton.png"/>
+		<div class="col text-center my-2">
+			<img class="img-fluid" src="../images/Badminton_name.jpg"/>
 		</div>
 	</div>
 	<div class="row">
@@ -54,14 +53,15 @@
 				하이클리어 배드민턴 클럽에서 베드민턴 기술을 연마하고<br>
 				다른 사람들과 죽음의 듀얼을 즐겨봅시다<br>				
 				초보자부터 숙련자까지 모두 환영합니다<br>
-				장비를 가지고오지 못한 분은 대여해드립니다<br>(수량이 한정 되어 있습니다. 모자르면 싸워서 뺏어쓰세요)<br>
+				장비를 가지고오지 못한 분은 대여해드립니다<br>
+				(수량이 한정 되어 있습니다. 모자르면 싸워서 뺏어쓰세요)<br>
 				병걸리면 나오지말고 집에 있어라<br>
 				<span class="accent">코비드바이러스</span> 방역 지침 잘지킴 믿어주세요!
 			</p>
 		<h2>가입하기</h2>
 			<p>
 				하이클리어는 여러분을 환영합니다!
-				<a href="<%=request.getContextPath()%>/users/signupform.jsp">가입하러가기</a>
+				<a href="<%=request.getContextPath()%>/users/signupform.jsp">가입하기</a>
 			</p>
 		<h2>정기모임</h2>
 			<p>
@@ -75,17 +75,18 @@
 		<h1>High-Clear</h1><br>
 		<h2>About the Club</h2>
 			<p>
-				Badminton Club provides the opportunity for members to play badminton, to develop and improve their skills, and to participate in training and competitive matches in intramural tournaments. Players of all levels are welcome. Equipment can be provided for students who do not have their own (first come, first serve).
+				High-Clear Badminton Club provides the opportunity for members to play badminton, to develop and improve their skills, and to participate in training and competitive matches in intramural tournaments. Players of all levels are welcome. Equipment can be provided for students who do not have their own (first come, first serve).
 				All club members are expected to adhere to <span class="accent">COVID-19</span> provincial restrictions as well as rules in place at the badminton centre.
 			</p>
 		<h2>HOW TO JOIN?</h2>
-			<p>Badminton Club is active on Teams!
+			<p>High-Clear is active on Teams!
 			<a href="<%=request.getContextPath()%>/users/signupform.jsp">click here to join!</a>
 			</p>
 		<h2>Meetings</h2>
-			<p>when: Saturndays 7:30-9:00 pm<br>
-			Where: acorn academy, gangnam, seoul(Map & Directions)<br>
-			Sponsor: acorn academy</p>
+			<p>When: every Saturndays 7:30-9:00 pm<br>
+			Where: Acorn Academy, Gangnam, Seoul(Map & Directions)<br>
+			Sponsor: Acorn Academy</p>
+>>>>>>> branch 'final_merge_hr' of https://github.com/Jellyfish-yeho/SemiProject_05.git
 		</div>
 	</div>
 	<div class="row">

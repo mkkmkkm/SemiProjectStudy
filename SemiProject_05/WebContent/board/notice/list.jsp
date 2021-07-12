@@ -9,7 +9,7 @@
 	String id=(String)session.getAttribute("id");
    
 	//한 페이지에 몇개씩 표시할 것인지
-   final int PAGE_ROW_COUNT=5;
+   final int PAGE_ROW_COUNT=10;
    //하단 페이지를 몇개씩 표시할 것인지
    final int PAGE_DISPLAY_COUNT=5;
    
@@ -100,12 +100,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/Notice/list.jsp</title>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
+<jsp:include page="../../include/icon.jsp"></jsp:include>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
+
 <style>
+	body{
+		background-image: url();
+		background-repeat: round;
+	}
    .page-ui a{
       text-decoration: none;
-      color: #000;
+      color: rgb(2,38,94);
    }
    
    .page-ui a:hover{
@@ -113,7 +120,7 @@
    }
    
    .page-ui a.active{
-      color: red;
+      color: rgb(2,38,94);
       font-weight: bold;
       text-decoration: underline;
    }
@@ -129,24 +136,51 @@
    .container{
    		border:1px dotted
    }
+	h1 {
+		color: rgb(2,38,94); 
+		text-shadow:1px 1px 1px rgb(1,148,148); 
+		margin: 0; 
+		padding: 10px; 
+		font-weight: bold; 
+	}
+	th{
+		color: rgb(0,136,236); 
+	}
+	td{
+		color:rgb(2,38,94);
+		font-size: 1em; 
+	}
+	a{
+		color:rgb(2,38,94);
+		text-decoration: none;
+	}
 </style>
 </head>
 <body>
 <jsp:include page="../../include/navbar.jsp">
 	<jsp:param value="notice" name="thisPage"/>
 </jsp:include>
-<div class="container">
-   <h1 class="text-center mt-3 mb-3">공지사항</h1>
+<<<<<<< HEAD
+
+<div class="container my-4">
+   <h1 class="fw-bold my-4">공지사항</h1>
    <%if(id!=null && id.equals("admin")){ %>
-         <a href="private/insertform.jsp">새글작성</a>
+         <a class="link-success" href="private/insertform.jsp">
+	         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+				<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+			</svg>
+         	새 글 작성
+         </a>
    <%} %>
+
    <table class="table table-hover text-center">
       <thead>
          <tr>
             <th>번호</th>
             <th>제목</th>
             <th>조회수</th>
-            <th>날자</th>     
+            <th>날짜</th>     
          </tr>
       </thead>
       <tbody>
@@ -154,7 +188,8 @@
          <tr>
             <td><%=tmp.getNum() %></td>
             <td>
-               <a href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
+               <a class="link-dark text-decoration-none fw-bold" 
+               href="detail.jsp?num=<%=tmp.getNum()%>&keyword=<%=encodedK %>&condition=<%=condition%>"><%=tmp.getTitle() %></a>
             </td>
             <td><%=tmp.getViewCount() %></td>
             <td><%=tmp.getRegdate() %></td>
@@ -162,31 +197,39 @@
       <%} %>
       </tbody>
    </table>
-   <div class="page-ui clearfix container" >
-      <ul>
+
+   <div class="page-ui">
+      <ul class="pagination justify-content-center">
          <%if(startPageNum != 1){ %>
-            <li>
-               <a href="list.jsp?pageNum=<%=startPageNum-1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">Prev</a>
+            <li class="page-item">
+               <a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&lt;</a>
+            </li>   
+         <%}else{ %>
+         	<li class="page-item disabled">
+               <a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&lt;</a>
             </li>   
          <%} %>
          
          <%for(int i=startPageNum; i<=endPageNum ; i++){ %>
-            <li>
+            <li class="page-item">
                <%if(pageNum == i){ %>
-                  <a class="active" href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
+                  <a class="page-link" href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
                <%}else{ %>
-                  <a href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
+                  <a class="page-link" href="list.jsp?pageNum=<%=i %>&condition=<%=condition %>&keyword=<%=encodedK %>"><%=i %></a>
                <%} %>
             </li>   
          <%} %>
          <%if(endPageNum < totalPageCount){ %>
-            <li>
-               <a href="list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">Next</a>
+            <li class="page-item">
+               <a class="page-link" href="list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&gt;</a>
+            </li>
+         <%}else{ %>
+         	<li class="page-item disabled">
+               <a class="page-link" href="list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK %>">&gt;</a>
             </li>
          <%} %>
       </ul>
    </div>
-
 	 <div class="row">
 	 	<div class="col-lg-5 col-md-6">
 	 	<form action="list.jsp" method="get"> 
@@ -211,8 +254,8 @@
 	</div>
    
    <%if(!condition.equals("")){ %>
-      <p>
-         <strong><%=totalRow %></strong> 개의 글이 검색 되었습니다.
+      <p class="my-3" style="font-size:0.875rem;">
+         <strong><%=totalRow %></strong> 개의 글이 검색되었습니다.
       </p>
    <%} %>
 </div>
