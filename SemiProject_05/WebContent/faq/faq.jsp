@@ -15,7 +15,7 @@
 		font-weight: bold; 
 	}
 </style>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+
 </head>
 <body>
 	<jsp:include page="../include/navbar.jsp">

@@ -53,3 +53,16 @@ CREATE TABLE board_cafe_comment(
 
 --게시글의 댓글 번호에 사용할 시퀀스
 CREATE SEQUENCE board_cafe_comment_seq;
+
+-- 이미지 갤러리를 만들기 위한 테이블
+CREATE TABLE board_gallery(
+	num NUMBER PRIMARY KEY,
+	writer VARCHAR2(100),
+	caption VARCHAR2(100), --이미지에 대한 설명
+	imagePath VARCHAR2(100), --업로드된 이미지의 경로 ex)/upload/xxx.jpg
+	regdate DATE --이미지 업로드 날짜
+);
+
+CREATE SEQUENCE board_gallery_seq;
+
+

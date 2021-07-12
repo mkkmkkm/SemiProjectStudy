@@ -10,7 +10,7 @@
 
 	body{
 		height: 100vh;
-		background-image: url("images/badminton_illust_up.png"); /*2가지 이미 images/badmintonillust1.png*/
+		background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("images/badminton_illust_up.png"); /*2가지 이미 images/badmintonillust1.png*/
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
@@ -23,6 +23,7 @@
 
 	<jsp:include page="include/navbar.jsp"></jsp:include>
 	
+
 <%
 	//쿠키 읽어오기
 	Cookie[] cookies=request.getCookies();

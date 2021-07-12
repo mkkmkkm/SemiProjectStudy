@@ -90,6 +90,9 @@
 					<a class="nav-link me-5 <%=thisPage.equals("cafe") ? "active" : "" %>" href="<%=request.getContextPath() %>/cafe/list.jsp">자유게시판</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link me-5 <%=thisPage.equals("gallery") ? "active" : "" %>" href="<%=request.getContextPath() %>/gallery/list.jsp">갤러리</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link me-5 <%=thisPage.equals("faq") ? "active" : "" %>" href="<%=request.getContextPath() %>/faq/faq.jsp">FAQ</a>
 				</li>
 			</ul>

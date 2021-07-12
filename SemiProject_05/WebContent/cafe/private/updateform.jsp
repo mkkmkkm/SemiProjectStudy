@@ -26,7 +26,7 @@ CafeDto dto=CafeDao.getInstance().getData(num);
 </head>
 <div class="container my-4">
 	<h1 class="fw-bold my-4">글 수정</h1>
-	<form action="update.jsp" method="post" id="insertForm">
+	<form action="update.jsp" method="post">
 		<input type="hidden" name="num" value="<%=num %>" />
 		<div class="d-flex d-inline-flex flex-column mb-3">
 			<div>

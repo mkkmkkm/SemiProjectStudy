@@ -6,8 +6,7 @@
 <jsp:useBean id="dto" class="test.cafe.dto.CafeDto"></jsp:useBean>   
 <jsp:setProperty property="*" name="dto"/> 
 <%
-	System.out.println(dto.getContent());
-  boolean isSuccess=CafeDao.getInstance().update(dto);
+boolean isSuccess=CafeDao.getInstance().update(dto);
 %>    
 <!DOCTYPE html>
 <html>
