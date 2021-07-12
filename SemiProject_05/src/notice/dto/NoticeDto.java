@@ -10,13 +10,13 @@ public class NoticeDto {
 	private int endRowNum;
 	private String regdate;
 	private int prevNum;
-	private int nextNum;	
-	private String simpletime;
-	
-	public NoticeDto() {}
+	private int nextNum;
+
+	public NoticeDto() {
+	}
 
 	public NoticeDto(int num, String writer, String title, String content, int viewCount, int startRowNum,
-			int endRowNum, String regdate, int prevNum, int nextNum, String simpletime) {
+			int endRowNum, String regdate, int prevNum, int nextNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -28,7 +28,6 @@ public class NoticeDto {
 		this.regdate = regdate;
 		this.prevNum = prevNum;
 		this.nextNum = nextNum;
-		this.simpletime = simpletime;
 	}
 
 	public int getNum() {
@@ -110,13 +109,4 @@ public class NoticeDto {
 	public void setNextNum(int nextNum) {
 		this.nextNum = nextNum;
 	}
-
-	public String getSimpletime() {
-		return simpletime;
-	}
-
-	public void setSimpletime(String simpletime) {
-		this.simpletime = simpletime;
-	}
-
 }

@@ -54,12 +54,12 @@
 		endPageNum=totalPageCount; //보정해 준다.
 	
 		
-	NoticeDto dtoNo=new NoticeDto();
-	dtoNo.setStartRowNum(startRowNum);
-	dtoNo.setEndRowNum(endRowNum);
+	NoticeDto dto1=new NoticeDto();
+	dto1.setStartRowNum(startRowNum);
+	dto1.setEndRowNum(endRowNum);
 		
 	NoticeDao daoNo=NoticeDao.getInstance();
-	List<NoticeDto> list1=daoNo.getList(dtoNo);
+	List<NoticeDto> list1=daoNo.getList(dto1);
 	}
 %>
 <!DOCTYPE html>
@@ -76,6 +76,64 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
+	}
+	/*글자 css*/
+	   .page-ui a{
+      text-decoration: none;
+      color: rgb(2,38,94);
+   }
+   
+   .page-ui a:hover{
+      text-decoration: underline;
+   }
+   
+   .page-ui a.active{
+      color: rgb(2,38,94);
+      font-weight: bold;
+      text-decoration: underline;
+   }
+   .page-ui ul{
+      list-style-type: none;
+      padding: 0;
+   }
+	h1 {
+		color: rgb(2,38,94); 
+		text-shadow:1px 1px 1px rgb(1,148,148); 
+		margin: 0; 
+		padding: 10px; 
+		font-weight: bold; 
+	}
+	th{
+		color: rgb(0,136,236); 
+	}
+	td{
+		color:rgb(2,38,94);
+		font-size: 1em; 
+	}
+	a{
+		color:rgb(2,38,94);
+		text-decoration: none;
+	}
+	
+	/*4장 미니 앨범 carousel css*/
+	.col-md-3{
+	  display: inline-block;
+	  margin-left:-4px;
+	}
+	.col-md-3 img{
+	  width:100%;
+	  height:auto;
+	}
+	body .carousel-indicators li{
+	  background-color:green;
+	}
+	body .carousel-control-prev-icon,
+	body .carousel-control-next-icon{
+	  background-color:green;
+	}
+	body .no-padding{
+	  padding-left: 0;
+	  padding-right: 0;
 	}
 </style>
 </head>
@@ -103,28 +161,35 @@
 		window.open("popup.jsp","창의제목","width=450,height=450,top=100,left=100");
 	</script>
 <%}%>
-
-<div class="container mt-5">
-	<div class="row">
-		<div id="carouselExampleControls" class="col carousel slide" data-bs-ride="carousel">
-			<div class="carousel-inner">
-				 <div class="carousel-item active">
-				      <img src="images/backg-Badminton.jpg" class="d-block w-100" alt="...">
-				 </div>
-				 <div class="carousel-item">
-				      <img src="images/Badminton_name.jpg" class="d-block w-100" alt="...">
-				 </div>
-				 <div class="carousel-item">
-				      <img src="images/badminton01.jpg" class="d-block w-100" alt="...">
-				 </div>
-				 <div class="carousel-item">
-				      <img src="images/badminton02.jpg" class="d-block w-100" alt="...">
-				 </div>
+<!-- 메인 carousel -->
+<div>
+	<div id="carouselExampleControls" class="col carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="images/badminton01.jpg" class="d-block w-100" alt="...">
+			</div>
+			<div class="carousel-item">
+				<img src="images/Badminton_name.jpg" class="d-block w-100" alt="...">
+			</div>
+			<div class="carousel-item">
+				<img src="images/badminton02.jpg" class="d-block w-100" alt="...">
 			</div>
 		</div>
+	</div>
+	       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+             <span class="visually-hidden">Previous</span>
+           </button>
+           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+             <span class="visually-hidden">Next</span>
+           </button>
+	</div>
+	<div class="container mt-5" style="margin:0 auto; padding:5px;">
+	<div class="m-3">
 	<div class="row">
 		<div class="col">
-			<h2>공지사항</h2>
+			<h2 class="fw-bold text-center my-4 ">공지사항</h2>
 		    <table class="table table-hover">
 		      <thead>
 		         <tr>
@@ -135,23 +200,23 @@
 		         </tr>
 		      </thead>
 		      <tbody>
-		      <%for(NoticeDto tmpN:list){%>
+<!-- 	 	      for(NoticeDto tmpN:list1){%>
 		         <tr>
-		            <td><%=tmpN.getNum() %></td>
+		            <td>=tmpN.getNum() %></td>
 		            <td>
 		               <a class="link-dark text-decoration-none fw-bold" 
-		               href="detail.jsp?num=<%=tmpN.getNum()%>"><%=tmpN.getTitle() %></a>
+		               href="detail.jsp?num==tmpN.getNum()%>">=tmpN.getTitle() %></a>
 					</td>
-		            <td><%=tmpN.getWriter() %></td>
-		            <td><%=tmpN.getRegdate() %></td>
-		            <td><%=tmpN.getViewCount() %></td>
+		            <td>=tmpN.getWriter() %></td>
+		            <td>=tmpN.getRegdate() %></td>
+		            <td>=tmpN.getViewCount() %></td>
 		         </tr>
-		      <%} %>
+		      } %>				-->
 		      </tbody>
-​			</table>
+​			</table> 
 		</div>
 		<div class="col">
-			<h2>자유게시판</h2>
+			<h2 class="fw-bold text-center my-4 ">자유게시판</h2>
 			<table class="table table-hover">
 		      <thead>
 		         <tr>
@@ -183,17 +248,75 @@
 		   </table>
 		</div>
 	</div>
-	<div class="row">
-		갤러리
-	</div>
-	<div class="row">
-		<div class="col">
-		카드정보
+	
+	<div class="row pt-3">
+	<div class="col">
+		<h2 class="fw-bold text-center my-4 ">갤러리</h2>
+		<!-- 4개 캐로셀 -->
+		<div id="demo" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ul class="carousel-indicators">
+		    <li data-target="#demo" data-slide-to="0" class="active"></li>
+		    <li data-target="#demo" data-slide-to="1"></li>
+		    <li data-target="#demo" data-slide-to="2"></li>
+		  </ul>
+		  <!-- The slideshow -->
+		  <div class="container carousel-inner no-padding">
+		    <div class="carousel-item active">
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>    
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>   
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>   
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>   
+		    </div>
+		    <div class="carousel-item">
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>    
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>   
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>   
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>  
+		    </div>
+		    <div class="carousel-item">
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>    
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>   
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>   
+		      <div class="col-xs-3 col-sm-3 col-md-3">
+		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
+		      </div>  
+		    </div>
+		  </div>
+		  <!-- Left and right controls -->
+		  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+		    <span class="carousel-control-prev-icon"></span>
+		  </a>
+		  <a class="carousel-control-next" href="#demo" data-slide="next">
+		    <span class="carousel-control-next-icon"></span>
+		  </a>
 		</div>
 	</div>
-
-</div>
-</div>
-
+	</div>
+	</div>
+	</div>
+<jsp:include page="include/footer.jsp"></jsp:include>
 </body>
 </html>

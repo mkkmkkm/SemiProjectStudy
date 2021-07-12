@@ -298,7 +298,7 @@
 		<strong><%=totalRow %></strong> 개의 글이 검색 되었습니다.
 	</p>	
 	<%} %>
-	
 </div>
+<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

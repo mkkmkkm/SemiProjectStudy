@@ -106,10 +106,6 @@
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 
 <style>
-	body{
-		background-image: url();
-		background-repeat: round;
-	}
    .page-ui a{
       text-decoration: none;
       color: rgb(2,38,94);
@@ -146,14 +142,27 @@
 		color:rgb(2,38,94);
 		text-decoration: none;
 	}
+	html {
+	  	height: 100%;
+	}
+	body{
+		background: linear-gradient(75deg,  rgb(253,220,0) 50%, rgb(1,210,211) 50%);
+	}
+	#ccontainer{
+		margin:0 auto; 
+		padding:5px; 
+		background-color:rgb(255,255,255, 0.9); 
+		border-radius: 30px
+	}
 </style>
 </head>
 <body>
 <jsp:include page="../../include/navbar.jsp">
 	<jsp:param value="notice" name="thisPage"/>
 </jsp:include>
-<div class="container my-4">
-   <h1 class="fw-bold my-4">공지사항</h1>
+<div class="container my-4" id="ccontainer">
+	<div class="m-4">
+   <h1 class="fw-bold text-center my-4 ">공지사항</h1>
    <%if(id!=null && id.equals("admin")){ %>
          <a class="link-success" href="private/insertform.jsp">
 	         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -163,7 +172,7 @@
          	새 글 작성
          </a>
    <%} %>
-   <table class="table table-hover">
+   <table class="table table-hover text-center">
       <thead>
          <tr>
             <th>번호</th>
@@ -243,6 +252,10 @@
          <strong><%=totalRow %></strong> 개의 글이 검색되었습니다.
       </p>
    <%} %>
+   </div>
+   
+
 </div>
+<jsp:include page="../../include/footer.jsp"></jsp:include>
 </body>
 </html>
