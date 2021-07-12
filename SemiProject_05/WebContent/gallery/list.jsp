@@ -57,7 +57,7 @@
 <style>
    /* card 이미지 부모요소의 높이 지정 */
    .img-wrapper{
-      height: 250px;
+      height: 350px;
       /* transform 을 적용할대 0.3s 동안 순차적으로 적용하기 */
       transition: transform 0.3s ease-out;
    }
@@ -75,8 +75,8 @@
       overflow: hidden;
    }
    .img-wrapper img{
-   		width: 100%;
-   		height: 100%;
+   		width: 90%;
+   		height: 90%;
    		object-fit: contain; /* fill | contain | cover | scale-down | none */
    }
       h1 {
@@ -106,19 +106,19 @@
 			새 사진 올리기
 		</a>
 	</div>
-	<div class="row">
+	<div class="row row-cols-1 row-cols-md-2 g-4">
 		<%for(GalleryDto tmp:list){ %>
-		<div class="col-6 col-md-4 col-lg-3">
+		<div class="col">
 			<div class="card mb-3">
 				<a href="detail.jsp?num=<%=tmp.getNum() %>">
-					<div class="img-wrapper">
+					<div class="img-wrapper d-flex justify-content-center">
 						<img class="card-img-top" src="${pageContext.request.contextPath }<%=tmp.getImagePath() %>" />
 	               </div>
 				</a>
 				<div class="card-body">
-					<p class="card-text"><%=tmp.getCaption() %></p>
+					<p class="card-text fs-3 fw-bold"><%=tmp.getTitle() %></p>
 					<p class="card-text">by <strong><%=tmp.getWriter() %></strong></p>
-					<p><small><%=tmp.getRegdate() %></small></p>
+					<p><small class="text-muted" style="font-size:0.875rem;"><%=tmp.getRegdate() %></small></p>
 				</div>
 			</div>
 		</div>

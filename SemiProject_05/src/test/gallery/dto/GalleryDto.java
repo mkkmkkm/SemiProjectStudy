@@ -3,7 +3,8 @@ package test.gallery.dto;
 public class GalleryDto {
 	private int num;
 	private String writer;
-	private String caption;
+	private String title;
+	private String content;
 	private String imagePath;
 	private String regdate;
 	private int startRowNum;
@@ -12,12 +13,13 @@ public class GalleryDto {
 	private int nextNum; //다음글의 글번호
 	//디폴트 생성자 
 	public GalleryDto() {}
-	public GalleryDto(int num, String writer, String caption, String imagePath, String regdate, int startRowNum,
-			int endRowNum, int prevNum, int nextNum) {
+	public GalleryDto(int num, String writer, String title, String content, String imagePath, String regdate,
+			int startRowNum, int endRowNum, int prevNum, int nextNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
-		this.caption = caption;
+		this.title = title;
+		this.content = content;
 		this.imagePath = imagePath;
 		this.regdate = regdate;
 		this.startRowNum = startRowNum;
@@ -37,11 +39,17 @@ public class GalleryDto {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getCaption() {
-		return caption;
+	public String getTitle() {
+		return title;
 	}
-	public void setCaption(String caption) {
-		this.caption = caption;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getImagePath() {
 		return imagePath;

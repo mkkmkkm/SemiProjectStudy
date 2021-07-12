@@ -1,5 +1,12 @@
+
+<%@page import="test.gallery.dao.GalleryDao"%>
+<%@page import="test.gallery.dto.GalleryDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+int num=Integer.parseInt(request.getParameter("num"));
+GalleryDto dto=GalleryDao.getInstance().getData(num);
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,21 +33,22 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="fw-bold my-4">새 사진 올리기</h1>
+		<h1 class="fw-bold my-4">글 수정</h1>
 		<form action="insert.jsp" method="post" id="insertForm">
 			<input type="hidden" name="imagePath" id="imagePath"/>
 			<div class="d-flex d-inline-flex flex-column mb-3">
 				<div>
 					<label class="form-label" for="title">제목</label>
-					<input class="form-control form-control-sm" type="text" name="title" id="title"/>
+					<input class="form-control form-control-sm" type="text" name="title" id="title" value="<%=dto.getTitle()%>"/>
 				</div>
 			</div>	
 			
 				<div class=" mb-3">
 					<label class="form-label" for="content">내용</label>
-					<textarea class="form-control form-control-sm" name="content" id="content"></textarea>
+					<textarea class="form-control form-control-sm" name="content" id="content"><%=dto.getContent()%></textarea>
 				</div>
-			
+			<button class="btn btn-outline-danger btn-sm" type="reset" id="resetBtn1" style="display:none;">원래대로</button>		
+				
 		</form>
 		<form action="ajax_upload.jsp" method="post" id="ajaxForm" enctype="multipart/form-data">
 			<div class="d-flex d-inline-flex flex-column mb-3">
@@ -51,7 +59,7 @@
 					<small class="text-muted">이미지를 선택하거나 폴더에서 끌어다 놓으세요.</small>
 					<div>
 						<input class="my-2 form-control form-control-sm" type="file" name="image" id="image" 
-						accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
+						accept=".jpg, .jpeg, .png, .JPG, .JPEG" value=""/>
 					</div>
 					<div class="drag-area"></div>
 				</div>
@@ -59,14 +67,22 @@
 		</form>
 		<div class="img-wrapper">
 			<p>이미지 미리보기 </p>
-			<p><img id="myImage"/></p>
+			<p><img id="myImage" src="<%=request.getContextPath()%><%=dto.getImagePath()%>"/></p>
 		</div>
-		<button class="mb-4 btn btn-sm btn-outline-success" id="submitBtn">등록</button>
-		
+
+		<div class="mb-3" style="display:block;">
+			<button class="btn btn-sm btn-outline-success" id="submitBtn">수정</button>
+			<button class="btn btn-outline-danger btn-sm" type="reset" id="resetBtn2">원래대로</button>		
+		</div>	
 	</div>
 
 <script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
 <script>
+	//리셋 버튼 동작 
+	document.querySelector("#resetBtn2").addEventListener("click",function(){
+		document.querySelector("#resetBtn1").click();
+	});
+
 	//이미지를 선택했을 때 실행할 함수 등록
 	document.querySelector("#image").addEventListener("change",function(){
 		//id가 ajaxForm인 form을 ajax전송시킨다. 
@@ -159,6 +175,4 @@
 </script>
 </body>
 </html>
-
-
 
