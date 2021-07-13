@@ -1,4 +1,6 @@
 
+<%@page import="test.gallery.dao.GalleryDao"%>
+<%@page import="test.gallery.dto.GalleryDto"%>
 <%@page import="test.users.dao.UsersDao"%>
 <%@page import="test.users.dto.UsersDto"%>
 <%@page import="test.cafe.dao.CafeCommentDao"%>
@@ -54,12 +56,18 @@
 	if(endPageNum > totalPageCount){
 		endPageNum=totalPageCount; //보정해 준다.
 	}
-		
+	
+	//공지사항 게시판
 	NoticeDto dto1=new NoticeDto();
 	dto1.setStartRowNum(startRowNum);
 	dto1.setEndRowNum(endRowNum);
-	
 	List<NoticeDto> list1=NoticeDao.getInstance().getList(dto1);
+	
+	//갤러리 게시판
+	GalleryDto dto2=new GalleryDto();
+	dto2.setStartRowNum(startRowNum);
+	dto2.setEndRowNum(endRowNum);
+	List<GalleryDto> list2=GalleryDao.getInstance().getList(dto2);
 	
 %>
 <!DOCTYPE html>
@@ -87,16 +95,9 @@
      	height: 300px !important;
     	width: 240px !important;
     	}
-	body{
-		height: 100vh;
-		background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("images/badminton_illust_up.png"); /*2가지 이미 images/badmintonillust1.png*/
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-	}
-	
+
 	/*글자 css*/
-	   .page-ui a{
+	.page-ui a{
       text-decoration: none;
       color: rgb(2,38,94);
    }
@@ -114,13 +115,6 @@
       list-style-type: none;
       padding: 0;
    }
-	h1 {
-		color: rgb(2,38,94); 
-		text-shadow:1px 1px 1px rgb(1,148,148); 
-		margin: 0; 
-		padding: 10px; 
-		font-weight: bold; 
-	}
 	th{
 		color: rgb(0,136,236); 
 	}
@@ -132,26 +126,14 @@
 		color:rgb(2,38,94);
 		text-decoration: none;
 	}
-	
-	/*4장 미니 앨범 carousel css*/
+
+	/* 갤러리 carousel css*/
 	.col-md-3{
 	  display: inline-block;
-	  margin-left:-4px;
 	}
 	.col-md-3 img{
 	  width:100%;
 	  height:auto;
-	}
-	body .carousel-indicators li{
-	  background-color:green;
-	}
-	body .carousel-control-prev-icon,
-	body .carousel-control-next-icon{
-	  background-color:green;
-	}
-	body .no-padding{
-	  padding-left: 0;
-	  padding-right: 0;
 	}
 </style>
 </head>
@@ -181,41 +163,20 @@
 	</script>
 <%}%>
 <!-- 메인 carousel -->
-<div>
-	<div id="carouselExampleControls" class="col carousel slide" data-bs-ride="carousel">
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="images/badminton01.jpg" class="d-block w-100" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="images/Badminton_name.jpg" class="d-block w-100" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="images/badminton02.jpg" class="d-block w-100" alt="...">
-			</div>
-		</div>
+	<div>
+		<img src="images/baaaaadminton.jpg" class="d-block w-100" alt="...">
 	</div>
-	       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-             <span class="visually-hidden">Previous</span>
-           </button>
-           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-             <span class="visually-hidden">Next</span>
-           </button>
-	</div>
-	<div class="container mt-5" style="margin:0 auto; padding:5px;">
-	<div class="m-3">
+	<div class="container-fluid mt-5" style="margin:0 auto; padding:5px;">
 	<div class="row">
 		<div class="col">
-			<h2 class="fw-bold text-center my-4 ">공지사항</h2>
-		    <table class="table table-hover">
+			<h2 class="text-center my-3" style="color:rgb(2,38,94);text-shadow:1px 1px 1px rgb(1,148,148);">공지사항</h2>
+		    <table class="table table-hover text-center">
 		      <thead>
 		         <tr>
-		            <th>번호</th>
-		            <th>제목</th>
-		            <th>조회수</th>
-		            <th>날짜</th>   
+		            <th style="color: #48a697;">번호</th>
+		            <th style="color: #48a697;">제목</th>
+		            <th style="color: #48a697;">조회수</th>
+		            <th style="color: #48a697;">날짜</th>   
 		         </tr>
 		      </thead>
 		      <tbody>
@@ -224,26 +185,26 @@
 		            <td><%=tmpN.getNum() %></td>
 		            <td>
 		               <a class="link-dark text-decoration-none fw-bold" 
-		               href="detail.jsp?num==tmpN.getNum()%>"><%=tmpN.getTitle() %></a>
+		               href="board/notice/detail.jsp?num=<%=tmpN.getNum()%>"><%=tmpN.getTitle() %></a>
 					</td>
 		            <td><%=tmpN.getRegdate() %></td>
 		            <td><%=tmpN.getViewCount() %></td>
 		         </tr>
 		      <% } %>				
 		      </tbody>
-​			</table> 
+		     </table> 
 		</div>
 		<div class="col">
-			<h2 class="fw-bold text-center my-4 ">자유게시판</h2>
-			<table class="table table-hover">
+			<h2 class="text-center my-3" style="color:rgb(2,38,94);text-shadow:1px 1px 1px rgb(1,148,148);">자유게시판</h2>
+			<table class="table table-hover text-center">
 		      <thead>
 		         <tr>
-		            <th>번호</th>
-		            <th>카테고리</th>
-		            <th>제목</th>
-		            <th>작성자</th>
-		            <th>날짜</th>
-		            <th>조회수</th>     
+		            <th style="color: #48a697;">번호</th>
+		            <th style="color: #48a697;">카테고리</th>
+		            <th style="color: #48a697;">제목</th>
+		            <th style="color: #48a697;">작성자</th>
+		            <th style="color: #48a697;">날짜</th>
+		            <th style="color: #48a697;">조회수</th>     
 		         </tr>
 		      </thead>
 		      <tbody>
@@ -253,7 +214,7 @@
 		            <td><%=tmp.getCategory() %></td>
 		            <td>
 		               <a class="link-dark text-decoration-none fw-bold" 
-		               href="detail.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a>
+		               href="cafe/detail.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a>
 						<%-- 댓글 개수 출력 --%>
 						<span class="mx-2" style="color:#198754;"><%=CafeCommentDao.getInstance().getCount(tmp.getNum())%></span>
 		            </td>
@@ -268,73 +229,67 @@
 	</div>
 	
 	<div class="row pt-3">
-	<div class="col">
-		<h2 class="fw-bold text-center my-4 ">갤러리</h2>
-		<!-- 4개 캐로셀 -->
-		<div id="demo" class="carousel slide" data-ride="carousel">
-		  <!-- Indicators -->
-		  <ul class="carousel-indicators">
-		    <li data-target="#demo" data-slide-to="0" class="active"></li>
-		    <li data-target="#demo" data-slide-to="1"></li>
-		    <li data-target="#demo" data-slide-to="2"></li>
-		  </ul>
-		  <!-- The slideshow -->
-		  <div class="container carousel-inner no-padding">
-		    <div class="carousel-item active">
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>    
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>   
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>   
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>   
-		    </div>
-		    <div class="carousel-item">
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>    
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>   
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>   
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>  
-		    </div>
-		    <div class="carousel-item">
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>    
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>   
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>   
-		      <div class="col-xs-3 col-sm-3 col-md-3">
-		        <img src="https://image.shutterstock.com/z/stock-photo-sleeping-disorders-as-a-reason-for-insomnia-293777093.jpg">
-		      </div>  
-		    </div>
-		  </div>
-		  <!-- Left and right controls -->
-		  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-		    <span class="carousel-control-prev-icon"></span>
-		  </a>
-		  <a class="carousel-control-next" href="#demo" data-slide="next">
-		    <span class="carousel-control-next-icon"></span>
-		  </a>
+		<h2 class="fw-bold text-center my-4 "></h2>
+		<div class="col">
+			<div class="card">
+                 <iframe height="235" src="https://www.youtube.com/embed/TdeBlsehb6g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 <div class="card-body">
+                   <h5 class="card-title">스텝</h5>
+                   <p class="card-text">배드민턴 스텝의 모든것</p>
+                 </div>
+           </div>	
+           </div>		
+		<div class="col">
+			<div class="card">
+                 <iframe height="235" src="https://www.youtube.com/embed/gAl4cW4r3vw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 <div class="card-body">
+                   <h5 class="card-title">드롭샷</h5>
+                   <p class="card-text">깎기드롭부터 백드롭까지</p>
+                 </div>
+            </div>
+		</div>
+		<div class="col">
+			<div class="card">
+                 <iframe height="235" src="https://www.youtube.com/embed/oPgFINcuOVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 <div class="card-body">
+                   <h5 class="card-title">포핸드그립 백핸드그립 준비그립</h5>
+                   <p class="card-text">필수로 알고 시작해야하는 3종 그립</p>
+                 </div>
+            </div>						
+		</div>
+		<div class="col">
+			<div class="card">
+                 <iframe height="235" src="https://www.youtube.com/embed/2a2ESf7SN9g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 <div class="card-body">
+                   <h5 class="card-title">배드민턴꿀팁</h5>
+                   <p class="card-text">배드민턴 꿀팁 특별강습</p>
+                 </div>
+            </div>						
 		</div>
 	</div>
-	</div>
-	</div>
-	</div>
+	
+	<div class="row pt-3">
+	<div class="col" >
+		<h2 class="fw-bold text-center my-4 "></h2>
+            <div class="col">
+            	<td>
+            		<img class="mb-4 p-2" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="50" height="50"/>
+            	</td>
+	            <%for(GalleryDto tmpG:list2){%>
+	            <td class="col">
+	              <a href="gallery/detail.jsp?num=<%=tmpG.getNum() %>">
+	              <img src="${pageContext.request.contextPath }<%=tmpG.getImagePath() %>" 
+							onerror="this.src='${pageContext.request.contextPath}/images/frown-face.png'" 
+							class="col-xs-12 col-sm-8 col-md-2 col-xg-2 img-rounded"/>
+				</td>
+	            <%} %>
+	            <td>
+            		<img class="mb-4 p-2" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="50" height="50"/>
+            	</td>
+            </div> 
+          	</div>
+          </div>
+        </div>
 <jsp:include page="include/footer.jsp"></jsp:include>
 <script src="https://code.jquery.com/jquery-latest.js"></script> 
     <!-- The Modal -->

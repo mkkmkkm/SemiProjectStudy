@@ -145,6 +145,25 @@
 		margin-right: 3px;
 		margin-bottom: 5px;
 	}
+	@media (max-width: 880px) {
+		.footer-distributed{
+			font: bold 14px sans-serif;
+		}
+		.footer-distributed .footer-left,{
+			display: block;
+			width: 100%;
+			margin-bottom: 40px;
+			text-align: center;
+		}
+		
+		.footer-distributed .footer-center,
+		.footer-distributed .footer-right{
+			display: none;
+		}
+		.footer-distributed .footer-center i{
+			margin-left: 0;
+		}
+}
 
 	
 	}
@@ -155,13 +174,14 @@
 		<div class="footer-left ">
 		    <h3>High<span>Clear</span></h3>
 		     <div>
-		         <p class="footer-company-name ">Badminton club &copy; 2021</p> <br>
+		         <p class="footer-company-name ">Badminton club &copy; 2021</p>
+		         
 		     </div>
 		</div>
 		     <div class="footer-center ">
 		         <div>
 		              <i class="fa fa-map-marker "></i>
-		              <p><span>서울특별시 강남구 테헤란로 124 삼원타워 5층</span> 에이콘 아카데미 베트민턴실</p>
+		              <p><span>서울 강남구 테헤란로124 삼원타워</span> 에이콘 아카데미 베트민턴실</p>
 		         </div>
 		         <div>
 		              <i class="fa fa-phone "></i>
@@ -175,8 +195,8 @@
 		      <div class="footer-right ">
 		      	 <p class="footer-company-about ">
 		              <span>About the HighClear</span>
-		              High-Clear Badminton Club provides the opportunity for members to play badminton. <br><br>
-		              <small>noCopyright 2021ⓒ High-Clear Research Instiute. All Right not Reserved.</small>
+		              High-Clear provides the opportunity for members to play badminton. <br>
+		              <small>noCopyright 2021ⓒ HighClear Research Instiute. All Right not Reserved.</small>
 		         </p>
 		      </div>
 	</footer>

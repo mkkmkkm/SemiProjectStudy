@@ -11,12 +11,14 @@ public class NoticeDto {
 	private String regdate;
 	private int prevNum;
 	private int nextNum;
+	private int startRowNum1;
+	private int endRowNum1;
 
 	public NoticeDto() {
 	}
 
 	public NoticeDto(int num, String writer, String title, String content, int viewCount, int startRowNum,
-			int endRowNum, String regdate, int prevNum, int nextNum) {
+			int endRowNum, String regdate, int prevNum, int nextNum, int startRowNum1, int endRowNum1) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -28,6 +30,8 @@ public class NoticeDto {
 		this.regdate = regdate;
 		this.prevNum = prevNum;
 		this.nextNum = nextNum;
+		this.startRowNum1 = startRowNum1;
+		this.endRowNum1 = endRowNum1;
 	}
 
 	public int getNum() {
@@ -109,4 +113,21 @@ public class NoticeDto {
 	public void setNextNum(int nextNum) {
 		this.nextNum = nextNum;
 	}
+
+	public int getStartRowNum1() {
+		return startRowNum1;
+	}
+
+	public void setStartRowNum1(int startRowNum1) {
+		this.startRowNum1 = startRowNum1;
+	}
+
+	public int getEndRowNum1() {
+		return endRowNum1;
+	}
+
+	public void setEndRowNum1(int endRowNum1) {
+		this.endRowNum1 = endRowNum1;
+	}
+
 }
