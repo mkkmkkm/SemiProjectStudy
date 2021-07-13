@@ -3,6 +3,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 <style>
    *{
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'Noto Sans KR', sans-serif !important;
    }
 </style>
