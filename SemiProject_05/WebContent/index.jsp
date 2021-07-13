@@ -71,8 +71,6 @@
 <jsp:include page="include/resource.jsp"></jsp:include>
 <link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <style>
-	body{
-
    .modal {
    	  left: 0 !important;
       top: 0 !important;	
@@ -86,12 +84,14 @@
      	margin: 10% auto !important;
     	width: 21% !important;
     	}
+	body{
 		height: 100vh;
 		background-image: url("images/badminton_illust_up.png"); /*2가지 이미 images/badmintonillust1.png*/
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
 	}
+	
 	/*글자 css*/
 	   .page-ui a{
       text-decoration: none;
