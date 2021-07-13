@@ -266,21 +266,15 @@
 		</li>	   
 	   <%} %>  	    
 	</ul>
-	<%-- 좋아요 : 클릭 시 숫자 증가, 하트 모양 변경 --%>
+	<%-- 좋아요 : 클릭 시 숫자 증가 --%>
 	<div>
-		<%--빈하트 --%>
-		<a href="#" class="likeCount text-decoration-none link-dark">
-			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-				<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-			</svg>
-		</a>
 		<%--채운하트 --%>
-		<a href="#" class="likeCount text-decoration-none link-danger">
+		<a href="javascript: " class="likeCount text-decoration-none link-danger">
 			<svg style="color:red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
 				<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
 			</svg>
 		</a>
-		<span class="text-muted fw-bold ms-1"><%=dto.getLikeCount()%></span>
+		<span id="likeCounter" class="text-muted fw-bold ms-1"><%=dto.getLikeCount()%></span>
 	</div>
 	
    <%-- 댓글 목록 --%>
@@ -385,8 +379,21 @@
 <script>
 
 	//클릭 시 좋아요 수 증가하는 로직
+	const likeCounter=document.querySelector("#likeCounter");
 	document.querySelector(".likeCount").addEventListener("click",function(){
-		
+		let num=<%=dto.getNum()%>;
+		ajaxPromise("like_insert.jsp","post","num="+num)
+			.then(function(response){
+				return response.json();
+			})
+			.then(function(data){
+				console.log(data);
+				if(data.isSuccess){
+					likeCounter.innerText="<%=dto.getLikeCount()%>";
+					alert("좋아요!");
+				}			
+				
+			});
 	});
 	
 	//클라이언트가 로그인 했는지 여부

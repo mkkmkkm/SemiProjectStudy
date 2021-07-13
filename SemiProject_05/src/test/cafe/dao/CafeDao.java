@@ -17,6 +17,40 @@ public class CafeDao {
 		}
 		return dao;
 	}
+	//좋아요수 증가 시키는 메소드
+	   public boolean addLikeCount(int num) {
+	      Connection conn = null;
+	      PreparedStatement pstmt = null;
+	      int flag = 0;
+	      try {
+	         conn = new DbcpBean().getConn();
+	         //실행할 sql 문 작성
+	         String sql = "UPDATE board_cafe"
+	               + " SET likeCount=likeCount+1"
+	               + " WHERE num=?";
+	         pstmt = conn.prepareStatement(sql);
+	         //? 에 바인딩할 내용이 있으면 여기서 바인딩
+	         pstmt.setInt(1, num);
+	         //insert or update or delete 문 수행하고 변화된 row 의 갯수 리턴 받기
+	         flag = pstmt.executeUpdate();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         try {
+	            if (pstmt != null)
+	               pstmt.close();
+	            if (conn != null)
+	               conn.close();
+	         } catch (Exception e) {
+	         }
+	      }
+	      if (flag > 0) {
+	         return true;
+	      } else {
+	         return false;
+	      }
+	   }
+	
 	//글 하나의 정보를 수정하는 메소드
 		public boolean update(CafeDto dto) {
 			Connection conn = null;
