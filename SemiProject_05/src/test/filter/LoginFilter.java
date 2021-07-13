@@ -31,7 +31,7 @@ import javax.servlet.http.HttpSession;
  * 
  */
 @WebFilter(urlPatterns = 
-{"/users/private/*","/cafe/private/*","/board/notice/private/*"})
+{"/users/private/*","/cafe/private/*","/board/notice/private/*","/gallery/private/*"})
 public class LoginFilter implements Filter{
 	@Override
 	public void destroy() {		

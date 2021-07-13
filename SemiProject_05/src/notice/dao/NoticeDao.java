@@ -131,7 +131,7 @@ public class NoticeDao {
          //Connection 객체의 참조값 얻어오기 
          conn = new DbcpBean().getConn();
          //실행할 sql 문 작성
-         String sql = "SELECT num,title,writer,content,viewCount,to_char(regdate,'yyyy-mm-dd') as regdate"
+         String sql = "SELECT num,title,writer,content,viewCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate"
                + " FROM board_notice"
                + " WHERE num=?";
          //PreparedStatement 객체의 참조값 얻어오기
@@ -216,7 +216,7 @@ public class NoticeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,viewCount,to_char(regdate,'yyyy-mm-dd') as regdate" + 
+               "              (SELECT num,writer,title,viewCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate" + 
                "              FROM board_notice" + 
                "              ORDER BY num DESC) result1)" + 
                "      WHERE rnum BETWEEN ? AND ?";
@@ -305,7 +305,7 @@ public class NoticeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,viewCount,to_char(regdate,'yyyy-mm-dd') as regdate" + 
+               "              (SELECT num,writer,title,viewCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate" + 
                "              FROM board_Notice"+ 
                "             WHERE title LIKE '%'||?||'%' OR content LIKE '%'||?||'%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -399,7 +399,7 @@ public class NoticeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,viewCount,to_char(regdate,'yyyy-mm-dd') as regdate" + 
+               "              (SELECT num,writer,title,viewCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate" + 
                "              FROM board_Notice"+ 
                "             WHERE title LIKE '%' || ? || '%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -491,7 +491,7 @@ public class NoticeDao {
                "      FROM" + 
                "          (SELECT result1.*, ROWNUM AS rnum" + 
                "          FROM" + 
-               "              (SELECT num,writer,title,viewCount,to_char(regdate,'yyyy-mm-dd') as regdate" + 
+               "              (SELECT num,writer,title,viewCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate" + 
                "              FROM board_Notice"+ 
                "             WHERE writer LIKE '%' || ? || '%' "+               
                "              ORDER BY num DESC) result1)" + 
@@ -576,7 +576,7 @@ public class NoticeDao {
          //Connection 객체의 참조값 얻어오기 
          conn = new DbcpBean().getConn();
          //실행할 sql 문 작성
-         String sql = "SELECT num,writer,title,viewCount,to_char(regdate,'yyyy-mm-dd') as regdate"
+         String sql = "SELECT num,writer,title,viewCount,to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate"
         		 	+" FROM board_notice"
         		 	+" WHERE num IN(SELECT MAX(NUM) FROM board_notice)";
          //PreparedStatement 객체의 참조값 얻어오기

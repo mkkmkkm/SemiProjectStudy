@@ -32,7 +32,7 @@
 function swalSuccess(seq){
 	Swal.fire({
 		title:'작성 성공',
-		text: '새 글을 추가하였습니다.',
+		text: '새 글 작성에 성공하였습니다.',
 		icon: 'success',
 		confirmButtonColor: '#198754',
 		confirmButtonText: '확인'
@@ -45,7 +45,7 @@ function swalSuccess(seq){
 function swalFail(seq){
 	Swal.fire({
 		title:'작성 실패',
-		text: '글 작성이 실패하였습니다.',
+		text: '새 글 작성에 실패하였습니다.',
 		icon: 'error',
 		confirmButtonColor: '#198754',
 		confirmButtonText: '재시도'

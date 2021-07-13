@@ -21,7 +21,7 @@
 function swalSuccess(seq){
 	Swal.fire({
 		title:'삭제 성공',
-		text: '공지를 삭제하였습니다.',
+		text: '공지 삭제에 성공하였습니다.',
 		icon: 'success',
 		confirmButtonColor: '#198754',
 		confirmButtonText: '확인'

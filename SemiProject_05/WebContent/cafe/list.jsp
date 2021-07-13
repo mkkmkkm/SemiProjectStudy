@@ -1,21 +1,16 @@
-<%@page import="test.users.dto.UsersDto"%>
 <%@page import="test.users.dao.UsersDao"%>
-
+<%@page import="test.users.dto.UsersDto"%>
 <%@page import="test.cafe.dao.CafeCommentDao"%>
-<%@page import="test.cafe.dto.CafeCommentDto"%>
-
-<%@page import="notice.dto.NoticeDto"%>
 <%@page import="notice.dao.NoticeDao"%>
-
-<%@page import="java.net.URLEncoder"%>
-<%@page import="java.util.List"%>
 <%@page import="test.cafe.dao.CafeDao"%>
+<%@page import="java.util.List"%>
 <%@page import="test.cafe.dto.CafeDto"%>
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
    //한 페이지에 몇개씩 표시할 것인지
-   final int PAGE_ROW_COUNT=10;
+   final int PAGE_ROW_COUNT=6;
    //하단 페이지를 몇개씩 표시할 것인지
    final int PAGE_DISPLAY_COUNT=5;
    
@@ -47,7 +42,6 @@
       keyword="";
       condition=""; 
    }
-
    //특수기호를 인코딩한 키워드를 미리 준비한다. 
    String encodedK=URLEncoder.encode(keyword);
       
@@ -55,7 +49,6 @@
    CafeDto dto=new CafeDto();
    dto.setStartRowNum(startRowNum);
    dto.setEndRowNum(endRowNum);
-
    //ArrayList 객체의 참조값을 담을 지역변수를 미리 만든다.
    List<CafeDto> list=null;
    //전체 row 의 갯수를 담을 지역변수를 미리 만든다.
@@ -92,7 +85,6 @@
    //하단 끝 페이지 번호
    int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
    
-
    //전체 페이지의 갯수
    int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
    //끝 페이지 번호가 전체 페이지 갯수보다 크다면 잘못된 값이다.
@@ -101,7 +93,6 @@
    }
    
    NoticeDao dao1=NoticeDao.getInstance();
-
 %>        
 
 <!DOCTYPE html>
@@ -130,13 +121,10 @@
       padding: 0;
    }
    
-
    .listProfile{
-
    		width:15px;
    		height:15px;
    		border-radius:50%;
-
    }
    	h1 {
 		color: rgb(2,38,94); 

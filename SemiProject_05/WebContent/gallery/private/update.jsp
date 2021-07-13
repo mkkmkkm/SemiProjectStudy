@@ -1,18 +1,20 @@
 
-<%@page import="test.cafe.dao.CafeDao"%>
-<%@page import="test.cafe.dto.CafeDto"%>
+<%@page import="test.gallery.dao.GalleryDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="dto" class="test.cafe.dto.CafeDto"></jsp:useBean>   
+<jsp:useBean id="dto" class="test.gallery.dto.GalleryDto"></jsp:useBean>   
 <jsp:setProperty property="*" name="dto"/> 
 <%
-boolean isSuccess=CafeDao.getInstance().update(dto);
+boolean isSuccess=GalleryDao.getInstance().update(dto);
+System.out.println(isSuccess);
 %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cafe/private/update.jsp</title>
+<title>High-clear</title>
+<link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
+
 </head>
 <body>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -26,7 +28,7 @@ function swalSuccess(seq){
 		confirmButtonText: '확인'
 	}).then((result) => {
 		if (result.value) {
-		location.href="../detail.jsp?num=<%=dto.getNum()%>";
+		location.href="${pageContext.request.contextPath}/gallery/detail.jsp?num=<%=dto.getNum()%>";
 	  }
 	})
 }

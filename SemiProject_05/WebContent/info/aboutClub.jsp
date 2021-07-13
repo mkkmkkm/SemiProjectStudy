@@ -86,6 +86,7 @@
 			<p>When: every Saturndays 7:30-9:00 pm<br>
 			Where: Acorn Academy, Gangnam, Seoul(Map & Directions)<br>
 			Sponsor: Acorn Academy</p>
+>>>>>>> branch 'final_merge_hr' of https://github.com/Jellyfish-yeho/SemiProject_05.git
 		</div>
 	</div>
 	<div class="row">

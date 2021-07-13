@@ -19,23 +19,16 @@ CafeDto dto=CafeDao.getInstance().getData(num);
 
 <style>
 	#content{
-		height: 500px;
+		height: 400px;
 		width: 650px;
 	}
 </style>
 </head>
 <div class="container my-4">
 	<h1 class="fw-bold my-4">글 수정</h1>
-	<form action="update.jsp" method="post" id="insertForm">
+	<form action="update.jsp" method="post">
 		<input type="hidden" name="num" value="<%=num %>" />
-		<div class="d-flex d-inline-flex flex-column mb-3">
-			<div>
-				<label class="form-label" for="writer">작성자</label>
-			</div>	
-			<div>
-				<input class="form-control form-control-sm" type="text" id="writer" value="<%=dto.getWriter() %>" disabled/>
-			</div>
-		
+		<div class="d-flex d-inline-flex flex-column mb-3">		
 			<div class="mb-3">
 				<div>
 					<label class="form-label" for="category">분류</label>
@@ -50,11 +43,11 @@ CafeDto dto=CafeDao.getInstance().getData(num);
 			
 			<div class="my-2">
 				<label class="form-label" for="title">제목</label>
-				<input class="form-control form-control-sm" type="text" name="title" id="title" value="<%=dto.getTitle()%>>"/>
+				<input class="form-control form-control-sm" type="text" name="title" id="title" value="<%=dto.getTitle()%>"/>
 				<small class="text-muted" style="font-size:0.875rem;">제목은 5글자 이상이어야 합니다.</small>
 			</div>
 		</div>
-		<div>
+		<div class="mb-3">
 			<label for="content">내용</label>
 			<textarea name="content" id="content"><%=dto.getContent()%></textarea>
 		</div>

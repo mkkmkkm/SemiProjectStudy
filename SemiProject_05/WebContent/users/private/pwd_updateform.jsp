@@ -23,6 +23,9 @@
 			font-size:3.5rem;
 		}
 	}
+	.form-control{
+		border:1px solid #198754 !important;
+	}
 </style>
 </head>
 <body class="text-center">
