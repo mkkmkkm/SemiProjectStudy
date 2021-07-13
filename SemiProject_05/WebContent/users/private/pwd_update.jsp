@@ -31,7 +31,7 @@
 function swalSuccess(seq){
 	Swal.fire({
 		title:'수정 성공',
-		text: '<%=id %>님, 로그인 되었습니다. 다시 로그인해 주세요.',
+		text: '<%=id %>님, 비밀번호를 변경하였습니다. 다시 로그인해 주세요.',
 		icon: 'success',
 		confirmButtonColor: '#198754',
 		confirmButtonText: '확인'
