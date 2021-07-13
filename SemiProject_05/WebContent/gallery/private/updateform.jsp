@@ -11,7 +11,7 @@ GalleryDto dto=GalleryDao.getInstance().getData(num);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>High-clear</title>
+<title>갤러리</title>
 <style>
    .drag-area{
       width: 500px;

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/users/logout.jsp</title>
+<title>회원정보</title>
 <jsp:include page="../include/font.jsp"></jsp:include>
 </head>
 <body>

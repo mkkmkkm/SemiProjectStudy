@@ -50,25 +50,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>High-clear</title>
+<title>갤러리</title>
 <link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
-   /* card 이미지 부모요소의 높이 지정 */
    .img-wrapper{
-      height: 350px;
-      /* transform 을 적용할대 0.3s 동안 순차적으로 적용하기 */
+      height: 300px;
       transition: transform 0.3s ease-out;
    }
-   /* .img-wrapper 에 마우스가 hover 되었을때 적용할 css */
    .img-wrapper:hover{
-      /* 원본 크기의 1.1 배로 확대 시키기*/
       transform: scale(1.05);
-   }
-   
+   }   
    .card .card-text{
-      /* 한줄만 text 가 나오고  한줄 넘는 길이에 대해서는 ... 처리 하는 css */
+      /* 한줄만 text가 나오고  한줄 넘는 길이에 대해서는 ... 처리하는 css */
       display:block;
       white-space : nowrap;
       text-overflow: ellipsis;
@@ -77,7 +72,7 @@
    .img-wrapper img{
    		width: 90%;
    		height: 90%;
-   		object-fit: contain; /* fill | contain | cover | scale-down | none */
+   		object-fit: contain; 
    }
       h1 {
 		color: rgb(2,38,94); 
@@ -106,13 +101,14 @@
 			새 사진 올리기
 		</a>
 	</div>
-	<div class="row row-cols-1 row-cols-md-2 g-4">
+	<div class="row row-cols-1 row-cols-md-3 g-4">
 		<%for(GalleryDto tmp:list){ %>
-		<div class="col">
-			<div class="card mb-3">
+		<div class="col align-middle">
+			<div class="card text-center mb-3">
 				<a href="detail.jsp?num=<%=tmp.getNum() %>">
-					<div class="img-wrapper d-flex justify-content-center">
-						<img class="card-img-top" src="${pageContext.request.contextPath }<%=tmp.getImagePath() %>" />
+					<div class="img-wrapper d-flex justify-content-center align-items-center">
+						<img class="card-img-top" src="${pageContext.request.contextPath }<%=tmp.getImagePath() %>" 
+						onerror="this.src='${pageContext.request.contextPath}/images/frown-face.png'"/>
 	               </div>
 				</a>
 				<div class="card-body">

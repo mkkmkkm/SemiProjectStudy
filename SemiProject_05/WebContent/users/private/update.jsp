@@ -20,7 +20,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/update/private/update.jsp</title>
+<title>회원정보</title>
 </head>
 <body>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

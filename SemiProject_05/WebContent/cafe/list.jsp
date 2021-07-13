@@ -99,7 +99,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>High-clear</title>
+<title>자유게시판</title>
 <link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <style>
    .page-ui a{

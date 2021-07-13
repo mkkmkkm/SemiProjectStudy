@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/users/private/info.jsp</title>
+<title>회원정보</title>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
 <jsp:include page="../../include/font.jsp"></jsp:include>
 <link href="<%=request.getContextPath() %>/users/form.css" rel="stylesheet">
