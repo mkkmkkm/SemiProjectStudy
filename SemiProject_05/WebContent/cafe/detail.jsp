@@ -98,6 +98,7 @@
 <head>
 <meta charset="UTF-8">
 <title>자유게시판</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <style>
@@ -155,8 +156,6 @@
      padding: 9.5px;
      margin: 0 0 10px;
      line-height: 1.42857143;
-     word-break: break-all;
-     word-wrap: break-word;
      font-size: 1rem !important;
    }   
    
@@ -267,16 +266,7 @@
 	   <%} %>  	    
 	</ul>
 	<%-- 좋아요 : 클릭 시 숫자 증가 --%>
-	<div>
-		<%--채운하트 --%>
-		<a href="javascript: " class="likeCount text-decoration-none link-danger">
-			<svg style="color:red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-				<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-			</svg>
-		</a>
-		<span id="likeCounter" class="text-muted fw-bold ms-1"><%=dto.getLikeCount()%></span>
-	</div>
-	
+
    <%-- 댓글 목록 --%>
 	<hr class="mb-3" style="border: solid 1px gray;">
 	<p class="fs-5 mb-3"><strong><%=totalRow %></strong> 개의 댓글</p>
@@ -378,22 +368,7 @@
 <script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
 <script>
 
-	//클릭 시 좋아요 수 증가하는 로직 //아직안됨
-	const likeCounter=document.querySelector("#likeCounter");
-	document.querySelector(".likeCount").addEventListener("click",function(){
-		let num=<%=dto.getNum()%>;
-		ajaxPromise("like_insert.jsp","post","num="+num)
-			.then(function(response){
-				return response.json();
-			})
-			.then(function(data){
-				console.log(data);
-				if(data.isSuccess){
-					likeCounter.innerText="<%=dto.getLikeCount()%>";
-					alert("좋아요!");
-				}
-			});
-	});
+	
 	  //클라이언트가 로그인 했는지 여부
 	   let isLogin=<%=isLogin%>;
 	   
@@ -404,7 +379,7 @@
 	            //폼 전송을 막고 
 	            e.preventDefault();
 	            //로그인 폼으로 이동 시킨다.
-	            location.href=               "${pageContext.request.contextPath}/users/loginform.jsp?url=${pageContext.request.contextPath}/cafe/detail.jsp?num=<%=num%>";
+	            location.href="${pageContext.request.contextPath}/users/loginform.jsp?url=${pageContext.request.contextPath}/cafe/detail.jsp?num=<%=num%>";
 	         }
 	      });
 	   
