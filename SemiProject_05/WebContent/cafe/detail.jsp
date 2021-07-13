@@ -404,8 +404,7 @@
 	            //폼 전송을 막고 
 	            e.preventDefault();
 	            //로그인 폼으로 이동 시킨다.
-	            location.href=
-	               "${pageContext.request.contextPath}/users/loginform.jsp?url=${pageContext.request.contextPath}/cafe/detail.jsp?num=<%=num%>";
+	            location.href=               "${pageContext.request.contextPath}/users/loginform.jsp?url=${pageContext.request.contextPath}/cafe/detail.jsp?num=<%=num%>";
 	         }
 	      });
 	   
@@ -437,9 +436,10 @@
 	      const isBottom = 
 	         window.innerHeight + window.scrollY  >= document.body.offsetHeight;
 	      //현재 페이지가 마지막 페이지인지 여부 알아내기
-	      let isLast = currentPage == lastPage;   
+	      let isLast = currentPage == lastPage;
+	      let isLast1= lastPage==0;
 	      //현재 바닥까지 스크롤 했고 로딩중이 아니고 현재 페이지가 마지막이 아니라면
-	      if(isBottom && !isLoading && !isLast){
+	      if(isBottom && !isLoading && !isLast && !isLast1){
 	         //로딩바 띄우기
 	         document.querySelector(".loader").style.display="block";
 	         
@@ -501,7 +501,7 @@
 	         deleteLinks[i].addEventListener("click", function(){
 	            //click 이벤트가 일어난 바로 그 요소의 data-num 속성의 value 값을 읽어온다. 
 	            const num=this.getAttribute("data-num"); //댓글의 글번호
-	            const isDelete=confirm("댓글을 삭제 하시겠습니까?");
+	            const isDelete=confirm("댓글을 삭제하시겠습니까?");
 	            if(isDelete){
 	               // gura_util.js 에 있는 함수들 이용해서 ajax 요청
 	               ajaxPromise("private/comment_delete.jsp", "post", "num="+num)
@@ -540,20 +540,20 @@
 	            
 	            const form=document.querySelector("#reForm"+num);
 	            
-	            //현재 문자열을 읽어온다 ( "답글" or "취소" )
+	            //현재 문자열을 읽어온다 ( "댓글" or "취소" )
 	            let current = this.innerText;
 	            
-	            if(current == "답글"){
+	            if(current == "댓글"){
 	               //번호를 이용해서 댓글의 댓글폼을 선택해서 보이게 한다. 
 	               form.style.display="block";
-	               form.classList.add("animate__flash");
+	               form.classList.add("animate__fadeIn");
 	               this.innerText="취소";   
 	               form.addEventListener("animationend", function(){
-	                  form.classList.remove("animate__flash");
+	                  form.classList.remove("animate__fadeIn");
 	               }, {once:true});
 	            }else if(current == "취소"){
 	               form.classList.add("animate__fadeOut");
-	               this.innerText="답글";
+	               this.innerText="댓글";
 	               form.addEventListener("animationend", function(){
 	                  form.classList.remove("animate__fadeOut");
 	                  form.style.display="none";

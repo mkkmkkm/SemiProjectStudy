@@ -148,7 +148,7 @@ public class CafeCommentDao {
                "   (SELECT result1.*, ROWNUM AS rnum" + 
                "    FROM" + 
                "      (SELECT num, writer, content, target_id, ref_group," + 
-               "      comment_group, deleted, to_char(board_cafe_comment.regdate,'yyyy-mm-dd HH24:MI') as regdate, profile" + 
+               "      comment_group, deleted, board_cafe_comment.regdate, profile" + 
                "      FROM board_cafe_comment" + 
                "      INNER JOIN users" + 
                "      ON board_cafe_comment.writer = users.id" + 
@@ -238,8 +238,8 @@ public class CafeCommentDao {
          conn = new DbcpBean().getConn();
          //실행할 sql 문 작성
          String sql = "INSERT INTO board_cafe_comment"
-               + " (num, writer, content, target_id, ref_group, comment_group, to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate)"
-               + " VALUES(?, ?, ?, ?, ?, ?, SYSDATE)";
+         		+ " (num, writer, content, target_id, ref_group, comment_group, regdate)"
+         		+ " VALUES(?,?,?,?,?,?,SYSDATE)";
          pstmt = conn.prepareStatement(sql);
          //? 에 바인딩할 내용이 있으면 여기서 바인딩
          pstmt.setInt(1, dto.getNum());
@@ -247,7 +247,7 @@ public class CafeCommentDao {
          pstmt.setString(3, dto.getContent());
          pstmt.setString(4, dto.getTarget_id());
          pstmt.setInt(5, dto.getRef_group());
-         pstmt.setInt(6, dto.getComment_group());
+         pstmt.setInt(6, dto.getComment_group());         
          //insert or update or delete 문 수행하고 변화된 row 의 갯수 리턴 받기
          flag = pstmt.executeUpdate();
       } catch (Exception e) {
