@@ -72,17 +72,21 @@
 <link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <style>
    .modal {
-   	  left: 0 !important;
-      top: 0 !important;	
-   	  z-index: 0;
-   	  position: fixed !important;
-   	  height: 100% !important;
-   	  width: 100% !important;
+   	  margin-top: -200px !important;
+      top: 50% !important;	
+      margin-left: -120px !important;	
+      left: 50% !important;	
+   	  position: fixed;
+   	  height: 400px !important;
+   	  width: 300px !important;
    	  }
     .modal-content {
-    	position: center !important;
-     	margin: 10% auto !important;
-    	width: 21% !important;
+    	margin-top: -200px !important;
+      	top: 50% !important;
+      	margin-left: -120px !important;	
+      	left: 50% !important;	
+     	height: 300px !important;
+    	width: 240px !important;
     	}
 	body{
 		height: 100vh;
@@ -174,7 +178,7 @@
 %>
 <%if(isPopup){%>
 	<script>
-		window.open("popup.jsp","창의제목","width=450,height=450,top=100,left=100");
+		window.open("popup.jsp","창의제목","width=420,height=470,top=100,left=100");
 	</script>
 <%}%>
 <!-- 메인 carousel -->
@@ -344,8 +348,8 @@
       <a href="http://www.badmintonmart.com/shop/main/index.php"> <img src="<%=request.getContextPath() %>/images/notice.jpg" class="card-img-top" height=300px width=240px; />
                 </a>
     <div style="cursor:pointer;background-color:black; color:white; text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
-                <span class="pop_bt" style="font-size: 13pt;" >
-                     3초후 자동으로 사라집니다^^
+                <span class="pop_bt" style="font-size: 12pt;" >
+                     5초후 자동으로 사라집니다^^
                 </span>
             </div>
       </div> 
@@ -359,8 +363,8 @@
         function close_pop(flag) {
              $('#myModal').hide();             
         };
-        //3초후 자동으로 사라지기 
-        setTimeout(function() { $('#myModal').hide();}, 3000)
+        //5초후 자동으로 사라지기 
+        setTimeout(function() { $('#myModal').hide();}, 5000)
       </script>
 </body>
 </html>
