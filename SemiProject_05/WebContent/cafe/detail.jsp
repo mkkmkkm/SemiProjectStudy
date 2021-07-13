@@ -97,7 +97,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>High-clear</title>
+<title>자유게시판</title>
 <link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <style>
@@ -186,7 +186,7 @@
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="cafe" name="thisPage"/>
 </jsp:include>
-<div class="container my-4">
+<div class="container my-4" id="ccontainer">
    <% if(!keyword.equals("")){ %>
       <p>   
          <strong><%=condition %></strong> 조건, 
@@ -226,8 +226,10 @@
 			</h2>
 		</div>
 		<div class="view my-4">
-			<span class="mr-1 text-muted">조회수</span>
-			<span class="fw-bold"><%=dto.getViewCount() %></span>
+			<span class="me-1 text-muted">조회수</span>
+			<span class="fw-bold me-3"><%=dto.getViewCount() %></span>
+			<span class="me-1 text-muted">좋아요수</span>
+			<span class="fw-bold"><%=dto.getLikeCount() %></span>
 		</div>
 		<div class="mainContent my-5">
 			<%=dto.getContent() %>
@@ -264,6 +266,22 @@
 		</li>	   
 	   <%} %>  	    
 	</ul>
+	<%-- 좋아요 : 클릭 시 숫자 증가, 하트 모양 변경 --%>
+	<div>
+		<%--빈하트 --%>
+		<a href="#" class="likeCount text-decoration-none link-dark">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+				<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+			</svg>
+		</a>
+		<%--채운하트 --%>
+		<a href="#" class="likeCount text-decoration-none link-danger">
+			<svg style="color:red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+				<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+			</svg>
+		</a>
+		<span class="text-muted fw-bold ms-1"><%=dto.getLikeCount()%></span>
+	</div>
 	
    <%-- 댓글 목록 --%>
 	<hr class="mb-3" style="border: solid 1px gray;">
@@ -365,6 +383,11 @@
 </div>
 <script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
 <script>
+
+	//클릭 시 좋아요 수 증가하는 로직
+	document.querySelector(".likeCount").addEventListener("click",function(){
+		
+	});
 	
 	//클라이언트가 로그인 했는지 여부
 	let isLogin=<%=isLogin%>;

@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/member/delete.jsp</title>
+<title>공지사항</title>
 <jsp:include page="../../../include/resource.jsp"></jsp:include>
 </head>
 <body>
