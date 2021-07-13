@@ -16,7 +16,7 @@
 			font-weight: bold; 
 		}
 		h2 {
-			color: rgb(0,136,236); 
+			color: rgb(0,136,236) !important;
 			font-weight: bold; 
 		}
 		p {
@@ -41,7 +41,7 @@
 	<div style="width: 1000px; margin:0 auto; padding:5px;">
 	<div class="row">
 		<div class="col text-center my-2">
-			<img class="img-fluid" src="../images/Badminton_name.jpg"/>
+			<img class="img-fluid d-block w-100" src="../images/Badminton_name.jpg"/>
 		</div>
 	</div>
 	<div class="row">
@@ -92,9 +92,11 @@
 		<br><br>
 		<!--Google map-->
 		<div id="map-container" class="z-depth-1-half map-container" style="height: 500px">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1582.694692627578!2d127.02888253103966!3d37.49873336462014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca159d4b10f83%3A0xc672380e5228aa2e!2z7JeQ7J207L2Y7JWE7Lm0642w66-4IOqwleuCqOygkA!5e0!3m2!1sko!2skr!4v1625732918256!5m2!1sko!2skr" width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1582.694692627578!2d127.02888253103966!3d37.49873336462014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca159d4b10f83%3A0xc672380e5228aa2e!2z7JeQ7J207L2Y7JWE7Lm0642w66-4IOqwleuCqOygkA!5e0!3m2!1sko!2skr!4v1625732918256!5m2!1sko!2skr" width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+		</iframe>
 		</div>
 	</div>
 	</div>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

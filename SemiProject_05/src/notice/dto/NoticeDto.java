@@ -10,9 +10,10 @@ public class NoticeDto {
 	private int endRowNum;
 	private String regdate;
 	private int prevNum;
-	private int nextNum;	
-	
-	public NoticeDto() {}
+	private int nextNum;
+
+	public NoticeDto() {
+	}
 
 	public NoticeDto(int num, String writer, String title, String content, int viewCount, int startRowNum,
 			int endRowNum, String regdate, int prevNum, int nextNum) {
@@ -108,5 +109,4 @@ public class NoticeDto {
 	public void setNextNum(int nextNum) {
 		this.nextNum = nextNum;
 	}
-
 }
