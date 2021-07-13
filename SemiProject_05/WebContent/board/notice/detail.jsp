@@ -35,7 +35,7 @@
 </head>
 <body>
 <jsp:include page="../../include/navbar.jsp"></jsp:include>
-<div class="container my-4">
+<div class="container my-4 py-4">
 	<div class="article-head mt-4">
 		<div class="writerInfo1 d-flex mb-4">
 			<div class="profile d-inline-flex me-2">
@@ -61,12 +61,12 @@
 			</div>
 		</div>
 
-		<div class="title mt-3 mb-3">
+		<div class="title my-4 py-2">
 			<h2 class="fw-bold">
 				<%=dto.getTitle() %>
 			</h2>
 		</div>
-		<div class="view mb-5">
+		<div class="view mb-4 pb-4">
 			<span class="mr-1 text-muted">조회수</span>
 			<span class="fw-bold"><%=dto.getViewCount() %></span>
 		</div>

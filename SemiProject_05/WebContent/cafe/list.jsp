@@ -10,7 +10,7 @@
     pageEncoding="UTF-8"%>
 <%
    //한 페이지에 몇개씩 표시할 것인지
-   final int PAGE_ROW_COUNT=6;
+   final int PAGE_ROW_COUNT=10;
    //하단 페이지를 몇개씩 표시할 것인지
    final int PAGE_DISPLAY_COUNT=5;
    
@@ -104,7 +104,7 @@
 <style>
    .page-ui a{
       text-decoration: none;
-      color: #000;
+      color: rgb(2,38,94);
    }
    
    .page-ui a:hover{
@@ -112,7 +112,7 @@
    }
    
    .page-ui a.active{
-      color: red;
+      color: rgb(2,38,94);
       font-weight: bold;
       text-decoration: underline;
    }
@@ -134,15 +134,22 @@
 		font-weight: bold; 
 	}
 	th{
-		color: rgb(0,136,236); 
+		color: #198754; 
 	}
-	td{
-		color:rgb(2,38,94);
-		font-size: 1em; 
-	}
+
 	a{
 		color:rgb(2,38,94);
 		text-decoration: none;
+	}
+	html {
+	  	height: 100%;
+	}
+
+	#ccontainer{
+		margin:0 auto; 
+		padding:5px; 
+		background-color:rgb(255,255,255, 0.9); 
+		border-radius: 30px
 	}
 </style>
 </head>
@@ -150,8 +157,8 @@
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="cafe" name="thisPage"/>
 </jsp:include>
-<div class="container">
-   <h1 class="fw-bold my-4">자유게시판</h1> 
+<div class="container my-4" id="ccontainer">
+   <h1 class="fw-bold text-center my-4">자유게시판</h1> 
 	<%-- 새 글 작성 링크 --%>
 	<div class="mb-2" style="float:right;">
 		<a class="link-success text-decoration-none" href="private/insertform.jsp">
@@ -163,7 +170,7 @@
 		</a>
 	</div>
 	<%-- 자유게시판 글 목록 --%>
-   <table class="table table-hover">
+   <table class="table table-hover text-center">
       <thead>
          <tr>
             <th>번호</th>
@@ -262,7 +269,7 @@
    
    <%-- 검색 --%>     
    <form action="list.jsp" method="get"> 
-		<div class="row g-3 align-items-center">
+		<div class="row g-3 align-items-center my-4">
 			<div class="col-auto">
 				<label class="form-label mb-0 fw-bold" for="condition">검색조건</label>
 			</div>

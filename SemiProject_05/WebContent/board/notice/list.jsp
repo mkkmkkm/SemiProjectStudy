@@ -129,12 +129,9 @@
 		font-weight: bold; 
 	}
 	th{
-		color: rgb(0,136,236); 
+		color: #198754; 
 	}
-	td{
-		color:rgb(2,38,94);
-		font-size: 1em; 
-	}
+
 	a{
 		color:rgb(2,38,94);
 		text-decoration: none;
@@ -142,9 +139,7 @@
 	html {
 	  	height: 100%;
 	}
-	body{
-		background: linear-gradient(75deg,  rgb(253,220,0) 50%, rgb(1,210,211) 50%);
-	}
+
 	#ccontainer{
 		margin:0 auto; 
 		padding:5px; 
@@ -158,10 +153,10 @@
 	<jsp:param value="notice" name="thisPage"/>
 </jsp:include>
 <div class="container my-4" id="ccontainer">
-	<div class="m-4">
    <h1 class="fw-bold text-center my-4 ">공지사항</h1>
+	<div class="mb-2" style="float:right;">
    <%if(id!=null && id.equals("admin")){ %>
-         <a class="link-success" href="private/insertform.jsp">
+         <a class="link-success text-decoration-none" href="private/insertform.jsp">
 	         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
 				<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -169,6 +164,7 @@
          	새 글 작성
          </a>
    <%} %>
+   </div>
    <table class="table table-hover text-center">
       <thead>
          <tr>
@@ -225,7 +221,7 @@
       </ul>
    </div>
    <form action="list.jsp" method="get"> 
-	   <div class="row g-3 align-items-center">
+	   <div class="row g-3 align-items-center my-4">
 			<div class="col-auto">
 				<label class="form-label mb-0 fw-bold" for="condition">검색조건</label>
 			</div>
@@ -250,9 +246,7 @@
       </p>
    <%} %>
    </div>
-   
 
-</div>
 <jsp:include page="../../include/footer.jsp"></jsp:include>
 </body>
 </html>

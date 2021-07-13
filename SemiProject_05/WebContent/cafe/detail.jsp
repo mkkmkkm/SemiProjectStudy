@@ -186,7 +186,7 @@
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="cafe" name="thisPage"/>
 </jsp:include>
-<div class="container my-4" id="ccontainer">
+<div class="container my-4 py-4" id="ccontainer">
    <% if(!keyword.equals("")){ %>
       <p>   
          <strong><%=condition %></strong> 조건, 
@@ -220,12 +220,12 @@
 		<div class="category">
 			<%=dto.getCategory() %>
 		</div>
-		<div class="title my-3">
+		<div class="title my-4 py-2">
 			<h2 class="fw-bold">
 				<%=dto.getTitle() %>
 			</h2>
 		</div>
-		<div class="view my-4">
+		<div class="view my-4 pb-4">
 			<span class="me-1 text-muted">조회수</span>
 			<span class="fw-bold me-3"><%=dto.getViewCount() %></span>
 			<span class="me-1 text-muted">좋아요수</span>
