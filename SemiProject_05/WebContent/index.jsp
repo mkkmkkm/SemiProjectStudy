@@ -53,15 +53,14 @@
 	//끝 페이지 번호가 전체 페이지 갯수보다 크다면 잘못된 값이다.
 	if(endPageNum > totalPageCount){
 		endPageNum=totalPageCount; //보정해 준다.
-	
+	}
 		
 	NoticeDto dto1=new NoticeDto();
 	dto1.setStartRowNum(startRowNum);
 	dto1.setEndRowNum(endRowNum);
-		
-	NoticeDao daoNo=NoticeDao.getInstance();
-	List<NoticeDto> list1=daoNo.getList(dto1);
-	}
+	
+	List<NoticeDto> list1=NoticeDao.getInstance().getList(dto1);
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -220,18 +219,17 @@
 		         </tr>
 		      </thead>
 		      <tbody>
-<!-- 	 	      for(NoticeDto tmpN:list1){%>
+	 	      <% for(NoticeDto tmpN:list1){%>
 		         <tr>
-		            <td>=tmpN.getNum() %></td>
+		            <td><%=tmpN.getNum() %></td>
 		            <td>
 		               <a class="link-dark text-decoration-none fw-bold" 
-		               href="detail.jsp?num==tmpN.getNum()%>">=tmpN.getTitle() %></a>
+		               href="detail.jsp?num==tmpN.getNum()%>"><%=tmpN.getTitle() %></a>
 					</td>
-		            <td>=tmpN.getWriter() %></td>
-		            <td>=tmpN.getRegdate() %></td>
-		            <td>=tmpN.getViewCount() %></td>
+		            <td><%=tmpN.getRegdate() %></td>
+		            <td><%=tmpN.getViewCount() %></td>
 		         </tr>
-		      } %>				-->
+		      <% } %>				
 		      </tbody>
 ​			</table> 
 		</div>
