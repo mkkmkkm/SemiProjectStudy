@@ -19,6 +19,40 @@ public class GalleryDao {
 		}
 		return dao;
 	}
+	//좋아요수 증가 시키는 메소드
+	   public boolean addLikeCount(int num) {
+	      Connection conn = null;
+	      PreparedStatement pstmt = null;
+	      int flag = 0;
+	      try {
+	         conn = new DbcpBean().getConn();
+	         //실행할 sql 문 작성
+	         String sql = "UPDATE board_gallery"
+	               + " SET likeCount=likeCount+1"
+	               + " WHERE num=?";
+	         pstmt = conn.prepareStatement(sql);
+	         //? 에 바인딩할 내용이 있으면 여기서 바인딩
+	         pstmt.setInt(1, num);
+	         //insert or update or delete 문 수행하고 변화된 row 의 갯수 리턴 받기
+	         flag = pstmt.executeUpdate();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         try {
+	            if (pstmt != null)
+	               pstmt.close();
+	            if (conn != null)
+	               conn.close();
+	         } catch (Exception e) {
+	         }
+	      }
+	      if (flag > 0) {
+	         return true;
+	      } else {
+	         return false;
+	      }
+	   }
+	   
 	//글 하나의 정보를 수정하는 메소드
 	public boolean update(GalleryDto dto) {
 		Connection conn = null;
@@ -100,7 +134,7 @@ public class GalleryDao {
 			//select 문 작성
 			String sql = "SELECT *" + 
 					" FROM" + 
-					"  (SELECT num, writer, title, content, imagePath, to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate," + 
+					"  (SELECT num, writer, title, content, imagePath, to_char(regdate,'yyyy-mm-dd HH24:MI') as regdate, likeCount," + 
 					"   LAG(num, 1, 0) OVER (ORDER BY num DESC) AS prevNum," + 
 					"   LEAD(num, 1, 0) OVER (ORDER BY num DESC) AS nextNum" + 
 					"   FROM board_gallery" + 
@@ -120,6 +154,7 @@ public class GalleryDao {
 				dto.setContent(rs.getString("content"));
 				dto.setImagePath(rs.getString("imagePath"));
 				dto.setRegdate(rs.getString("regdate"));
+				dto.setLikeCount(rs.getInt("likeCount"));
 				dto.setPrevNum(rs.getInt("prevNum"));
 				dto.setNextNum(rs.getInt("nextNum"));
 			}
@@ -183,8 +218,8 @@ public class GalleryDao {
 			conn = new DbcpBean().getConn();
 			//실행할 insert, update, delete 문 구성
 			String sql = "INSERT INTO board_gallery"
-					+ " (num, writer, title, content, imagePath, regdate)"
-					+ " VALUES(board_gallery_seq.NEXTVAL,?,?,?,?,SYSDATE)";
+					+ " (num, writer, title, content, imagePath, regdate, likeCount)"
+					+ " VALUES(board_gallery_seq.NEXTVAL,?,?,?,?,SYSDATE, 0)";
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩할 내용이 있으면 바인딩한다.
 			pstmt.setString(1, dto.getWriter());

@@ -7,6 +7,7 @@ public class GalleryDto {
 	private String content;
 	private String imagePath;
 	private String regdate;
+	private int likeCount;
 	private int startRowNum;
 	private int endRowNum;
 	private int prevNum; //이전글의 글번호
@@ -14,7 +15,7 @@ public class GalleryDto {
 	//디폴트 생성자 
 	public GalleryDto() {}
 	public GalleryDto(int num, String writer, String title, String content, String imagePath, String regdate,
-			int startRowNum, int endRowNum, int prevNum, int nextNum) {
+			int likeCount, int startRowNum, int endRowNum, int prevNum, int nextNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -22,6 +23,7 @@ public class GalleryDto {
 		this.content = content;
 		this.imagePath = imagePath;
 		this.regdate = regdate;
+		this.likeCount = likeCount;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
 		this.prevNum = prevNum;
@@ -63,6 +65,12 @@ public class GalleryDto {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+	public int getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
 	public int getStartRowNum() {
 		return startRowNum;
 	}
@@ -87,5 +95,6 @@ public class GalleryDto {
 	public void setNextNum(int nextNum) {
 		this.nextNum = nextNum;
 	}
+	
 	
 }

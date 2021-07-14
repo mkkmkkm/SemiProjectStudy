@@ -159,7 +159,7 @@
 %>
 <%if(isPopup){%>
 	<script>
-		window.open("popup.jsp","창의제목","width=420,height=470,top=100,left=100");
+		window.open("popup.jsp","창의제목","width=470,height=470,top=100,left=100");
 	</script>
 <%}%>
 <!-- 메인 carousel -->

@@ -61,7 +61,8 @@ CREATE TABLE board_gallery(
 	title VARCHAR2(100), --이미지에 대한 설명
 	content CLOB,
 	imagePath VARCHAR2(100), --업로드된 이미지의 경로 ex)/upload/xxx.jpg
-	regdate DATE --이미지 업로드 날짜
+	regdate DATE, --이미지 업로드 날짜
+	likeCount NUMBER --좋아요 수
 );
 
 CREATE SEQUENCE board_gallery_seq;

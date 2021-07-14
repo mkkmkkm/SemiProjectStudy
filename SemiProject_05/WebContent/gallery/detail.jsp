@@ -13,12 +13,18 @@
    //로그인된 아이디 (로그인을 하지 않았으면 null 이다)
    String id=(String)session.getAttribute("id");
 
+   //로그인 여부
+   boolean isLogin=false;
+   if(id != null){
+      isLogin=true;
+   }
 %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>갤러리</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
@@ -29,6 +35,9 @@
    		width: 90%;
    		height: 90%;
    		object-fit: contain;
+   }
+    a{
+   		cursor:pointer !important;
    }
 </style>
 </head>
@@ -63,6 +72,28 @@
 					<span class="card-text"><strong><%=dto.getWriter() %></strong></span>
 				</div>
 		         <p><small class="text-muted" style="font-size:0.875rem;"><%=dto.getRegdate() %></small></p>
+		         <div>
+		         	<%-- 북마크 --%>	
+					<input type="text" id="urlInput" class="form-control form-control-sm"
+					style="display:block; position:absolute; left:-100000px"/>
+
+					<a id="bookmark" class="text-decoration-none link-dark mx-2"
+					onclick="javascript:urlClipCopy();">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+							<path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+						</svg>
+					</a>	
+										
+					<%-- 좋아요 : 클릭 시 숫자 증가 --%>
+						<a id="like" class="text-decoration-none link-danger">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+							</svg>
+						</a>
+						<span id="likeCounter" class="text-muted mx-1">
+							<%=dto.getLikeCount()%>
+						</span>
+		         </div>
 			</div>
 		</div>
 	</div>
@@ -97,7 +128,44 @@
 			</li>	   
 		   <%} %>  	    
 		</ul>
-	   </nav>      
+	   </nav> 
+
+<script>
+	//url 클립보드에 복사하기
+	var currentUrl = document.getElementById("urlInput");
+	currentUrl.value = window.document.location.href;  // 현재 URL 을 세팅해 줍니다.
+	function urlClipCopy(){
+		currentUrl.select();  // 해당 값이 선택되도록 select() 합니다
+		document.execCommand("copy"); // 클립보드에 복사합니다.
+		currentUrl.blur();
+		alert("URL이 클립보드에 복사되었습니다."); 
+	}
+	
+	//클라이언트가 로그인 했는지 여부
+	let isLogin=<%=isLogin%>;	
+	
+	//하트를 누르면 좋아요 1씩 증가
+	$("#like").on("click",function(){
+		if(isLogin){
+			let likeCounter = Number($("#likeCounter").text());
+			$("#likeCounter").text(likeCounter+1);
+			//좋아요 개수를 서버로 전송한다
+			$.ajax({	
+				url:"${pageContext.request.contextPath}/gallery/private/like_insert.jsp",
+				type:"get",
+				data: "likeCounter="+likeCounter+"&num=<%=num%>",
+				success:function(data){
+					if(data.isSuccess){
+						$("#likeCounter1").text(<%=dto.getLikeCount()%>);
+					}
+				}
+			});
+		}else{
+			alert("로그인 후 좋아요를 누를 수 있습니다.");
+		};	
+	})
+
+</script>    
 </div>
 </body>
 </html>

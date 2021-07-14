@@ -122,6 +122,12 @@
 					<p class="card-text fs-3 fw-bold"><%=tmp.getTitle() %></p>
 					<p class="card-text">by <strong><%=tmp.getWriter() %></strong></p>
 					<p><small class="text-muted" style="font-size:0.875rem;"><%=tmp.getRegdate() %></small></p>
+					<p>
+						<svg style="color:#dc3545;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="me-2 bi bi-heart-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+						</svg>
+						<span class="text-muted"><%=tmp.getLikeCount()%></span>
+					</p>
 				</div>
 			</div>
 		</div>
