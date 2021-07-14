@@ -3,9 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <title>/navbar.jsp</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<jsp:include page="font.jsp"></jsp:include>
+<jsp:include page="resource.jsp"></jsp:include>
 <style>
 	.profileImage{
 		border-radius: 50%;
@@ -34,8 +33,7 @@
 		url=cPath+"/index.jsp";
 	}
 %>
-<jsp:include page="resource.jsp"></jsp:include>
-<jsp:include page="font.jsp"></jsp:include>
+
 	<div class="container2 d-flex justify-content-end align-items-center" style="background-color: #014618;">
 		<%if(id==null){ %>
 				<a class="btn btn-outline-light btn-sm m-1" 

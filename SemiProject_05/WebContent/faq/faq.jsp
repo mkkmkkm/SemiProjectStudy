@@ -26,7 +26,6 @@
 		border-radius: 30px
 	}
 </style>
-
 </head>
 <body>
 	<jsp:include page="../include/navbar.jsp">

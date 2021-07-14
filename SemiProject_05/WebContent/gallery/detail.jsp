@@ -86,7 +86,7 @@
 										
 					<%-- 좋아요 : 클릭 시 숫자 증가 --%>
 						<a id="like" class="text-decoration-none link-danger">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+							<svg style="color:#dc3545;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
 								<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
 							</svg>
 						</a>
@@ -94,11 +94,8 @@
 							<%=dto.getLikeCount()%>
 						</span>
 		         </div>
-			</div>
-		</div>
-	</div>
-	<nav>	   
-		<ul class="d-flex flex-row ps-0 justify-content-end" style="list-style:none;">	
+		         
+		<ul class="d-flex flex-row ps-0 mt-3 justify-content-end" style="list-style:none;">	
 			<%if(dto.getWriter().equals(id)){ %>
 			<li>
 				<a class="link-dark text-decoration-none mx-1" href="private/updateform.jsp?num=<%=dto.getNum()%>">수정</a>
@@ -107,7 +104,11 @@
 				<a class="link-dark text-decoration-none mx-1" href="private/delete.jsp?num=<%=dto.getNum()%>">삭제</a>
 			</li>
 			<%} %>  
-		</ul>
+		</ul>		         
+			</div>
+		</div>
+	</div>
+	<nav>	   
 	
 		<ul class="mb-5 d-flex flex-row ps-0 justify-content-center" style="list-style:none;">
 		   <%if(dto.getPrevNum()!=0){ %>
@@ -165,8 +166,11 @@
 		};	
 	})
 
-</script>    
+</script>  
+  
 </div>
+<jsp:include page="../include/footer.jsp"></jsp:include>
+
 </body>
 </html>
 

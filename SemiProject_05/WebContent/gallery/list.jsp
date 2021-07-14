@@ -111,7 +111,7 @@
 	<div class="row row-cols-1 row-cols-md-3 g-4">
 		<%for(GalleryDto tmp:list){ %>
 		<div class="col align-middle">
-			<div class="card text-center mb-3">
+			<div class="card text-center mb-3 h-100">
 				<a href="detail.jsp?num=<%=tmp.getNum() %>">
 					<div class="img-wrapper d-flex justify-content-center align-items-center">
 						<img class="card-img-top" src="${pageContext.request.contextPath }<%=tmp.getImagePath() %>" 
@@ -133,7 +133,7 @@
 		</div>
 		<%} %>
 	</div>
-   <div class="page-ui">
+   <div class="page-ui my-4">
       <ul class="pagination justify-content-center">
          <%if(startPageNum != 1){ %>
             <li class="page-item">
@@ -166,8 +166,7 @@
       </ul>
    </div>
 </div>
-
-
+<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>
 

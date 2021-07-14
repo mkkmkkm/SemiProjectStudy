@@ -84,7 +84,7 @@
       margin-left: -120px !important;	
       left: 50% !important;	
    	  position: fixed;
-   	  height: 400px !important;
+   	  height: 440px !important;
    	  width: 300px !important;
    	  }
     .modal-content {
@@ -240,7 +240,7 @@
            </div>	
            </div>		
 		<div class="col">
-			<div class="card">
+			<div class="card text-center">
                  <iframe height="235" src="https://www.youtube.com/embed/gAl4cW4r3vw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                  <div class="card-body">
                    <h5 class="card-title">드롭샷</h5>
@@ -270,7 +270,7 @@
 	
 	<div class="row pt-3">
 	<div class="col" >
-		<h2 class="fw-bold text-center my-4 "></h2>
+		<h2 class="fw-bold text-center my-4"></h2>
             <div class="col">
             	<td>
             		<img class="mb-4 p-2" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="50" height="50"/>
@@ -281,6 +281,7 @@
 	              <img src="${pageContext.request.contextPath }<%=tmpG.getImagePath() %>" 
 							onerror="this.src='${pageContext.request.contextPath}/images/frown-face.png'" 
 							class="col-xs-12 col-sm-8 col-md-2 col-xg-2 img-rounded"/>
+					</a>
 				</td>
 	            <%} %>
 	            <td>
