@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>FAQ</title>
 <link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
+
 <style>
    	h1 {
 		color: rgb(2,38,94); 
@@ -14,6 +15,16 @@
 		padding: 10px; 
 		font-weight: bold; 
 	}
+	html {
+	  	height: 100%;
+	}
+
+	#ccontainer{
+		margin:0 auto; 
+		padding:5px; 
+		background-color:rgb(255,255,255, 0.9); 
+		border-radius: 30px
+	}
 </style>
 
 </head>
@@ -21,8 +32,8 @@
 	<jsp:include page="../include/navbar.jsp">
 		<jsp:param value="faq" name="thisPage"/>
 	</jsp:include>
-	<div class="container my-4">
-		<h1 class="fw-bold my-4">자주 하는 질문</h1>
+	<div class="container my-4" id="ccontainer">
+		<h1 class="fw-bold my-4 text-center">자주 하는 질문</h1>
 		<div class="accordion" id="accordion">
 			<div class="accordion-item">
 				<h2 class="accordion-header" id="headingOne">
