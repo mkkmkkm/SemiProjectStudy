@@ -233,7 +233,7 @@
 	<div class="row pt-3">
 		<h2 class="text-center my-3" style="color:rgb(2,38,94);text-shadow:1px 1px 1px rgb(1,148,148);">참고 영상</h2>
 		<div class="col">
-			<div class="card">
+			<div class="card text-center">
                  <iframe height="235" src="https://www.youtube.com/embed/TdeBlsehb6g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                  <div class="card-body">
                    <h5 class="card-title">스텝</h5>
@@ -251,7 +251,7 @@
             </div>
 		</div>
 		<div class="col">
-			<div class="card">
+			<div class="card text-center">
                  <iframe height="235" src="https://www.youtube.com/embed/oPgFINcuOVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                  <div class="card-body">
                    <h5 class="card-title">포핸드그립 백핸드그립 준비그립</h5>
@@ -260,7 +260,7 @@
             </div>						
 		</div>
 		<div class="col">
-			<div class="card">
+			<div class="card text-center">
                  <iframe height="235" src="https://www.youtube.com/embed/2a2ESf7SN9g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                  <div class="card-body">
                    <h5 class="card-title">배드민턴꿀팁</h5>

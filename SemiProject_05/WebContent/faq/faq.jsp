@@ -82,9 +82,101 @@
 			        	또한, 저희 동호회 공지사항에도 일정을 따로 게시해 놓고 있습니다. 	
 					</div>
 				</div>
+			</div>
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="headingFour">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+						모임에 처음 참석합니다. 무슨 장비를 챙겨가야 할까요?
+					</button>
+		    </h2>
+				<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordion">
+					<div class="accordion-body">
+			        	아주아주 간단합니다! <br />
+			        	배드민턴 라켓 1자루, 배드민턴화, 수건, 편한 복장, 배드민턴 가방만 있으시면 됩니다. 물과 셔틀콕은 저희 동호회에서 지원해 드립니다. <br />        	
+			       </div>
+				</div>
+			</div>
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="headingFive">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+						초보자 장비는 어떤 걸 구매해야 하나요?  
+					</button>
+		    </h2>
+				<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordion">
+					<div class="accordion-body">
+			        	★ 라켓<br />
+			        	- 추천 라켓무게 : 4u (80~85g사이) 여성분의 경우 5U같은 초경량 라켓도 괜찮습니다.<br />
+			        	- 추천 샤프트 탄성 : 미디움(남여), Flex 부드러움(여성추천)<br />
+						- 라켓 밸런스 : 올라운드형 라켓으로 헤드와 그립쪽 균형이 같은게 초보자때는 좋습니다.<br />
+						- 거트 텐션 : 남자 (25~26), 여성 (24~25)<br />
+						- 가격 : 5만원~10만원 사이를 추천합니다! 보통 라켓은 2자루 이상 구비하시는게 좋습니다. 초보 레슨땐 1자루만 있어도 거의 끊어질 염려는 없습니다. 주로 스매싱을 할때 많이 끊어지는 편이니 남자분들은 라켓 한자루를 추후 더 준비하시는걸 추천합니다. <br />
+			        	브랜드는 굉장히 다양하니 원하는 것으로 고르시면 됩니다. <br /> 
+			        	- tip : <br />
+			        	라켓을 인터넷으로 구매 시 라켓 그립이 없는채로 오기 때문에 가까운 샵에 가셔서 기본 그립을 하나 구매하셔서 그립을 갈아달라고 하면 그립 구매비용만 받고 갈아줍니다. 
+			        	1,000원~2,000원 정도면 그립을 교체하실 수 있으니 인터넷으로 라켓 구매시엔 꼭 가까운 샵에서 그립을 교체해 주시기 바랍니다!
+			        	<br /><br />
+			        	★ 배드민턴화<br />
+			        	배드민턴화는 되도록 경제적 여유가 되신다면 10만원 이상의 신발을 구매하시는걸 추천합니다. 5~6만원짜리에서 뭐 3~4만원짜리 신발도 많지만 쿠셔닝이 사실상 좋지 않아서 무릎이나 발목에 무리가 조금 갈 수 있습니다. 
+			        	10만원 이상이 부담되신다면 6만원~10만원 사이 배드민턴화도 많으니 꼭 참고하시기 바랍니다. 
+					</div>
+				</div>
 			</div>	
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="headingSix">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+						동호회비가 따로 있나요?
+					</button>
+		    </h2>
+				<div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordion">
+					<div class="accordion-body">
+			        	당월 모임 횟수, 인원에 따라 다릅니다. <br />
+			        	상기 내용이 정해지면 참여 회원분들께 별도로 공지하여 드리고 있으며, 회비에는 코트 대여료  외의 기타 비용이 포함됩니다.  <br />
+			        	<br />
+			        	저희 동호회는 서울특별시 배드민턴협회의 지원을 받고 있어, 타 동호회보다 회비가 저렴합니다 :D 
+					</div>
+				</div>
+			</div>	
+		</div> <%-- end of accordin --%>
+		<div class="row pt-3">
+		<h1 class="fw-bold my-4 text-center">참고 영상</h1>
+		<div class="col">
+			<div class="card text-center">
+                 <iframe height="235" src="https://www.youtube.com/embed/TdeBlsehb6g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 <div class="card-body">
+                   <h5 class="card-title">스텝</h5>
+                   <p class="card-text">배드민턴 스텝의 모든것</p>
+                 </div>
+           </div>	
+           </div>		
+		<div class="col">
+			<div class="card text-center">
+                 <iframe height="235" src="https://www.youtube.com/embed/gAl4cW4r3vw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 <div class="card-body">
+                   <h5 class="card-title">드롭샷</h5>
+                   <p class="card-text">깎기드롭부터 백드롭까지</p>
+                 </div>
+            </div>
+		</div>
+		<div class="col">
+			<div class="card text-center">
+                 <iframe height="235" src="https://www.youtube.com/embed/oPgFINcuOVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 <div class="card-body">
+                   <h5 class="card-title">포핸드그립 백핸드그립 준비그립</h5>
+                   <p class="card-text">필수로 알고 시작해야하는 3종 그립</p>
+                 </div>
+            </div>						
+		</div>
+		<div class="col">
+			<div class="card text-center">
+                 <iframe height="235" src="https://www.youtube.com/embed/2a2ESf7SN9g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                 <div class="card-body">
+                   <h5 class="card-title">배드민턴꿀팁</h5>
+                   <p class="card-text">배드민턴 꿀팁 특별강습</p>
+                 </div>
+            </div>						
 		</div>
 	</div>
+	</div> <%-- end of container --%>
 <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>
