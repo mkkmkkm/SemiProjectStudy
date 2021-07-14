@@ -135,6 +135,8 @@
 	  width:100%;
 	  height:auto;
 	}
+
+	
 </style>
 </head>
 <body>
@@ -229,7 +231,7 @@
 	</div>
 	
 	<div class="row pt-3">
-		<h2 class="fw-bold text-center my-4 "></h2>
+		<h2 class="text-center my-3" style="color:rgb(2,38,94);text-shadow:1px 1px 1px rgb(1,148,148);">참고 영상</h2>
 		<div class="col">
 			<div class="card">
                  <iframe height="235" src="https://www.youtube.com/embed/TdeBlsehb6g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -268,29 +270,28 @@
 		</div>
 	</div>
 	
-	<div class="row pt-3">
-	<div class="col" >
-		<h2 class="fw-bold text-center my-4"></h2>
-            <div class="col">
-            	<td>
-            		<img class="mb-4 p-2" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="50" height="50"/>
-            	</td>
-	            <%for(GalleryDto tmpG:list2){%>
-	            <td class="col">
-	              <a href="gallery/detail.jsp?num=<%=tmpG.getNum() %>">
-	              <img src="${pageContext.request.contextPath }<%=tmpG.getImagePath() %>" 
-							onerror="this.src='${pageContext.request.contextPath}/images/frown-face.png'" 
-							class="col-xs-12 col-sm-8 col-md-2 col-xg-2 img-rounded"/>
-					</a>
-				</td>
-	            <%} %>
-	            <td>
-            		<img class="mb-4 p-2" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="50" height="50"/>
-            	</td>
-            </div> 
-          	</div>
-          </div>
-        </div>
+	<%-- 갤러리  --%>
+	<div class="row pt-3 text-center vertical">
+	<h2 class="text-center my-3" style="color:rgb(2,38,94);text-shadow:1px 1px 1px rgb(1,148,148);">갤러리</h2>
+		<div class="col-lg-12 col-xs-12">
+			<span class="col-lg-1" style="float:none; margin:0 auto;">		            
+				<img class="p-2" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="50" height="50"/>
+	        </span>
+            <%for(GalleryDto tmpG:list2){%>
+            <span class="col-lg-2">
+				<a class="text-decoration-none" href="gallery/detail.jsp?num=<%=tmpG.getNum() %>">
+					<img src="${pageContext.request.contextPath }<%=tmpG.getImagePath() %>" 
+						onerror="this.src='${pageContext.request.contextPath}/images/frown-face.png'" 
+						class="col-xs-12 col-sm-8 col-md-2 col-lg-2 rounded"/>
+				</a>
+			</span>
+            <%} %>
+            <span class="col-lg-1">
+           		<img class="p-2" src="<%=request.getContextPath()%>/images/shuttlecock_main.png" width="50" height="50"/>
+           	</span>		             
+		</div>
+	</div>
+</div>
 <jsp:include page="include/footer.jsp"></jsp:include>
 <script src="https://code.jquery.com/jquery-latest.js"></script> 
     <!-- The Modal -->
