@@ -269,15 +269,18 @@
 	   <%} %>  	    
 	</ul>
 	<%-- 북마크 --%>	
-	<input type="text" id="ShareUrl" class="form-control form-control-sm" style="display:none"/>
+	<input type="text" id="urlInput" class="form-control form-control-sm"
+	style="display:block; position:absolute; left:-100000px"/>
+	
 	<%-- popover hidden content --%>	
+	<%-- 
 	<div id="popoverContent" style="display:none">
 		<p>URL이 클립보드에 복사되었습니다.</p>		
 	</div>
+	--%>
 	
 	<a id="bookmark" class="text-decoration-none link-dark mx-2"
-	data-toggle="popover" data-trigger="focus" data-popover-content="#popoverContent" data-placement="bottom"
-	onclick="javascript:CopyUrlToClipboard();">
+	onclick="javascript:urlClipCopy();">
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
 			<path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
 		</svg>
@@ -395,16 +398,18 @@
 </div>
 <script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
 <script>
-	//url input 요소에 넣고 복사하기
-	var obShareUrl=document.querySelector("#ShareUrl");
-	obShareUrl.value=window.document.location.href; //현재 url
-		function CopyUrlToClipboard(){				
-			obShareUrl.select();
-			document.execCommand("copy"); //clipboard에 복사				
-			obShareUrl.blur();			
-		};
+	//url 클립보드에 복사하기
+	var currentUrl = document.getElementById("urlInput");
+	currentUrl.value = window.document.location.href;  // 현재 URL 을 세팅해 줍니다.
+	function urlClipCopy(){
+		currentUrl.select();  // 해당 값이 선택되도록 select() 합니다
+		document.execCommand("copy"); // 클립보드에 복사합니다.
+		currentUrl.blur();
+		alert("URL이 클립보드에 복사되었습니다."); 
+	}
 	
 	//popover 작동시키기
+	/*
 	$(function(){
 		$('[data-toggle="popover"]').popover({
 			container:'body',
@@ -416,6 +421,7 @@
 			}
 		});
 	});
+	*/
 
 	//클라이언트가 로그인 했는지 여부
 	let isLogin=<%=isLogin%>;	
@@ -432,7 +438,6 @@
 				data: "likeCounter="+likeCounter+"&num=<%=num%>",
 				success:function(data){
 					if(data.isSuccess){
-						alert("좋아요를 눌렀습니다.");
 						$("#likeCounter1").text(<%=dto.getLikeCount()%>);
 					}
 				}
