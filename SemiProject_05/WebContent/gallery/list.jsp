@@ -52,8 +52,6 @@
 <meta charset="UTF-8">
 <title>갤러리</title>
 <link rel="icon" href="${pageContext.request.contextPath}/images/shuttlecock_main.png" type="image/x-icon" />
-
-<jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
    .img-wrapper{
       height: 300px;
@@ -74,25 +72,34 @@
    		height: 90%;
    		object-fit: contain; 
    }
-      h1 {
+     h1 {
 		color: rgb(2,38,94); 
 		text-shadow:1px 1px 1px rgb(1,148,148); 
 		margin: 0; 
 		padding: 10px; 
 		font-weight: bold; 
 	}
+	html {
+	  	height: 100% !important;
+	}
+
+	#ccontainer{
+		margin:0 auto; 
+		padding:5px; 
+		background-color:rgb(255,255,255, 0.9); 
+		border-radius: 30px;
+	}
 </style>
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp">
-   <jsp:param value="gallery" name="thisPage"/>
+	<jsp:param value="gallery" name="thisPage"/>
 </jsp:include>
-<div class="container">
-	<h1 class="fw-bold my-4">갤러리</h1>
-	
-   <h1></h1>
+<div class="container my-4" id="ccontainer">
+	<h1 class="fw-bold my-4 text-center">갤러리</h1>
+
    	<%-- 새 글 작성 링크 --%>
-	<div class="mb-2 d-flex justify-content-end ">
+	<div class="mb-2 d-flex justify-content-end">
 		<a class="link-success text-decoration-none" href="private/ajax_form.jsp">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
 				<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
